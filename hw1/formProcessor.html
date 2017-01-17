@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Tong Zhou">
+</head>
+<body>
+	<h1>Submitted Information</h1>
+	<table id="mytable"></table>
+	<p id="demo"></p>
+	<script>
+		var searchParams = new URLSearchParams(window.location.search);
+		var table = document.getElementById("mytable");
+		searchParams.set("timestamp",new Date(searchParams.get("timestamp")/1));
+		for(var pair of searchParams.entries()) {
+			var row = table.insertRow();
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			cell1.innerHTML = pair[0];
+			cell2.innerHTML = pair[1];
+		}
+	</script>
+</body>
+
+

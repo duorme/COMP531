@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>Registration Page</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Tong Zhou">
+	</head>
+	<body onload="getTimeStamp()">
+		<h1>Regestrition</h1>
+		<form id="landing" method="" action="formProcessor.html">
+			account name:<br>
+			<input type="text" placeholder="your name" name="account name" required pattern="^[A-Za-z]+[\w|\d]*$"><br>
+			display name:<br>
+			<input type="text" name="display name" ><br>
+			email address:<br>
+			<input type="email" placeholder="email" name="email" required><br>
+			phone number:<br>
+			<input type="tel" name="tel" placeholder="xxx-xxx-xxxx" pattern="\d\d\d-\d\d\d-\d\d\d\d" required><br>
+			date of birth:<br>
+			<input type="date" placeholder="MM-DD-YYYY" name="date" required><br>
+			zipcode:<br>
+			<input type="text" name="zipcode" placeholder="xxxxx" pattern = "^\d{5}$" required><br>
+			password:<br>
+			<input type="text" name="password" required><br>
+			password confirmation:<br>
+			<input type="text" name="confirmation"><br>
+			<input type="hidden" name="timestamp">
+			<input type="submit" name="submit" value="submit" onclick="return formValidation(this.parent)">  
+			<input type="reset" name="Clear" value="Clear">
+		</form>
+		<script >
+		function getTimeStamp(){
+			document.getElementById("landing").timestamp.value = Date.now();
+		}
+		</script>
+		<script>
+			function formValidation(form){
+				if(!form){
+					form = document.getElementById("landing");
+				}
+				var birth = new Date(form.date.value);
+				var today = new Date();
+				var age = today.getFullYear() - birth.getFullYear();
+				var m = today.getMonth() - birth.getMonth();
+				if(m < 0) age--;
+				if(age < 18){
+					window.alert("age should no less than 18!")
+					return false;
+				}
+				var confirmation = form.confirmation.value;
+				var password = form.password.value;
+				if(confirmation != password){
+					window.alert("The two passwords you typed do not match.");
+					return false;
+				}
+			}
+		</script>
+		</body>
+	</html>
+		
