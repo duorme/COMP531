@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Self Introduction</title>
+</head>
+
+<body onload="TimeAlert(),clockCounter()">
+    <h1>Tong Zhou</h1>
+    <p>Hello, my name is Tong Zhou. I come from China. This my second semester at Rice. I really enjoy my life in Rice because I can learn many things and also I met many interesting people here.</p>
+    <image src="http://www.tupian365.com/img68/btotbhpudiagtmvlkyrs.jpg" alt="Mountain" width="128" height="128">
+        <p> <a href="http://www.google.com">Google</a> is my favourite website which can search everything. Google is also my favourite company. I hope I can work here in the future.</p>
+        <br>
+        <textarea id="textarea"></textarea>
+        </br>
+        <button onclick="clearTheText()"> Clear the Text </button>
+        <br>
+        <span id="indicator"></span>
+        <br>
+        <button id="stop" onclick="stopCount()">stop Count </button>
+        <button id="restart" onclick="restart()">restart</button>
+        <script>
+        function clearTheText() {
+            var text = document.getElementById("textarea");
+            text.value = '';
+
+        }
+
+        function TimeAlert() {
+            setTimeout(alertOnLoad, 5000);
+        }
+
+        function alertOnLoad() {
+            alert("the page will redirect when the counter reaches zero")
+        }
+
+        function clockCounter() {
+            var c = 15
+            var clock = setInterval(countdown, 1000)
+
+            function countdown() {
+                if (c == 0) {
+                    clearInterval(1)
+                    window.location.href = "https://www.clear.rice.edu/comp431/sample/hello.html"
+                } else {
+                    var indicator = document.getElementById("indicator");
+                    indicator.innerHTML = "The page would redirect after " + c + " seconds";
+                    c = c - 1;
+                }
+            }
+
+
+        }
+
+        function stopCount() {
+            clearInterval(clock)
+        }
+
+        function restart() {
+            setInterval(countdown, 1000)
+        }
+        </script>
+</body>
+
+</html>
