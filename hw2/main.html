@@ -5,43 +5,78 @@
     <title>Post</title>
     <meta charset="utf-8">
     <meta name="author" content="Tong Zhou">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+
+
+
+
+<div class="card">
+
+    <!--Card image-->
+    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+    <!--/.Card image-->
+
+    <!--Card content-->
+    <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+    <!--/.Card content-->
+
+</div>
+<!--/.Card-->
+
+
+
+
     <table id='table'>
-        <tr >
-            <td id="card">
-                <img  width=50%>
-                <br>
-                <span>Lorem ipsum dolor sit amet, pellentesque dictum urna, nam vitae sapien auctor, consectetuer vivamus felis, gravida mauris tellus tincidunt ut, aliquet accumsan consectetuer sed nulla. Cras congue ante sit enim netus, eu dui vel mi nulla sapien, nam mauris. Ut neque, quam non volutpat duis nulla hymenaeos, nec at vel vel, auctor amet. Tincidunt integer dolor varius id elit, facilisis sollicitudin. At deserunt. Autem cursus, mi metus porttitor nulla vitae, malesuada faucibus vestibulum tortor ipsum fusce, molestie a. Justo tempor malesuada mauris vestibulum, est ut hendrerit sed suspendisse curabitur aliquam. Dolor ut libero, cras libero. Ut sociis dolor ante dui non, nulla fusce pede. Enim eget scelerisque, risus arcu aliquam velit hendrerit accumsan consequat, at non, natoque torquent amet a mauris vestibulum luctus, dolor mauris. Massa vehicula, laoreet elementum.</span>
-                <br>
-                <input type="button" id="btn1" value="Stop"> 
-            </td>
+        <tr>
             <td>
-                <img >
-                <br>
-                <span>Lorem ipsum dolor sit amet, pellentesque dictum urna, nam vitae sapien auctor, consectetuer vivamus felis, gravida mauris tellus tincidunt ut, aliquet accumsan consectetuer sed nulla. Cras congue ante sit enim netus, eu dui vel mi nulla sapien, nam mauris. Ut neque, quam non volutpat duis nulla hymenaeos, nec at vel vel, auctor amet. Tincidunt integer dolor varius id elit, facilisis sollicitudin. At deserunt. Autem cursus, mi metus porttitor nulla vitae, malesuada faucibus vestibulum tortor ipsum fusce, molestie a. Justo tempor malesuada mauris vestibulum, est ut hendrerit sed suspendisse curabitur aliquam. Dolor ut libero, cras libero. Ut sociis dolor ante dui non, nulla fusce pede. Enim eget scelerisque, risus arcu aliquam velit hendrerit accumsan consequat, at non, natoque torquent amet a mauris vestibulum luctus, dolor mauris. Massa vehicula, laoreet elementum.</span>
-                <br>
-                <input type="button" id="btn2" value="Stop">
+                <div class="card">
+                    <img class="img-fluid" width="304" height="200">
+                    <div class="card-block">
+                        <p class="card-text">Lorem ipsum dolor sit amet, pellentesque dictum urna, nam vitae sapien auctor, consectetuer vivamus felis, gravida mauris tellus tincidunt ut, aliquet accumsan consectetuer sed nulla. Cras congue ante sit enim netus, eu dui vel mi nulla sapien, nam mauris. Ut neque, quam non volutpat duis nulla hymenaeos, nec at vel vel, auctor amet. Tincidunt integer dolor varius id elit, facilisis sollicitudin. At deserunt. Autem cursus, mi metus porttitor nulla vitae, malesuada faucibus vestibulum tortor ipsum fusce, molestie a. Justo tempor malesuada mauris vestibulum, est ut hendrerit sed suspendisse curabitur aliquam. Dolor ut libero, cras libero. Ut sociis dolor ante dui non, nulla fusce pede. Enim eget scelerisque, risus arcu aliquam velit hendrerit accumsan consequat, at non, natoque torquent amet a mauris vestibulum luctus, dolor mauris. Massa vehicula, laoreet elementum.</p>
+                        <br>
+                        <input type="button" id="btn1" class="btn btn-primary" value="Stop">
+                    </div>
+                </div>
+            </td>
+            <td id="card" class="card">
+                <div class="card-block">
+                    <img class="img-fluid">
+                    <br>
+                    <span>Lorem ipsum dolor sit amet, pellentesque dictum urna, nam vitae sapien auctor, consectetuer vivamus felis, gravida mauris tellus tincidunt ut, aliquet accumsan consectetuer sed nulla. Cras congue ante sit enim netus, eu dui vel mi nulla sapien, nam mauris. Ut neque, quam non volutpat duis nulla hymenaeos, nec at vel vel, auctor amet. Tincidunt integer dolor varius id elit, facilisis sollicitudin. At deserunt. Autem cursus, mi metus porttitor nulla vitae, malesuada faucibus vestibulum tortor ipsum fusce, molestie a. Justo tempor malesuada mauris vestibulum, est ut hendrerit sed suspendisse curabitur aliquam. Dolor ut libero, cras libero. Ut sociis dolor ante dui non, nulla fusce pede. Enim eget scelerisque, risus arcu aliquam velit hendrerit accumsan consequat, at non, natoque torquent amet a mauris vestibulum luctus, dolor mauris. Massa vehicula, laoreet elementum.</span>
+                    <br>
+                    <input type="button" id="btn2" value="Stop">
+                </div>
             </td>
         </tr>
         <tr>
-            <td>
-                <img >
+            <td class="card">
+                <img class="img-fluid">
                 <br>
                 <span>In adipiscing, gravida arcu est eleifend elementum velit, morbi quam lorem. Imperdiet mauris wisi. Augue ultrices, aenean pede quisque, nam mattis ligula velit, ad eros elit. Per ut, tempor per ut ligula blandit imperdiet, orci potenti cursus mauris amet tempus, id inceptos, cursus pellentesque lorem velit. Urna orci pede quisque est sit. Semper dolor ante aliquet eros ligula, a magna mauris phasellus lobortis consectetuer vestibulum. Phasellus sodales elementum ut in a id, ornare id dui eleifend ipsum, neque eget etiam. Augue curabitur. Sit quis tincidunt, cillum tellus scelerisque, hendrerit mollis lectus natoque imperdiet lobortis. Id scelerisque ipsum quam diam, maxime pede sem justo tempus ridiculus fermentum, pellentesque amet erat dolor id, morbi rutrum molestie et laboris sociis rutrum, sit aliquam diam. Eum phasellus augue taciti nullam turpis, nunc vel duis erat fringilla enim id. Aliquet sapien duis tincidunt nulla fringilla venenatis, ut semper nibh vel vel lectus mauris, posuere tristique eros nec lorem, eu condimentum rutrum.</span>
                 <br>
                 <input type="button" id="btn3" value="Stop">
             </td>
-            <td><span>Pede proin nunc habitasse commodo, est suscipit ante magna libero quam bibendum, enim molestie et dolor eget ac, dui fusce, aliquet ut quis amet. Suscipit sit donec bibendum neque quis nibh. Magnis interdum risus quam nullam donec justo. Luctus turpis id neque scelerisque, a veniam ipsum pellentesque convallis mi, lacus at eu vitae duis in, vel vehicula wisi. Nostra urna praesent nunc, quam elit odio. Interdum tempor elit. Diam in adipiscing ut vitae id, feugiat tellus cras vestibulum, proin fusce integer. Neque cursus at quam vestibulum sed. Pellentesque elementum. Sit ligula varius lacus vel adipiscing. Dictumst faucibus.</span>
+            <td class="card"><span>Pede proin nunc habitasse commodo, est suscipit ante magna libero quam bibendum, enim molestie et dolor eget ac, dui fusce, aliquet ut quis amet. Suscipit sit donec bibendum neque quis nibh. Magnis interdum risus quam nullam donec justo. Luctus turpis id neque scelerisque, a veniam ipsum pellentesque convallis mi, lacus at eu vitae duis in, vel vehicula wisi. Nostra urna praesent nunc, quam elit odio. Interdum tempor elit. Diam in adipiscing ut vitae id, feugiat tellus cras vestibulum, proin fusce integer. Neque cursus at quam vestibulum sed. Pellentesque elementum. Sit ligula varius lacus vel adipiscing. Dictumst faucibus.</span>
             </td>
         </tr>
         <tr>
-            <td id="noimg"><span>Justo commodo sed, vestibulum etiam. Tempus libero, adipiscing accumsan magnis molestie, sit cum pulvinar penatibus, cras consectetuer quisque suscipit iaculis. Mauris rutrum nibh, maecenas phasellus pede rhoncus. Sed urna rhoncus vivamus vitae, ultrices ornare ultrices metus turpis, non nunc etiam tellus ridiculus etiam sit, pellentesque sociis. Rutrum netus. Eget ullamcorper mauris tincidunt, lacinia vel diam imperdiet. Mattis sed, nec vitae vestibulum metus, nisl eros, est a quisque ut eget vehicula volutpat, nascetur tincidunt. Cursus nec placerat volutpat. Ut wisi ac nullam amet ut curabitur. Erat eget eu maecenas a suspendisse anim, diam ut turpis. Cum platea, cras at sit, vel pretium metus.</span>
+            <td id="noimg" class="card"><span>Justo commodo sed, vestibulum etiam. Tempus libero, adipiscing accumsan magnis molestie, sit cum pulvinar penatibus, cras consectetuer quisque suscipit iaculis. Mauris rutrum nibh, maecenas phasellus pede rhoncus. Sed urna rhoncus vivamus vitae, ultrices ornare ultrices metus turpis, non nunc etiam tellus ridiculus etiam sit, pellentesque sociis. Rutrum netus. Eget ullamcorper mauris tincidunt, lacinia vel diam imperdiet. Mattis sed, nec vitae vestibulum metus, nisl eros, est a quisque ut eget vehicula volutpat, nascetur tincidunt. Cursus nec placerat volutpat. Ut wisi ac nullam amet ut curabitur. Erat eget eu maecenas a suspendisse anim, diam ut turpis. Cum platea, cras at sit, vel pretium metus.</span>
             </td>
-            <td>
-                <img >
+            <td class="card">
+                <img class="img-fluid">
                 <br>
                 <span>
                 Metus ultrices etiam. Et ac placerat velit massa erat, nec iaculis. Fermentum wisi amet nibh praesent amet. Sed sed pellentesque eros volutpat fringilla. Mauris eget dui at metus pede. Vestibulum ultricies erat proin quis luctus, nunc sem egestas sed inceptos, venenatis vitae, phasellus sollicitudin purus magna vitae tempor, ligula dolor pharetra enim sed amet urna. Sit consectetuer pede, amet proin. Proin mauris suspendisse, elit urna enim facilisi, egestas laoreet nulla habitant, vestibulum laoreet a vitae nulla nulla. Interdum interdum et. Vestibulum in vitae, eros sollicitudin dictumst.</span>
@@ -49,9 +84,9 @@
             </td>
         </tr>
         <tr>
-            <td><span>Justo commodo sed, vestibulum etiam. Tempus libero, adipiscing accumsan magnis molestie, sit cum pulvinar penatibus, cras consectetuer quisque suscipit iaculis. Mauris rutrum nibh, maecenas phasellus pede rhoncus. Sed urna rhoncus vivamus vitae, ultrices ornare ultrices metus turpis, non nunc etiam tellus ridiculus etiam sit, pellentesque sociis. Rutrum netus. Eget ullamcorper mauris tincidunt, lacinia vel diam imperdiet. Mattis sed, nec vitae vestibulum metus, nisl eros, est a quisque ut eget vehicula volutpat, nascetur tincidunt. Cursus nec placerat volutpat. Ut wisi ac nullam amet ut curabitur. Erat eget eu maecenas a suspendisse anim, diam ut turpis. Cum platea, cras at sit, vel pretium metus.</span>
+            <td class="card"><span>Justo commodo sed, vestibulum etiam. Tempus libero, adipiscing accumsan magnis molestie, sit cum pulvinar penatibus, cras consectetuer quisque suscipit iaculis. Mauris rutrum nibh, maecenas phasellus pede rhoncus. Sed urna rhoncus vivamus vitae, ultrices ornare ultrices metus turpis, non nunc etiam tellus ridiculus etiam sit, pellentesque sociis. Rutrum netus. Eget ullamcorper mauris tincidunt, lacinia vel diam imperdiet. Mattis sed, nec vitae vestibulum metus, nisl eros, est a quisque ut eget vehicula volutpat, nascetur tincidunt. Cursus nec placerat volutpat. Ut wisi ac nullam amet ut curabitur. Erat eget eu maecenas a suspendisse anim, diam ut turpis. Cum platea, cras at sit, vel pretium metus.</span>
             </td>
-            <td><span>
+            <td class="card"><span>
                 Metus ultrices etiam. Et ac placerat velit massa erat, nec iaculis. Fermentum wisi amet nibh praesent amet. Sed sed pellentesque eros volutpat fringilla. Mauris eget dui at metus pede. Vestibulum ultricies erat proin quis luctus, nunc sem egestas sed inceptos, venenatis vitae, phasellus sollicitudin purus magna vitae tempor, ligula dolor pharetra enim sed amet urna. Sit consectetuer pede, amet proin. Proin mauris suspendisse, elit urna enim facilisi, egestas laoreet nulla habitant, vestibulum laoreet a vitae nulla nulla. Interdum interdum et. Vestibulum in vitae, eros sollicitudin dictumst.</span>
             </td>
         </tr>
@@ -60,4 +95,3 @@
 
 </html>
 <script src="main.js"></script>
-

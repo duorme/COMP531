@@ -15,7 +15,7 @@ window.onLoad = function() {
             clocktimer[i] = setInterval(function() {
                 var index = Math.floor(Math.random() * len)
                 list[i].src = images[index]
-            }, 1000)
+            }, Math.floor(Math.random()*5000))
         }
     }
     window.stopInterval = function(i) {

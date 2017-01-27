@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Profile</title>
     <meta charset="utf-8">
     <meta name="author" content="Tong Zhou">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 
 <body>
-    display name email address phone number zipcode password password confirmation Update button to submit the changes Link to return to main page
-    <div class="name">
-        <p>name</p>
-        <input type="text" id="name">
+<div class="jumbotron text-center">
+  <h1>Profile Update</h1> 
+</div>
+<!--inputs class is container!-->
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Name</p>
+        <input type="text" id="name" pattern="^[A-Za-z]+[\w|\d]*$" required>
+        <span>Tong</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Email</p>
+        <input type="email" id="email" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+        <span>aa@rice.edu</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Address</p>
+        <input type="text" id="address" pattern="[0-9]+[a-zA-Z ]+">
+        <span>1515 Bissonnet Street</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Phone Number</p>
+        <input type="text" id="phone" pattern="\d\d\d[-]?\d\d\d[-]?\d\d\d\d">
+        <span>123-123-1234</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Zipcode</p>
+        <input type="text" id="zipcode" pattern="^\d{5}$">
+        <span>77005</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Password</p>
+        <input type="text" id="password">
+        <span class="hidden">1234</span>
+    </div>
+    <div class="container col-md-4 col-md-offset-4">
+        <p>Password confirmation</p>
+        <input type="text" id="confirmation">
+        <span class="hidden">1234</span>
+    </div>
+    <!--button group !-->
+    <!--button group!-->
+    <div class="btn-group col-md-4 col-md-offset-4">
+    <input class="btn btn-primary" type="submit" value="submit" onclick="return validation()">
+    <input class="btn btn-primary" type="button" value="return" onclick="location.href='main.html'">
+    </div>
+    <!--alert user!-->
+
+    <div class="col-sm-1" id="alertUser">
     </div>
 </body>
+<script src="profile.js"></script>
+
 </html>
