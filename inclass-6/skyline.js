@@ -74,21 +74,24 @@ var createApp = function(canvas) {
 
 
     // main 
+    var clickCanvas = false
     var build = function() {
         addBuilding();
-
-        canvas.addEventListener("click", function(event) {
+        if(!clickCanvas){
+        	canvas.addEventListener("click", function(event) {
             var rect = canvas.getBoundingClientRect();
             var x = event.clientX - rect.left;
             var y = event.clientY - rect.top;
             position.forEach(function(elem) {
                 if (x >= elem.x && x <= elem.x + elem.blgWidth && y > elem.y && y < (canvas.height / 2)) {
-                    elem.blgHeight = elem.blgHeight - 2 >= 0 ? elem.blgHeight + 2: 0
-                    elem.y -= 2
+                    elem.blgHeight = elem.blgHeight - 3 >= 0 ? elem.blgHeight + 3: 0
+                    elem.y -= 3
                 }
 
             });
         }, false)
+        	clickCanvas=true;
+        }
 
     }
 
