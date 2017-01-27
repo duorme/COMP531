@@ -5,14 +5,14 @@ var createApp = function(canvas) {
     var c = canvas.getContext("2d");
     var floor = canvas.height / 2
     var grad = c.createLinearGradient(0, floor, 0, canvas.height)
-    // position of building
+        // position of building
     function pos(x, y, width, height, color) {
-    this.x = x;
-    this.y = y;
-    this.blgWidth = width;
-    this.blgHeight = height;
-    this.color = color
-}
+        this.x = x;
+        this.y = y;
+        this.blgWidth = width;
+        this.blgHeight = height;
+        this.color = color
+    }
 
     function drawCanvas() {
         // Create the ground
@@ -70,29 +70,21 @@ var createApp = function(canvas) {
                 }
             }
         });
-
     }
-    var clocktimer = undefined
-        // main 
+
+
+    // main 
     var build = function() {
         addBuilding();
-        if (!clocktimer) {
-            clocktimer = setInterval(function() {
-                repaint()
-            }, 100)
-        }
+
         canvas.addEventListener("click", function(event) {
             var rect = canvas.getBoundingClientRect();
-            console.log("event clientX" + event.clientX + "  event clientY" + event.clientY)
-            console.log("rect" +rect.left + rect.top)
             var x = event.clientX - rect.left;
             var y = event.clientY - rect.top;
-            console.log("mouse" + x + " " + y)
             position.forEach(function(elem) {
-                console.log("house" + elem.x + "" + elem.y)
-                if (x >= elem.x && x <= elem.x + elem.blgWidth && y >  elem.y && y < (canvas.height / 2)) {
-                    elem.blgHeight = elem.blgHeight - 10 >= 0 ? elem.blgHeight + 5 : 0
-                    elem.y -=5
+                if (x >= elem.x && x <= elem.x + elem.blgWidth && y > elem.y && y < (canvas.height / 2)) {
+                    elem.blgHeight = elem.blgHeight - 2 >= 0 ? elem.blgHeight + 2: 0
+                    elem.y -= 2
                 }
 
             });
@@ -102,6 +94,7 @@ var createApp = function(canvas) {
 
     // repaint whole canvas
     var repaint = function() {
+    	console.log("draw")
         c.clearRect(0, 0, canvas.width, canvas.height);
         drawCanvas();
         drawSun();
@@ -135,26 +128,28 @@ var createApp = function(canvas) {
         c.arc(sunX, sunY, radious, 0, 2 * Math.PI);
         c.fillStyle = "yellow"
         c.fill()
-        sunX += 10;
-        sunY += flg * 10;
+        sunX += 5;
+        sunY += flg * 5;
     }
     //return buildings
 
     return {
-        build: build // object for buildings: position
+        build: build,
+        repaint: repaint // object for buildings: position
     }
 
 }
 
 
-var canvas;
-
 
 window.onload = function() {
-
-
-    var app = new createApp(document.querySelector("canvas"))
+ var app = new createApp(document.querySelector("canvas"))
+setInterval(function() {
+        app.repaint()}, 100);
+   
+    console.log(app)
     document.getElementById("build").onclick = app.build
+    
 
 
 }
