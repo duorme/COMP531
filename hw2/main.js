@@ -1,10 +1,9 @@
 window.onLoad = function() {
-    var images = ["https://s-media-cache-ak0.pinimg.com/564x/fd/84/66/fd84661e3dda0fd8a3fabb3314fdd94e.jpg",
-        "https://s-media-cache-ak0.pinimg.com/564x/7d/86/55/7d8655ef950e000e86aaad863534eba6.jpg",
-        "https://s-media-cache-ak0.pinimg.com/564x/2b/4f/f9/2b4ff97e9e84c9940a9b8d7a8ee132ee.jpg",
-        "https://s-media-cache-ak0.pinimg.com/564x/22/3f/20/223f207fded855c0109aaa7cd688c00c.jpg",
-        "https://s-media-cache-ak0.pinimg.com/564x/29/78/ef/2978ef98b53464e38efc16c5c735995f.jpg"
+    var images = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"
     ];
+
+     
+
     var Cards = document.getElementsByTagName("td");
     var len = images.length;
     clocktimer = []

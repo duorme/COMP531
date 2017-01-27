@@ -1,25 +1,23 @@
 body { background: #eee }
-img { width: 100%;
-height: auto }
-.container-fluid { max-width: 700px; }
+img { 
+width: 100%}
 
-/*header {
-	background: #563d7c;
-	padding: 2em 1em;
-	color: #fff;
-	margin-bottom: 2em;
-}
+.container-fluid {
+max-width: 800px;
+max-height: 500px }
 
 .card{
+	margin: 10px;
 	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-
-[class*="col-"] {
 	background: #fff;
-	border: 1px solid #ddd;
-	padding-top: .75rem;
-	padding-bottom: .75rem;
-	width: 100%;
-}*/
+	border-color:1px solid #ddd;
+	padding: 10px;
+}
+h1{
+	text-align: center;
+	color: orange;
+}
+.buttons{
+	margin-top: 10px;
+}
 
