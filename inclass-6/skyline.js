@@ -1,9 +1,18 @@
 'use strict'
 
 var createApp = function(canvas) {
+    var position = []
     var c = canvas.getContext("2d");
     var floor = canvas.height / 2
     var grad = c.createLinearGradient(0, floor, 0, canvas.height)
+    // position of building
+    function pos(x, y, width, height, color) {
+    this.x = x;
+    this.y = y;
+    this.blgWidth = width;
+    this.blgHeight = height;
+    this.color = color
+}
 
     function drawCanvas() {
         // Create the ground
@@ -20,34 +29,27 @@ var createApp = function(canvas) {
         floorSpacing = 3
     var windowHeight = 5,
         windowWidth = 3
-// object for bulding's position
-    function pos(x, y, width, height, color) {
-        this.x = x;
-        this.y = y;
-        this.blgWidth = width;
-        this.blgHeight = height;
-        this.color = color
-    }
+        // object for bulding's position
 
     // colors of buildings
     var blgColors = ['red', 'blue', 'gray', 'orange']
-    // array to store building's position
-    var position = []
+        // array to store building's position
+
 
     //build a building add position to pos[]
     var addBuilding = function() {
 
-        var x0 = Math.random() * canvas.width
-        var blgWidth = (windowWidth + windowSpacing) * Math.floor(Math.random() * 10)
-        var blgHeight = Math.random() * canvas.height / 2
-        var color = blgColors[Math.floor(Math.random() * blgColors.length)];
+            var x0 = Math.random() * canvas.width
+            var blgWidth = (windowWidth + windowSpacing) * Math.floor(Math.random() * 10)
+            var blgHeight = Math.random() * canvas.height / 2
+            var color = blgColors[Math.floor(Math.random() * blgColors.length)];
 
-        position.push(new pos(x0, floor - blgHeight, blgWidth, blgHeight, color));
+            position.push(new pos(x0, floor - blgHeight, blgWidth, blgHeight, color));
 
 
 
-    }
-    // draw all buldings
+        }
+        // draw all buldings
     var drawBuilding = function(position) {
         position.forEach(function(elem) {
             var color = elem.color
@@ -71,25 +73,34 @@ var createApp = function(canvas) {
 
     }
     var clocktimer = undefined
-    // main 
+        // main 
     var build = function() {
         addBuilding();
         if (!clocktimer) {
-            clocktimer = setInterval(function(){
-            	repaint()}, 100)
+            clocktimer = setInterval(function() {
+                repaint()
+            }, 100)
         }
+        canvas.addEventListener("click", function(event) {
+            var rect = canvas.getBoundingClientRect();
+            console.log("event clientX" + event.clientX + "  event clientY" + event.clientY)
+            console.log("rect" +rect.left + rect.top)
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+            console.log("mouse" + x + " " + y)
+            position.forEach(function(elem) {
+                console.log("house" + elem.x + "" + elem.y)
+                if (x >= elem.x && x <= elem.x + elem.blgWidth && y >  elem.y && y < (canvas.height / 2)) {
+                    elem.blgHeight = elem.blgHeight - 10 >= 0 ? elem.blgHeight + 5 : 0
+                    elem.y -=5
+                }
 
+            });
+        }, false)
 
     }
-    // adding click event
-    var IncreasePosition = function(canvas,event){
-    	var rect = canvas.getBoundingClientRect();
-    	var x = event.clientX - rect.left;
-    	var y = event.clientY - rect.top;
-    	position.forEach(function(elem)(x,y))
 
-    }
-// repaint whole canvas
+    // repaint whole canvas
     var repaint = function() {
         c.clearRect(0, 0, canvas.width, canvas.height);
         drawCanvas();
@@ -105,8 +116,6 @@ var createApp = function(canvas) {
         var img = document.getElementById("car")
         c.drawImage(img, carX, floor - img.height + 10);
         carX += 2;
-        console.log(img.width)
-        console.log(img.height)
 
     }
 
@@ -129,13 +138,23 @@ var createApp = function(canvas) {
         sunX += 10;
         sunY += flg * 10;
     }
+    //return buildings
 
     return {
-        build: build // object forget...
+        build: build // object for buildings: position
     }
+
 }
 
+
+var canvas;
+
+
 window.onload = function() {
-    var app = createApp(document.querySelector("canvas"))
+
+
+    var app = new createApp(document.querySelector("canvas"))
     document.getElementById("build").onclick = app.build
+
+
 }
