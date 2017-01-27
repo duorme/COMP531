@@ -148,7 +148,7 @@ var createApp = function(canvas) {
 window.onload = function() {
  var app = new createApp(document.querySelector("canvas"))
 setInterval(function() {
-        app.repaint()}, 100);
+        app.repaint()}, 250);
    
     console.log(app)
     document.getElementById("build").onclick = app.build
