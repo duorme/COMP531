@@ -24,7 +24,7 @@ function validation() {
             console.log(input.value.match(input.pattern))
             console.log(input.value)
             if (input.value.match(input.pattern) == null) {
-                alertInfo.innerHTML = "Please follow the correct format"
+                alertInfo.innerHTML = input.id + ": please follow the correct format"
                 submit = false
                 return false
             }
