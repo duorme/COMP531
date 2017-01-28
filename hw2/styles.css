@@ -21,3 +21,8 @@ h1{
 	margin-top: 10px;
 }
 
+#alertUser{
+	width: 100%
+	margin-top: 10px;
+    visibility: hidden;
+}

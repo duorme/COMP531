@@ -3,10 +3,12 @@ function validation() {
     console.log("vali")
     var alertInfo = document.getElementById("alertUser");
     alertInfo.innerHTML = "";
+
     var password = document.getElementById("password").value;
     var confirmation = document.getElementById("confirmation").value
     if (confirmation != password) {
         alertInfo.innerHTML = "The two passwords you typed are not matched";
+
         return false;
     }
     elements = document.getElementsByClassName("container")
@@ -52,5 +54,6 @@ function validation() {
             alertInfo.innerHTML = "nothing has been changed";
         }
     }
+    alertInfo.style.visibility = "visible"
     return changed;
 }
