@@ -38,11 +38,10 @@
             .then(res => res.json())
             .then(res => {
                 var dict = {}
-                var articles = res.articles
                 res.articles.forEach(function(elem){
                     dict[elem._id] = elem.text.split(" ").length
                 })
-                return  dict
+                return dict
             })
     }
 
@@ -66,6 +65,7 @@
                         max = res[key]
                     }
                 }
+
                 return id
             })
     }
