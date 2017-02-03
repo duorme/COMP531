@@ -111,7 +111,7 @@ var createApp = function(canvas) {
         carX = carX % canvas.width;
         var img = document.getElementById("car")
         c.drawImage(img, carX, floor - img.height + 10);
-        carX += 2;
+        carX += 5;
 
     }
 
