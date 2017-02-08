@@ -1,11 +1,12 @@
 function App(canvas) {
 
 
-    function tile(id, color, x, y) {
+    function tile(id, color, x, y, src = "") {
         this.id = id
         this.color = color
         this.x = x
         this.y = y
+        this.src = src
     }
     this.canvas = canvas;
     // board to draw tiles
@@ -16,11 +17,15 @@ function App(canvas) {
         //c: context of canvas
     var miss = 0
     var c = canvas.getContext("2d");
+
     var color = ['red', 'blue', 'gray', 'orange']
     var row = 8
     var tileSize = 60
     var time = 0
-    var score=0
+    var score = 0
+    var showDiamond = false
+    var counter = 10
+    var FindDiamond = false
     var initialize = function() {
         //initialize board
         for (var i = 0; i < row; i++) {
@@ -43,36 +48,13 @@ function App(canvas) {
         canvas.addEventListener("click", function(event) {
             search(event)
         })
+        startAllInterval()
         Repaint = setInterval(function() {
             repaint()
         }, 250);
-        generateInterval = setInterval(function() {
-            generateBlocks()
-        }, 2000)
-        timeInterval = setInterval(function() {
-            time++
-            var first = Math.floor(time / 60)
-            var second = time % 60
-            if (first < 10) {
-                if (second < 10) {
-                    document.getElementById("time").innerHTML = "Time: " + "0" + first + ":" + "0" + second
-                } else {
-                    document.getElementById("time").innerHTML = "Time: " + "0" + first + ":" + second
-                }
-            } else {
-                if (second < 10) {
-                    document.getElementById("time").innerHTML = "Time: " + first + ":" + "0" + second
-                } else {
-                    document.getElementById("time").innerHTML = "Time: " + first + ":" + second
-                }
-            }
 
-        }, 1000)
+
     }
-
-
-
-
 
     var i = 1 // repaint tiles on the canvas
     var repaint = function() {
@@ -80,12 +62,16 @@ function App(canvas) {
         for (var i = row - 1; i >= 0; i--) {
             for (var j = 0; j < row; j++) {
                 if (board[i][j] != undefined) {
-
                     c.fillStyle = board[i][j].color
                     c.fillRect(board[i][j].x, board[i][j].y, tileSize, tileSize)
+                    if (board[i][j].src != "") {
+                        c.drawImage(board[i][j].src, j * tileSize, i * tileSize);
+                    }
                 }
             }
         }
+        c.strokeStyle = 'black';
+        c.strokeRect(0, 0, 480, 480);
     }
 
     // position of blocks with the same color
@@ -151,12 +137,17 @@ function App(canvas) {
                         board[m][j] = temp
                     }
                 }
+                console.log(res)
+                if (FindDiamond == true) {
+                    Freeze()
+                    FindDiamond=false
+                }
             } else {
                 miss += res.count
                 document.getElementById("miss").innerHTML = "Number of Wrong Click: " + miss
             }
             score = numberOfTiles - miss
-            document.getElementById("Score").innerHTML="Score: "+score
+            document.getElementById("Score").innerHTML = "Score: " + score
 
 
 
@@ -168,49 +159,43 @@ function App(canvas) {
         var d = new Date();
         d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
         var expires = "expires=" + d.toUTCString();
-        document.cookie ="Time="+time;
-        document.cookie="Score="+score
-        
+        document.cookie = "Time=" + time;
+        document.cookie = "Score=" + score
 
-        console.log("set"+document.cookie)
+
     }
     var getCookie = function(cname) {
-       var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
         }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
+        return "";
     }
 
     var generateBlocks = function() {
         for (var j = 0; j < row; j++) {
             if (board[0][j] != undefined) {
-                clearInterval(generateInterval)
-                generateInterval = undefined
+                clearAllInterval()
                 clearInterval(Repaint)
-                clearInterval(timeInterval)
                 Repaint = undefined
-                timeInterval = undefined
                 var bestTime = getCookie("Time")
                 var bestScore = getCookie("Score")
-                console.log("best"+bestTime)
-                console.log("bestScore"+bestScore)
                 if (bestTime == "" || bestScore == "") {
-                    setCookie(time, score,7)
+                    setCookie(time, score, 7)
                     document.getElementById("score").innerHTML = "Congratulations! You break the record!"
                     document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + "best Score: " + score
 
                 } else {
                     if (bestScore < score || bestScore == score && time < bestTime) {
-                        setCookie(time, score,7)
+                        setCookie(time, score, 7)
                         document.getElementById("score").innerHTML = "Congratulations! You break the record!"
                         document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + "best Score: " + score
                     } else {
@@ -223,6 +208,7 @@ function App(canvas) {
                 break
             }
         }
+
         if (generateInterval != undefined) {
             for (var i = 0; i < row; i++) {
                 for (var j = 0; j < row; j++) {
@@ -230,15 +216,79 @@ function App(canvas) {
                         board[i][j].y -= tileSize
                         board[i - 1][j] = board[i][j]
                     }
+
                 }
             }
             for (var j = 0; j < row; j++) {
                 board[row - 1][j] = new tile((row - 1) * row + j, color[Math.floor(Math.random() * color.length)], j * tileSize, (row - 1) * tileSize)
             }
+            if (time > Math.floor(Math.random() * 10) && !showDiamond) {
+                createDiamond()
+                showDiamond = true
+            }
+
         }
 
 
     }
+    var clearAllInterval = function() {
+        clearInterval(generateInterval)
+        generateInterval = undefined
+        clearInterval(timeInterval)
+        timeInterval = undefined
+    }
+    var Freeze = function() {
+
+        countdownTimer = undefined // be explicit
+        clearAllInterval()
+        console.log("clearFreeze"+timeInterval)
+        countdownTimer = setInterval(countDown, 1000);
+    }
+    var countDown = function() {
+        // be defensive!
+        if (counter == 0) {
+            // we should really clear the other timers too!
+            clearInterval(countdownTimer)
+            countdownTimer = undefined // being defensive
+            resetCountdown()
+            document.getElementById("counter").innerHTML = ""
+
+        } else {
+            document.getElementById("counter").innerHTML = counter--;
+        }
+        // post-increment means we update innerHTML then
+        // reduce the value by one.
+    }
+
+    var resetCountdown = function() {
+        startAllInterval();
+    }
+    var startAllInterval = function() {
+
+        generateInterval = setInterval(function() {
+            generateBlocks()
+        }, 2000)
+        timeInterval = setInterval(function() {
+            time++
+            var first = Math.floor(time / 60)
+            var second = time % 60
+            if (first < 10) {
+                if (second < 10) {
+                    document.getElementById("time").innerHTML = "Time: " + "0" + first + ":" + "0" + second
+                } else {
+                    document.getElementById("time").innerHTML = "Time: " + "0" + first + ":" + second
+                }
+            } else {
+                if (second < 10) {
+                    document.getElementById("time").innerHTML = "Time: " + first + ":" + "0" + second
+                } else {
+                    document.getElementById("time").innerHTML = "Time: " + first + ":" + second
+                }
+            }
+
+        }, 1000)
+    }
+
 
     var DFS = function(board, m, n, row, res, color, visited) {
         var count = 1
@@ -249,6 +299,11 @@ function App(canvas) {
             res[n].count += 1
         }
         visited[m * row + n] = true
+        if (board[m][n].src != "") {
+            console.log(board[m][n])
+            FindDiamond = true
+            board[m][n].src=""
+        }
 
         if (m + 1 < row && !visited.hasOwnProperty((m + 1) * row + n) && board[m + 1][n] != undefined && board[m + 1][n].color === color) {
             count += DFS(board, m + 1, n, row, res, color, visited).count
@@ -269,6 +324,19 @@ function App(canvas) {
         }
     }
 
+    var createDiamond = function() {
+        var Myimg = document.getElementById("img")
+        var i = 0,
+            j = 0
+        while (board[i] == undefined || board[i][j] == undefined) {
+            i = Math.floor(Math.random() * row) - 1
+            j = Math.floor(Math.random() * row) - 1
+        }
+
+        board[i][j].src = Myimg
+
+    }
+
 
     return {
         onload: onload
@@ -279,5 +347,6 @@ function App(canvas) {
 window.onload = function() {
     var game = new App(document.querySelector("canvas"))
     game.onload()
+
 
 }
