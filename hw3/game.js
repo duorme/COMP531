@@ -214,8 +214,8 @@ function App(canvas) {
                         document.getElementById("score").innerHTML = "Congratulations! You break the record!"
                         document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + "best Score: " + score
                     } else {
-                        document.getElementById("score").innerHTML = "Time: " + time + "Score: " + score
-                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + "Best Score" + bestScore
+                        document.getElementById("score").innerHTML = "Your Time: " + time + " Your Score: " + score
+                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + " Best Score" + bestScore
                     }
                 }
 

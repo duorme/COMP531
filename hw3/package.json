@@ -1,0 +1,19 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "COMP 431/531 starter",
+  "main": "./index.html",
+  "scripts": {
+    "deploy": "surge -p dist",
+    "start": "(python -m SimpleHTTPServer 8080 || python -m http.server 8080)"
+  },
+  "author": "Tong_Zhou",
+  "license": "MIT",
+  "devDependencies": {
+    "surge": "^0.18.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.1"
+  }
+}

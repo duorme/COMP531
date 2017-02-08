@@ -12,7 +12,7 @@ window.onload = function() {
     }
     btn.addEventListener("mouseover", move)
 
-    document.body.onkeydown = function(e) { // why can't just assign a function name
+    document.body.onkeydown = function(e) { 
         if (e.shiftKey) {
             btn.removeEventListener("mouseover", move)
 
