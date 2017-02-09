@@ -4,26 +4,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Tong Zhou">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js"></script>
 </head>
 
 <body>
-<div id ="time">Time is: 00:00</div>
-<div id="count">Number Of Tiles: 0</div>
-<div id="miss"> Number of Wrong Click: 0</div>
-<div id="Score">Score:0</div>
-<div style="position:fixed; top:8em; left:25em;">
-	<canvas id="canvasIE" width="800" height="800">
-	</canvas>
-	<img id="img" src='diamond.png'>
-
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item" id="time">Time is 00:00</li>
+            <li class="list-group-item" id="count">Number Of Tiles: 0</li>
+            <li class="list-group-item" id="miss">Number of Wrong Click: 0</li>
+            <li class="list-group-item" id="Score">Score:0</li>
+        </ul>
+    </div>
+    <div class="panel panel-default col-md-3">
+  <div class="panel-heading">How to Play</div>
+  <div class="panel-body">
+  <p>Try to eliminate tiles as many as you can.</p>
+  <p>Only tiles with same color can be eliminated at the same time.</p>
+  <p>If you can elinated tiles which contains a diamond, the tiles can stop increasing 10 seconds</p>
+  <p>Game will over when tiles touch the top of the border.</p>
+  </div>
 </div>
-<div>
-<p id="score"></p>
-<p id="bestScore"></p>
-</div>
-<div id="counter"></div>
+    <div style="position:fixed; top:8em; left:25em;">
+        <canvas id="canvasIE" width="800" height="800">
+        </canvas>
+        <img id="img" src='diamond.png'>
+    </div>
+    <div id="result">
+        <p id="score"></p>
+        <p id="bestScore"></p>
+    </div>
+    <div id="counter"></div>
 </body>
 
 </html>
-<script src="game.js"></script>
+

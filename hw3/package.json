@@ -1,7 +1,7 @@
 {
-  "name": "game",
+  "name": "colortiles",
   "version": "1.0.0",
-  "description": "COMP 431/531 starter",
+  "description": "COMP 431/531 game colortiles",
   "main": "./index.html",
   "scripts": {
     "deploy": "surge -p dist",
