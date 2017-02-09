@@ -18,7 +18,7 @@ function App(canvas) {
     var miss = 0
     var c = canvas.getContext("2d");
 
-    var color = ['#FF4500', '#FFFF00', '#00BFFF', '#40E0D0']
+    var color = ['#FF4500', '#FFFF00', '#00BFFF', '#9932CC']
     var row = 8//block length
     var tileSize = 60
     var time = 0
@@ -201,16 +201,16 @@ function App(canvas) {
                 if (bestTime == "" || bestScore == "") {
                     setCookie(time, score, 7)
                     document.getElementById("score").innerHTML = "Congratulations! You break the record!"
-                    document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + " Best Score: " + score
+                    document.getElementById("bestScore").innerHTML = "Best: Time " + time + "  " + " seconds, Best Score: " + score
 
                 } else {
                     if (bestScore < score || bestScore == score && time < bestTime) {
                         setCookie(time, score, 7)
                         document.getElementById("score").innerHTML = "Congratulations! You break the record!"
-                        document.getElementById("bestScore").innerHTML = "Best: Time " + time + " seconds   " + " Best Score: " + score
+                        document.getElementById("bestScore").innerHTML = "Best: Time " + time + " seconds,   " + " Best Score: " + score
                     } else {
-                        document.getElementById("score").innerHTML = "Your Time: " + time + " seconds Your Score: " + score
-                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + " seconds Best Score" + bestScore
+                        document.getElementById("score").innerHTML = "Your Time: " + time + " seconds, Your Score: " + score
+                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + " seconds, Best Score" + bestScore
                     }
                 }
 
