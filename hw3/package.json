@@ -2,9 +2,9 @@
   "name": "colortiles",
   "version": "1.0.0",
   "description": "COMP 431/531 game colortiles",
-  "main": "./index.html",
+  "main": "./game/index.html",
   "scripts": {
-    "deploy": "surge -p dist",
+    "deploy": "surge -p game",
     "start": "(python -m SimpleHTTPServer 8080 || python -m http.server 8080)"
   },
   "author": "Tong_Zhou",

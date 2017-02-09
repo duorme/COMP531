@@ -210,7 +210,7 @@ function App(canvas) {
                         document.getElementById("bestScore").innerHTML = "Best: Time " + time + " seconds,   " + " Best Score: " + score
                     } else {
                         document.getElementById("score").innerHTML = "Your Time: " + time + " seconds, Your Score: " + score
-                        document.getElementById("bestScore").innerHTML = "Best: Time " + bestTime + " seconds, Best Score" + bestScore
+                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + " seconds, Best Score" + bestScore
                     }
                 }
 
