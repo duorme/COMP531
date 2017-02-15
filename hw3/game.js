@@ -1,6 +1,6 @@
 function App(canvas) {
 
-    //tile class, save the color,position and whether it contains img
+
     function tile(id, color, x, y, src = "") {
         this.id = id
         this.color = color
@@ -18,14 +18,14 @@ function App(canvas) {
     var miss = 0
     var c = canvas.getContext("2d");
 
-    var color = ['#FF4500', '#FFFF00', '#00BFFF', '#9932CC']
-    var row = 8//block length
+    var color = ['red', 'blue', 'gray', 'orange']
+    var row = 8
     var tileSize = 60
     var time = 0
     var score = 0
-    var showDiamond = 0// whether the board has diamond, diamond only show once a time
+    var showDiamond = false
     var counter = 10
-    var FindDiamond = false// whether click the diamond
+    var FindDiamond = false
     var generateInterval = undefined
     var timeInterval = undefined
     var initialize = function() {
@@ -45,7 +45,6 @@ function App(canvas) {
         repaint(board)
 
     }
-    //Start the game. initialze the board,add event lisener to the canvas and start to count and repaint.
     var onload = function() {
         initialize()
         canvas.addEventListener("click", function(event) {
@@ -59,8 +58,7 @@ function App(canvas) {
 
     }
 
-    var i = 1 
-    // repaint tiles on the canvas
+    var i = 1 // repaint tiles on the canvas
     var repaint = function() {
         c.clearRect(0, 0, canvas.width, canvas.height);
         for (var i = row - 1; i >= 0; i--) {
@@ -109,9 +107,9 @@ function App(canvas) {
 
         }
 
-            //DFS to search
         if (m != -1 && n != -1) {
 
+            //DFS to search
             var pos = {}
             var visited = {}
             var res = DFS(board, m, n, row, pos, color, visited)
@@ -142,10 +140,8 @@ function App(canvas) {
                     }
                 }
                 if (FindDiamond == true) {
-                    showDiamond -= 1
                     Freeze()
                     FindDiamond = false
-                    
                 }
             } else {
                 FindDiamond=false
@@ -161,7 +157,6 @@ function App(canvas) {
 
 
     }
-    // use cookie to save results
     var setCookie = function(time, score, days) {
         var d = new Date();
         d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -171,7 +166,6 @@ function App(canvas) {
 
 
     }
-    // get result from cookie
     var getCookie = function(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -187,9 +181,7 @@ function App(canvas) {
         }
         return "";
     }
-    // generate blocks at the bottom line, also generate diamond
-    // if tiles has reached the top, stop the game by stop repaint, time counting and generate blocks.
-    //then output the result, if it break the rule, update cookies
+
     var generateBlocks = function() {
         for (var j = 0; j < row; j++) {
             if (board[0][j] != undefined) {
@@ -201,16 +193,16 @@ function App(canvas) {
                 if (bestTime == "" || bestScore == "") {
                     setCookie(time, score, 7)
                     document.getElementById("score").innerHTML = "Congratulations! You break the record!"
-                    document.getElementById("bestScore").innerHTML = "Best: Time " + time + "  " + " seconds, Best Score: " + score
+                    document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + " Best Score: " + score
 
                 } else {
                     if (bestScore < score || bestScore == score && time < bestTime) {
                         setCookie(time, score, 7)
                         document.getElementById("score").innerHTML = "Congratulations! You break the record!"
-                        document.getElementById("bestScore").innerHTML = "Best: Time " + time + " seconds,   " + " Best Score: " + score
+                        document.getElementById("bestScore").innerHTML = "Best: Time" + time + "  " + " Best Score: " + score
                     } else {
-                        document.getElementById("score").innerHTML = "Your Time: " + time + " seconds, Your Score: " + score
-                        document.getElementById("bestScore").innerHTML = "Best: Time " + bestTime + " seconds, Best Score" + bestScore
+                        document.getElementById("score").innerHTML = "Your Time: " + time + " Your Score: " + score
+                        document.getElementById("bestScore").innerHTML = "Best: Time" + bestTime + " Best Score" + bestScore
                     }
                 }
 
@@ -232,15 +224,15 @@ function App(canvas) {
             for (var j = 0; j < row; j++) {
                 board[row - 1][j] = new tile((row - 1) * row + j, color[Math.floor(Math.random() * color.length)], j * tileSize, (row - 1) * tileSize)
             }
-            if (time % 10 > Math.floor(Math.random() * 10) && showDiamond < 1) {
+            if (time % 10 > Math.floor(Math.random() * 10)) {
                 createDiamond()
+                    // showDiamond = true
             }
 
         }
 
 
     }
-    // if diamond is clicked, stop generating tiles and counting time. But repaint interval is always needed.
     var clearAllInterval = function() {
         if (generateInterval != undefined) {
             clearInterval(generateInterval)
@@ -251,14 +243,12 @@ function App(canvas) {
             timeInterval = undefined
         }
     }
-    // If diamond is cliked,stop interval and start counting interval.
     var Freeze = function() {
         counter = 10
         countdownTimer = undefined // be explicit
         clearAllInterval()
         countdownTimer = setInterval(countDown, 1000);
     }
-    // Freeze the game by count time.
     var countDown = function() {
         // be defensive!
         if (counter == 0) {
@@ -269,7 +259,7 @@ function App(canvas) {
             document.getElementById("counter").innerHTML = ""
 
         } else {
-            document.getElementById("counter").innerHTML = "Tiles can stop increasing " + counter--+" seconds";
+            document.getElementById("counter").innerHTML = counter--;
         }
         // post-increment means we update innerHTML then
         // reduce the value by one.
@@ -278,14 +268,13 @@ function App(canvas) {
     var resetCountdown = function() {
         startAllInterval();
     }
-    // start all interval and process the time into minites.
     var startAllInterval = function() {
-        if (generateInterval == undefined) {
+        if (generateInterval === undefined) {
             generateInterval = setInterval(function() {
                 generateBlocks()
             }, 2000)
         }
-        if (timeInterval == undefined) {
+        if (timeInterval === undefined) {
             timeInterval = setInterval(function() {
                 time++
                 var first = Math.floor(time / 60)
@@ -307,7 +296,8 @@ function App(canvas) {
             }, 1000)
         }
     }
-// DFS to search all tiles with the same color from the first clicked tile
+
+
     var DFS = function(board, m, n, row, res, color, visited) {
         var count = 1
         if (!(n in res)) {
@@ -318,6 +308,7 @@ function App(canvas) {
         }
         visited[m * row + n] = true
         if (board[m][n].src != "") {
+            console.log(board[m][n])
             FindDiamond = true
             board[m][n].src = ""
         }
@@ -340,7 +331,7 @@ function App(canvas) {
 
         }
     }
-// randomly select a non-undefined tile to add an image to it.
+
     var createDiamond = function() {
         var Myimg = document.getElementById("img")
         var i = 0,
@@ -351,7 +342,6 @@ function App(canvas) {
         }
 
         board[i][j].src = Myimg
-        showDiamond += 1
 
     }
 
@@ -362,7 +352,6 @@ function App(canvas) {
 
 
 }
-// start the game.
 window.onload = function() {
     var game = new App(document.querySelector("canvas"))
     game.onload()
