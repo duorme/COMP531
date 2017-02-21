@@ -46,7 +46,6 @@ const Reducer = (state =  {
 			};
 
 		case 'TOGGLE_TODO':
-		console.log(state.todoItems)
 			return {
 				nextId:state.nextId,
 				todoItems:state.todoItems.map(todo=>{
