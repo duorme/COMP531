@@ -2,7 +2,7 @@
   "name": "starter",
   "version": "1.0.0",
   "description": "COMP 431/531 starter",
-  "main": "./src/app.js",
+  "main": "./src/index.js",
   "scripts": {
     "clean": "rimraf dist/bundle.js*",
     "lint": "eslint src --ext .js --ext .jsx --cache",
@@ -74,6 +74,7 @@
     "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.1.0",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
@@ -91,5 +92,7 @@
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-bootstrap": "^0.30.7"
+  }
 }
