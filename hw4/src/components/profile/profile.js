@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-
-export const Main = ()=>{
+export const Profile = ()=>{
 	return(
 	
-		<div> hello main</div>
+		<div> hello Profile</div>
 	)
 }

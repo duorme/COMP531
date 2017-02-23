@@ -9,14 +9,14 @@ import createLogger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducer'
-import Landing from './components/auth/landing'
+import APP from './components/app'
 
 const logger = createLogger()
 const store = createStore(Reducer, applyMiddleware(logger))
 
 render(
     <Provider store={store}>
-        <Landing />
+        <APP location='LANDING'/>
     </Provider>,
     document.getElementById('app')
 )

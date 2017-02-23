@@ -16,6 +16,9 @@ module.exports = {
     stats: { colors: true },
     node: { fs: 'empty'},
     plugins: ignore,
+    devServer: {
+    historyApiFallback: true,
+    },
     module: {
         loaders: [{
             test: /.jsx?$/,

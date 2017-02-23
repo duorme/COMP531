@@ -62,15 +62,14 @@ class ToDos extends React.Component {
 
 
 
-        const text = this.input.value
-        console.log(text)
-        console.log(text)
+        const text = this.input2.value
+
         this.setState({ todoItems: [
                 ...this.state.todoItems, 
                 {id:this.nextId++, text}
             ]
         })
-        this.input.value=""
+        this.input2.value=""
     }
     removeTodo(removeId) {
         this.setState({ 
@@ -80,7 +79,7 @@ class ToDos extends React.Component {
 
     render() { return (
         <div>
-        <input ref={(node)=>this.input=node} id="newTODO" placeholder="To Do"></input>
+        <input ref={(node)=>this.input2=node} id="newTODO" placeholder="To Do"></input>
         <button onClick={this.addTodo}>
         add Item
         </button>

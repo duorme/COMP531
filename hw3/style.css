@@ -3,16 +3,3 @@ li{
     display: inline-block;
     word-break:break-all; /* wrap extended text*/
 }
-#counter{
-	color:red;
-	font-size: 30px
-}
-#result{
-	color: red;
-	font-size: 30px
-}
-.panel{
-	position: absolute;
-    left: 10px;
-    top: 200px; /* wrap extended text*/
-}
