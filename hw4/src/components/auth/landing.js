@@ -2,9 +2,13 @@ import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 // or
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
-let Landing = ({location,alert,onAlert,onchangeLocation}) => {
+let Landing = ({alert,onAlert,onchangeLocation}) => {
+
 	let passWord;
 	let passConfirm;
+
+	// When onSubmit button of Register form is clicked, this function will validate data
+	// If there's problem, "Alert" element would show up to alert user.
 	const onRegisterClick = function(event){
 
 		event.preventDefault();
@@ -20,7 +24,7 @@ let Landing = ({location,alert,onAlert,onchangeLocation}) => {
 		
 	}
 	if(alert != ''){
-		var status = <div>
+		var alertUser = <div>
                      {alert}
                    </div>;
 	}
@@ -28,7 +32,7 @@ let Landing = ({location,alert,onAlert,onchangeLocation}) => {
 	return (
 		//Log in Form
 		<div>
-	  <Form horizontal id="loggin">
+	  <Form horizontal id="loggin" onSubmit={onchangeLocation}>
   <h1>Please Log In</h1>
   <FormGroup controlId="formHorizontalUserName">
       <Col componentClass={ControlLabel} sm={2}>
@@ -58,7 +62,7 @@ let Landing = ({location,alert,onAlert,onchangeLocation}) => {
     </FormGroup>
   </Form>
 
-  {status}
+  {alertUser}
 
   <Form horizontal id="Registration" onSubmit={onRegisterClick}>
   <h1>Registration</h1>
@@ -130,7 +134,6 @@ Landing.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		location:state.location,
 		alert:state.message
 	}
 },

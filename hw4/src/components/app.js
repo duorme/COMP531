@@ -5,6 +5,7 @@ import Main from './main/main'
 import Profile from './profile/profile'
 let APP = ({location}) => {
 	if (location == 'MAIN_PAGE') {
+	
 	return (<Main />)
 }
   else if (location == 'PROFILE_PAGE') {
