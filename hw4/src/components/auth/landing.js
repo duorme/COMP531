@@ -11,48 +11,44 @@ let Landing = ({alert,onAlert,onchangeLocation}) => {
 	// If there's problem, "Alert" element would show up to alert user.
 	const onRegisterClick = function(event){
 
-		event.preventDefault();
-		if(passWord.value != passConfirm.value){
-			onAlert("Password are not matched!")
-			return false
-		}
-		else{
-			onAlert('')
-			onchangeLocation()
-			return true
-		}
+		// event.preventDefault();
+		// if(passWord.value != passConfirm.value){
+		// 	onAlert("Password are not matched!")
+		// 	return false
+		// }
+		// else{
+		// 	onAlert('')
+		// 	onchangeLocation()
+		// 	return true
+		// }
+
 		
 	}
-	if(alert != ''){
-		var alertUser = <div>
-                     {alert}
-                   </div>;
-	}
+
+	function FieldGroup({ id, sm_title,label,sm_input ,...props }) {
+  	return (
+
+  	<FormGroup controlId={id}>
+      <Col componentClass={ControlLabel} sm={sm_title}>
+        {label}
+      </Col>
+      <Col sm={sm_input}>
+        <FormControl {...props}/>
+      </Col>
+    </FormGroup>
+  );
+}
 
 	return (
 		//Log in Form
-		<div>
-	  <Form horizontal id="loggin" onSubmit={onchangeLocation}>
-  <h1>Please Log In</h1>
-  <FormGroup controlId="formHorizontalUserName">
-      <Col componentClass={ControlLabel} sm={2}>
-        User Name
-      </Col>
-      <Col sm={5}>
-        <FormControl type="text" placeholder="Your name" required/>
-      </Col>
-    </FormGroup>
+	<div>
 
-
-    <FormGroup controlId="formHorizontalPassword">
-      <Col componentClass={ControlLabel} sm={2}>
-        Password
-      </Col>
-      <Col sm={5}>
-        <FormControl type="password" placeholder="Password" required/>
-      </Col>
-    </FormGroup>
-
+	<Form horizontal id="loggin" onSubmit={onchangeLocation}>
+    <h1>Please Log In</h1>
+	<FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
+	placeholder="Your name"></FieldGroup>
+	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="password"  sm_input={5} type="password" placeholder="Password" required
+	placeholder="Your Password"></FieldGroup>
     <FormGroup>
       <Col smOffset={2} sm={5}>
         <Button type="submit">
@@ -60,57 +56,28 @@ let Landing = ({alert,onAlert,onchangeLocation}) => {
         </Button>
       </Col>
     </FormGroup>
-  </Form>
+    </Form>
 
-  {alertUser}
+    <span>{alert}</span>
 
-  <Form horizontal id="Registration" onSubmit={onRegisterClick}>
-  <h1>Registration</h1>
-  <FormGroup controlId="formHorizontalUserName">
-      <Col componentClass={ControlLabel} sm={2}>
-        User Name
-      </Col>
-      <Col sm={5}>
-        <FormControl type="text" placeholder="Your name" required/>
-      </Col>
-    </FormGroup>
+    <Form horizontal id="Registration" onSubmit={onRegisterClick}>
+    <h1>Registration</h1>
+    <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
+	placeholder="Your name"></FieldGroup>
+	<FieldGroup id= "formHorizontalDisplayName" sm_title = {2} label="Display name" sm_input={5} required type="text"
+	placeholder="Your Display name"></FieldGroup>
+	<FieldGroup id= "formHorizontalEmail" sm_title = {2} label="Email" sm_input={5} required type="email"
+	placeholder="t@gmail.com"></FieldGroup>
+	<FieldGroup id= "formHorizontalTel" sm_title = {2} label="Tel" sm_input={5} type="tel" name="tel" 
+	placeholder="xxx-xxx-xxxx" pattern="\d\d\d-\d\d\d-\d\d\d\d" required></FieldGroup>
+	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
+	placeholder="77005" pattern = "^\d{5}$" required></FieldGroup>
 
-    <FormGroup controlId="formHorizontalEmail">
-      <Col componentClass={ControlLabel} sm={2}>
-        Email
-      </Col>
-      <Col sm={5}>
-        <FormControl type="email" placeholder="Email" required/>
-      </Col>
-    </FormGroup>
 
-    
-    <FormGroup controlId="formHorizontalZipcode">
-      <Col componentClass={ControlLabel} sm={2}>
-        Zipcode
-      </Col>
-      <Col sm={5}>
-        <FormControl type="text" placeholder="77005" pattern = "^\d{5}$" required />
-      </Col>
-    </FormGroup>
-
-    <FormGroup controlId="formHorizontalPassword">
-      <Col componentClass={ControlLabel} sm={2}>
-        Password
-      </Col>
-      <Col sm={5}>
-        <FormControl type="password" placeholder="Password" inputRef={(ref)=>{passWord=ref;}} required/>
-      </Col>
-    </FormGroup>
-
-    <FormGroup controlId="formHorizontalPasswordConfirmation">
-      <Col componentClass={ControlLabel} sm={2}>
-        Confirmation
-      </Col>
-      <Col sm={5}>
-        <FormControl type="password" placeholder="Password Confirmation" inputRef={(ref)=>{passConfirm=ref;}} required/>
-      </Col>
-    </FormGroup>
+    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" required
+	placeholder="Your Password"></FieldGroup>
+	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" required
+	placeholder="Your Password"></FieldGroup>
 
     <FormGroup>
       <Col smOffset={2} sm={5}>
