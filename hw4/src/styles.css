@@ -1,0 +1,43 @@
+body { background: #eee }
+* {
+    box-sizing: border-box;
+}
+img { 
+	width: 100px;
+	height:100px;
+}
+
+
+header {
+    padding: 5em;
+    color: white;
+    background-color:#53bbb4;
+    text-align: center;
+}
+
+img{
+	float: left
+}
+.newArticle{
+	width: 75px;
+	height: 100px;
+}
+
+.card{
+	margin: 10px;
+	width: 75%;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+	background: #fff;
+	border-color:1px solid #ddd;
+	padding: 10px;
+    overflow: hidden;
+}
+.buttons{
+	margin-top: 10px;
+}
+
+/*#alertUser{
+	width: 100%
+	margin-top: 10px;
+    visibility: hidden;
+}*/

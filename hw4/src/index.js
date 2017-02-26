@@ -10,13 +10,14 @@ import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducer'
 import APP from './components/app'
+require('./styles.css')
 
 const logger = createLogger()
 const store = createStore(Reducer, applyMiddleware(logger))
 
 render(
     <Provider store={store}>
-        <APP location='LANDING'/>
+        <APP/>
     </Provider>,
     document.getElementById('app')
 )
