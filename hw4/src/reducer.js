@@ -12,7 +12,7 @@ const Alert=(state={
 	message:'',
 	location:'LANDING',
 	articles:initialArticles.articles,
-	Cardfilter:'',
+	filter:'',
 	followers:initialFollowers.followers
 },action) =>{
 	switch(action.type){
@@ -90,6 +90,12 @@ const Alert=(state={
 			...state,
 			followers:state.followers.filter((item)=>item.id != action.id)
 		}
+		case 'Search_Articles':
+		return{
+			...state,
+			filter:action.text
+		}
+
 
 		default:return state
 	}

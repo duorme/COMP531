@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {ButtonGroup,button} from 'react-bootstrap'
-import {logOut,go_To_Profile} from './ArticleActions'
+import {logOut,go_To_Profile,searchArticles} from './ArticleActions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
-const ArticleList = ({logout,profile,articleList})=>{
+const ArticleList = ({logout,profile,articleList,search})=>{
+  let input;
+  const _search=()=>{
+    if(input){
+      search(input.value)
+    }
+  }
 	return(	
 <div>
   <nav>
@@ -17,6 +23,7 @@ const ArticleList = ({logout,profile,articleList})=>{
   </nav>
 
   <NewArticle></NewArticle>
+  <input ref={(node)=>input=node} onChange={_search}></input>
   <ul className="articles">
   {articleList.map(({_id,text,date,img,comments,author})=>(
     <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author}></ArticleItem>))}
@@ -31,16 +38,28 @@ ArticleList.PropTypes={
     }).isRequired).isRequired
 }
 
+const getFilteredArticles=(articleList,filter)=>{
+  if(filter){
+    const reg=new RegExp(filter)
+    return articleList.filter((item)=>reg.exec(item.author) || reg.exec(item.text))
+  }
+  else{
+    return articleList
+  }
+
+}
+
 export default connect(
   (state)=>{
     return{
-    articleList:state.articles
+    articleList:getFilteredArticles(state.articles,state.filter)
   }
   },
   (dispatch)=>{
     return{
       logout:()=>dispatch(logOut()),
-      profile:()=>dispatch(go_To_Profile())
+      profile:()=>dispatch(go_To_Profile()),
+      search:(text)=>dispatch(searchArticles(text))
     }
   }
 
