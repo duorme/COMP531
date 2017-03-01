@@ -6,12 +6,10 @@ const Avatar=({img})=>{
 	
 	return(
 		<div>
-		<div>
 		<img src={img} ></img><br/>
 		<span>upload your profile</span>
 		<input type="file"></input>
 			</div>
-		</div>
 			)
 }
 

@@ -1,6 +1,6 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateUser, go_To_Main,addUser} from './LandingAction'
+import {updateUser, go_To_Main} from './LandingAction'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 
 let Login = ({main,addUser}) => {

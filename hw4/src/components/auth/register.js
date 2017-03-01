@@ -1,13 +1,14 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {updateText, go_To_Main,addUser} from './LandingAction'
+import Message from '../message'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 let Registration = ({message,validation,addUser}) => {
 
 	let passWord;
 	let passConfirm;
 	let birthday;
-	let name;
+	let myName;
 	let displayName;
 	let zipcode;
 	let tel;
@@ -42,8 +43,9 @@ const onRegisterClick = function() {
 }
 	return (
 		//Log in Form
+
 	<div>
-    <div>{message}</div>
+    <Message text={message}></Message>
 
     <Form horizontal id="Registration" onSubmit={onRegisterClick} action="#" method="">
     <h1>Registration</h1>
@@ -82,14 +84,14 @@ const onRegisterClick = function() {
 }
 Registration.PropTypes ={
 	message:PropTypes.string.isRequired,
-	onAlert:PropTypes.func.isRequired
+	onAlert:PropTypes.func.isRequired,
 
 }
 
 export default connect(
 	(state)=>{
 	return{
-		message:state.message
+		message:state.message,
 	}
 },
 (dispatch)=>

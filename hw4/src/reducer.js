@@ -51,15 +51,15 @@ const Alert=(state={
 			...state,
 			userInfo:{
 				myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-				myName: action.info.name,
+				myName: action.info.name==""?state.userInfo.name:action.info.myName,
 				myHeadLine: state.userInfo.myHeadLine,
-				password: action.info.password,
-				passConfirm: action.info.passConfirm,
-				birthday: action.info.birthday,
-				displayName: action.info.displayName,
-				zipcode: action.info.zipcode,
-				tel: action.info.tel,
-				email: action.info.email
+				password: action.info.password==""?state.userInfo.password:action.info.password,
+				passConfirm: action.info.passConfirm==""?state.userInfo.passConfirm:action.info.passConfirm,
+				birthday: action.info.birthday==""?state.userInfo.birthday:action.info.birthday,
+				displayName: action.info.displayName==""?state.userInfo.displayName:action.info.displayName,
+				zipcode: action.info.zipcode==""?state.userInfo.zipcode:action.info.zipcode,
+				tel: action.info.tel==""?state.userInfo.tel:action.info.tel,
+				email: action.info.email==""?state.userInfo.email:action.info.email
 			}
 		}
 		case 'Login':
