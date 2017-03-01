@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {ButtonGroup,button} from 'react-bootstrap'
+import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
 import {logOut,go_To_Profile,searchArticles} from './ArticleActions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
-const ArticleList = ({logout,profile,articleList,search})=>{
+const ArticleList = ({articleList,search})=>{
   let input;
   const _search=()=>{
     if(input){
@@ -14,17 +14,13 @@ const ArticleList = ({logout,profile,articleList,search})=>{
   }
 	return(	
 <div>
-  <nav>
-    <ButtonGroup>
-  <button className="btn btn-primary" id="Main" onClick={logout}>Log Out</button>
-    <button className="btn btn-primary" id="Profile" onClick={profile}>Profile</button>
-    </ButtonGroup>
-    
-  </nav>
+
 
   <NewArticle></NewArticle>
-  <input ref={(node)=>input=node} onChange={_search}></input>
-  <ul className="articles">
+  <Form className="col-md-8 col-md-offset-1">
+  <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
+  </Form>
+  <ul className="articles col-md-8 col-md-offset-1">
   {articleList.map(({_id,text,date,img,comments,author})=>(
     <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author}></ArticleItem>))}
   </ul>

@@ -6,8 +6,15 @@ const Alert=(state={
 	nextCardId:11,
 	userInfo:{
 		myPic:'',
-		myName:'',
-		myHeadLine:'JS learner'
+		myName:'Tong Zhou',
+		myHeadLine:'JS learner',
+		password:'aa',
+		passConfirm:'aa',
+		birthday:'1994-01-07',
+		displayName:'Honey',
+		zipcode:'77005',
+		tel:'8888888888',
+		email:'t@rice.edu'
 	},
 	message:'',
 	location:'LANDING',
@@ -43,10 +50,28 @@ const Alert=(state={
 		return{
 			...state,
 			userInfo:{
-				myPic:'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-				myName:action.name,
-				myHeadLine:state.userInfo.myHeadLine
+				myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
+				myName: action.info.name,
+				myHeadLine: state.userInfo.myHeadLine,
+				password: action.info.password,
+				passConfirm: action.info.passConfirm,
+				birthday: action.info.birthday,
+				displayName: action.info.displayName,
+				zipcode: action.info.zipcode,
+				tel: action.info.tel,
+				email: action.info.email
 			}
+		}
+		case 'Login':
+		return{
+			...state,
+			userInfo:{
+				...state.userInfo,
+				myPic:'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
+				myName:action.name
+
+			}
+
 		}
 		case 'Add_New_Article':
 		return{

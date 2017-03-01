@@ -6,7 +6,7 @@ const ArticleItem = ({text,date,img,author})=>{
   <div>
     <Media className="card">
       <Media.Left align="top" >
-        <img  src={img}/>
+        <img className="postImg" src={img}/>
       </Media.Left>
       <Media.Body>
         <Media.Heading>{author} {" "} said on {" "} {date}</Media.Heading>

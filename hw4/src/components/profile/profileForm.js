@@ -1,8 +1,8 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateText, go_To_Main,addUser} from './LandingAction'
-import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
-let Registration = ({message,validation,addUser}) => {
+import {Button,Form,FormGroup,ControlLabel,FormControl,Col,Panel,ListGroup,ListGroupItem} from 'react-bootstrap'
+let ProfileForm = ({message,userInfo,validation,updateUser}) => {
+	console.log(userInfo)
 
 	let passWord;
 	let passConfirm;
@@ -25,7 +25,7 @@ let Registration = ({message,validation,addUser}) => {
     </FormGroup>
   );
 }
-const onRegisterClick = function() {
+const onUpdateClick = function() {
 	event.preventDefault();
 	const information={
 		password:passWord.value,
@@ -45,10 +45,11 @@ const onRegisterClick = function() {
 	<div>
     <div>{message}</div>
 
-    <Form horizontal id="Registration" onSubmit={onRegisterClick} action="#" method="">
-    <h1>Registration</h1>
+    <Form horizontal id="Registration" onSubmit={onUpdateClick} action="#" method="">
+    <h1>Update Profile</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
 	placeholder="Your name" inputRef={(ref)=>{name=ref;}}></FieldGroup>
+	<span>{userInfo.myName}</span>
 	<FieldGroup id= "formHorizontalDisplayName" sm_title = {2} label="Display name" sm_input={5} required type="text"
 	placeholder="Your Display name" inputRef={(ref)=>{displayName=ref;}}></FieldGroup>
 	<FieldGroup id= "formHorizontalEmail" sm_title = {2} label="Email" sm_input={5} required type="email"
@@ -70,33 +71,45 @@ const onRegisterClick = function() {
     <FormGroup>
       <Col smOffset={2} sm={5}>
         <Button type="submit">
-          Registrate
+          Update
         </Button>
       </Col>
     </FormGroup>
   </Form>
-
+  
 
   </div>
 );
 }
-Registration.PropTypes ={
+ProfileForm.PropTypes ={
 	message:PropTypes.string.isRequired,
-	onAlert:PropTypes.func.isRequired
+	userInfo:PropTypes.object.isRequired,
+	validation:PropTypes.func.isRequired,
+	updateUser:PropTypes.func.isRequired
 
 }
 
 export default connect(
 	(state)=>{
 	return{
-		message:state.message
+		message:state.message,
+		userInfo:state.userInfo
 	}
 },
 (dispatch)=>
  {return{
-	validation:(information)=>dispatch(updateText(information)),
-	addUser:(info)=>dispatch(addUser(info))
+	validation:(information)=>dispatch(validation(information)),
+	updateUser:(info)=>dispatch(updateUser(info))
 }
-})(Registration)
+})(ProfileForm)
 
-
+ //   myPic:'',
+		// myName:'',
+		// myHeadLine:'JS learner',
+		// password:'aa',
+		// passConfirm:'aa',
+		// birthday:'1994-01-07',
+		// displayName:'Honey',
+		// zipcode:'77005',
+		// tel:'8888888888',
+		// email:'t@rice.edu'

@@ -14,15 +14,16 @@ const FollowerList=({follower,addFollower})=>{
 
 	return(
 		<div>
-		<div>
-		<ul className="followers">
+		<div className="card">
+		<h3> Followers</h3>
+		<ul>
 		{follower.map(({id,img,name,headline})=>(
 			<Follower key={id} id={id} img={img} name={name} headline={headline}></Follower>
 		))}
 		</ul>
-		</div>
 		<input ref={(node)=>{input=node}} placeholder="add a follower"></input>
 		<Button onClick={_addFollower}>Add</Button>
+		</div>
 		</div>
 		)
 

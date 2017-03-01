@@ -1,6 +1,6 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateText, go_To_Main,addUser} from './LandingAction'
+import {updateUser, go_To_Main,addUser} from './LandingAction'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 
 let Login = ({main,addUser}) => {
@@ -57,6 +57,6 @@ null,
 (dispatch)=>
  {return{
 	main:()=>dispatch(go_To_Main()),
-	addUser:(name)=>dispatch(addUser(name))
+	addUser:(name)=>dispatch(updateUser(name))
 }
 })(Login)

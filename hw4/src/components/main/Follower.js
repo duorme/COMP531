@@ -5,10 +5,9 @@ import {remove} from './FollowerActions'
 const Follower = ({img,name,headline,remove})=>{
 		return(
 			<div>
-			<div className="container">
-			<Media>
+			<Media className="follower">
       <Media.Left align="top" >
-        <img  src={img}/>
+        <img className="followerImg" src={img}/>
       </Media.Left>
       <Media.Body>
         <Media.Heading>{name}</Media.Heading>
@@ -17,9 +16,8 @@ const Follower = ({img,name,headline,remove})=>{
       </Media.Body>
     </Media>
     </div>
-
-    </div>
 		)
+
 	}
 Follower.PropTypes={
 	id:PropTypes.number.isRequired,

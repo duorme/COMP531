@@ -13,14 +13,12 @@ const Brief=({img,name,headline,updateHeadline})=>{
 	}
 	return(
 		<div>
-		<div>
-		<img src={img}></img>
-		<div>
-			<span>{name}<br></br></span>
-			<span>{headline}</span>
-		</div>
-			<input ref={(node)=>{input=node;}}></input>
-			<Button onClick={updateText}>update</Button>
+		<div className="card">
+		<img className="Mypic col-md-12" src={img} ></img>
+			<h3 className="name col-md-offset-6">{name}</h3>
+			<p className="headline col-md-offset-4 ">{headline}</p>
+			<input ref={(node)=>{input=node;}} placeholder="update your headline"></input>
+			<Button onClick={updateText} >update</Button>
 			</div>
 		</div>
 			)

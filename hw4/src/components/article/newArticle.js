@@ -7,19 +7,21 @@ const NewArticle=({addArticle})=>{
 	let post;
 	const _addArticle = ()=>{
 		if(post && post.value){
-			console.log("go")
 			addArticle(post.value,new Date().toJSON());
 			post.value=""
 		}
 	}
 	return(
 		<div>
-		<textarea ref={ (node) => post = node } ></textarea>
-		<ButtonGroup>
+		<textarea className = "col-md-8 col-md-offset-1 textarea"ref={ (node) => post = node } ></textarea>
+		<div className="row ">
+		<input className="col-md-3 col-md-offset-1" type="file"></input>
+		<ButtonGroup className="col-md-4 post">
   <button className="btn btn-primary" id="Post" onClick={_addArticle}>Post</button>
     <button className="btn btn-primary" id="Cancel" onClick={()=>post.value=""}>Cancel</button>
     </ButtonGroup>
-   <input type="file"></input>
+   
+   </div>
   </div>
 	)
 
