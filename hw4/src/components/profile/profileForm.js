@@ -68,7 +68,7 @@ const onUpdateClick = function() {
 	placeholder="Your Password" current={userInfo.passConfirm}></FieldGroup>
 
   </Form>
-  <Button type="submit" onClick={onUpdateClick}>
+  <Button type="submit" onClick={onUpdateClick} className="col-md-offset-3">
          Update
      </Button>
 

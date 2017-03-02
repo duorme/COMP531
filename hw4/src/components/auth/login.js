@@ -34,14 +34,10 @@ const _Login=function(){
 	placeholder="Your name"></FieldGroup>
 	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="password"  sm_input={5} type="password" placeholder="Password" required
 	placeholder="Your Password"></FieldGroup>
-    <FormGroup>
-      <Col smOffset={2} sm={5}>
-        <Button type="submit">
+    </Form>
+        <Button type="submit" onClick={_Login} className="col-md-offset-4">
           Login
         </Button>
-      </Col>
-    </FormGroup>
-    </Form>
     </div>
     )
 }

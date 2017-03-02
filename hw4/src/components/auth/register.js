@@ -72,7 +72,7 @@ const onRegisterClick = function() {
 
     
   </Form>
-        <Button type="submit" onClick={onRegisterClick}>
+        <Button type="submit" onClick={onRegisterClick} className="col-md-offset-4">
           Registrate
         </Button>
 
