@@ -84,7 +84,7 @@ const updateHeadline = (headline) => {
         // IMPLEMENT ME
         //   * Update the headline shown in the #message box
         // FYI response.headline = { username, headline }
-        box.innerHTML=`${response.headline}`
+        box.innerHTML = `you are logged in as ${response.username} "${response.headline}"`
 
     })
     .catch(r => box.innerHTML=`"${r.message || 'Error'}" when logging in`)

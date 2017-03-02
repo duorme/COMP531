@@ -107,17 +107,18 @@ describe('Validate login', () => {
         // })
         // .then(done)
         // .catch(done)
-        mock(`${url}/headline`, { 
-            method: 'PUT',          
+
+
+        mock(`${url}/headline`, {
+            method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             json: {
-                headline:"ok"
+                username: 'foo', headline: 'bar'
             }
-
         })
         //   * Verify the new value of the headline
-        updateHeadline("ok").then(_ => {
-            expect(div.innerHTML).to.eql("ok")
+       updateHeadline('this value is not used').then(_ => {
+            expect(div.innerHTML).to.eql('you are logged in as foo "bar"')
         })
         .then(done)
         .catch(done)
