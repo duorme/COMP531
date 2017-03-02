@@ -1,5 +1,5 @@
 
-
+import {showAlert} from '../../actions'
 export const updateProfile=(info,message)=>{
 	return{
 		type:'Update_Profile',
@@ -7,12 +7,7 @@ export const updateProfile=(info,message)=>{
 		message
 	}
 }
-export const showAlert=(text)=>{
-	return {
-		type:'info',
-		message:text
-	}
-}
+
 // If nothing is changed, alert. Else show the change and save to state.
 export const validation=(information,userInfo)=>{
 	var submit=true;
