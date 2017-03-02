@@ -4,6 +4,7 @@ import Avatar from './avatar'
 import ProfileForm from './profileForm'
 import {Col,button} from 'react-bootstrap'
 import {go_To_Main} from '../../actions'
+//Edit Profile, validate it and then save to state
 const Profile = ({main})=>{
 	return(
 	

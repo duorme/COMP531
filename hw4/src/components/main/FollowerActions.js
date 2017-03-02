@@ -16,14 +16,10 @@ export const remove=(id)=>{
 		id
 	}
 }
-
-export const logOut = ()=>{
-	return {
-	type: 'Go_To_Landing'
-}
-}
-export const go_To_Profile = ()=>{
-	return {
-	type: 'Go_To_Profile'
+// if updating headline has problem, alert!
+export const showHeadlineAlert=(text)=>{
+return{
+	type:"Alert_Headline",
+	message:text
 }
 }

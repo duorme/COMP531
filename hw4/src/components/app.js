@@ -4,6 +4,7 @@ import Landing from './auth/landing'
 import Main from './main/main'
 import Profile from './profile/profile'
 let APP = ({location}) => {
+
 	if (location == 'MAIN_PAGE') {
 	
 	return (<Main />)
@@ -15,10 +16,10 @@ let APP = ({location}) => {
 	return (<Landing/>)
 }
 }
-
 export default connect(
+
 	(state)=>{
 	return{
-		location:state.location
+		location:state.User.location
 	}
 },null)(APP)

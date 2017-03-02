@@ -5,8 +5,6 @@ import {go_To_Main} from '../../actions'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 
 let Login = ({main,updateUser}) => {
-  console.log(main)
-
 	let name;
 
 	function FieldGroup({ id, sm_title,label,sm_input ,...props }) {

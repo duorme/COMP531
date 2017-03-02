@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {Media,ButtonGroup,Button,Col} from 'react-bootstrap'
 const ArticleItem = ({text,date,img,author})=>{
   return(   
+    //Create Article card
   <div>
     <Media className="card">
       <Media.Left align="top" >

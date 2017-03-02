@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 
-import Reducer from './reducer'
+import Reducer from './reducers'
 import APP from './components/app'
 require('./styles.css')
 

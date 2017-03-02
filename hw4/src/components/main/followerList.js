@@ -3,12 +3,18 @@ import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
 import Follower from './Follower'
 import {addFollower} from './FollowerActions'
-const FollowerList=({follower,addFollower})=>{
+import {showAlert} from '../../actions'
+import Message from '../message'
+//Folower List and input to create new follower
+const FollowerList=({follower,addFollower,message,showAlert})=>{
 	let input;
 	const _addFollower=()=>{
 		if(input && input.value){
 			addFollower(input.value)
 			input.value=''
+		}
+		else{
+			showAlert("Follower's name can't be empty")
 		}
 	}
 
@@ -21,8 +27,11 @@ const FollowerList=({follower,addFollower})=>{
 			<Follower key={id} id={id} img={img} name={name} headline={headline}></Follower>
 		))}
 		</ul>
+		<Message text={message}></Message>
 		<input ref={(node)=>{input=node}} placeholder="add a follower"></input>
-		<Button onClick={_addFollower}>Add</Button>
+		
+		  <Button onClick={_addFollower}>Add</Button>
+	
 		</div>
 		</div>
 		)
@@ -38,12 +47,14 @@ FollowerList.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-		follower:state.followers
+		follower:state.follower.followers,
+		message:state.User.message
 	}
 	},
 	(dispatch)=>{
 		return{
-		addFollower:(text)=>dispatch(addFollower(text))
+		addFollower:(text)=>dispatch(addFollower(text)),
+		showAlert:(text)=>dispatch(showAlert(text))
 	}
 	}
 	)(FollowerList)

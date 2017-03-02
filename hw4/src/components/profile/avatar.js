@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
+//Avatar of User
 const Avatar=({img})=>{
 	
 	
@@ -20,7 +21,7 @@ Avatar.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-			img:state.userInfo.myPic
+			img:state.User.userInfo.myPic
 		}
 	},null
 	)(Avatar)

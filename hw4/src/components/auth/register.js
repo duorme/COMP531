@@ -4,6 +4,7 @@ import {updateText} from './LandingAction'
 import { go_To_Main,addUser} from '../../actions'
 import Message from '../message'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
+// Get input from Form, validate data and then save to state.
 let Registration = ({message,validation,addUser}) => {
 
 	let passWord;
@@ -46,8 +47,7 @@ const onRegisterClick = function() {
 		//Log in Form
 
 	<div>
-    <Message text={message}></Message>
-
+   <Message text={message}></Message>
     <Form horizontal id="Registration" onSubmit={onRegisterClick} action="#" method="">
     <h1>Registration</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
@@ -92,7 +92,7 @@ Registration.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		message:state.message,
+		message:state.User.message
 	}
 },
 (dispatch)=>

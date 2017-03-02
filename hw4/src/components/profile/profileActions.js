@@ -1,4 +1,3 @@
-// addUser(information);
 
 
 export const updateProfile=(info,message)=>{
@@ -8,7 +7,13 @@ export const updateProfile=(info,message)=>{
 		message
 	}
 }
-
+export const showAlert=(text)=>{
+	return {
+		type:'info',
+		message:text
+	}
+}
+// If nothing is changed, alert. Else show the change and save to state.
 export const validation=(information,userInfo)=>{
 	var submit=true;
 	var changed=false;

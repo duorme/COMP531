@@ -8,6 +8,7 @@ import NewArticle from './newArticle'
 
 const ArticleList = ({articleList,search})=>{
   let input;
+  // search article based on filter
   const _search=()=>{
     if(input){
       search(input.value)
@@ -34,7 +35,6 @@ ArticleList.PropTypes={
         ...ArticleItem.propTypes
     }).isRequired).isRequired
 }
-
 const getFilteredArticles=(articleList,filter)=>{
   if(filter){
     const reg=new RegExp(filter)
@@ -45,11 +45,10 @@ const getFilteredArticles=(articleList,filter)=>{
   }
 
 }
-
 export default connect(
   (state)=>{
     return{
-    articleList:getFilteredArticles(state.articles,state.filter)
+    articleList:getFilteredArticles(state.articles.articles,state.articles.filter)
   }
   },
   (dispatch)=>{

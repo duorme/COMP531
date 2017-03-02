@@ -91,8 +91,8 @@ ProfileForm.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		message:state.message,
-		userInfo:state.userInfo
+		message:state.User.message,
+		userInfo:state.User.userInfo
 	}
 },
 (dispatch) => ({

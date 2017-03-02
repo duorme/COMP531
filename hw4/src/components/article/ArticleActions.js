@@ -1,4 +1,4 @@
-
+//Add new Article
 export const addNewArticle=(text,date)=>{
 
 	return{
@@ -7,7 +7,7 @@ export const addNewArticle=(text,date)=>{
 		Date:date
 	}
 }
-
+// Search article on body and author
 export const searchArticles=(text)=>{
 	return{
 		type:'Search_Articles',
