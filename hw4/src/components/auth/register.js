@@ -1,6 +1,7 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateText, go_To_Main,addUser} from './LandingAction'
+import {updateText} from './LandingAction'
+import { go_To_Main,addUser} from '../../actions'
 import Message from '../message'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 let Registration = ({message,validation,addUser}) => {

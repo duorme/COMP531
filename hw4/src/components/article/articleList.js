@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
-import {logOut,go_To_Profile,searchArticles} from './ArticleActions'
+import {searchArticles} from './ArticleActions'
+import {logOut,go_To_Profile} from '../../actions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 

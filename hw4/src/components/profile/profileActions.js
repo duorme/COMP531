@@ -1,23 +1,21 @@
 // addUser(information);
-export const showAlert=(text)=>{
-	return {
-		type:'info',
-		message:text
-	}
-}
-export const addUser=(info)=>{
+
+
+export const updateProfile=(info,message)=>{
 	return{
-		type:'Add_My_User',
-		info
+		type:'Update_Profile',
+		info,
+		message
 	}
 }
+
 export const validation=(information,userInfo)=>{
 	var submit=true;
 	var changed=false;
 	var message=""
-	for(var key in information){
+	Object.keys(information).forEach((key)=>{
 		if(information.hasOwnProperty(key)){
-			if(information[key]){
+			if(information[key] && key !="birthday"){
 				if(information[key]===userInfo[key]){
 					return showAlert(key+" has not been changed ")
 				}
@@ -28,14 +26,23 @@ export const validation=(information,userInfo)=>{
 			}
 
 		}
-	}
+	})
 	if(information.password != information.passConfirm){
 		return showAlert(" Password and confirmation are not matched! ")
+		
 	}
+		
+	
 	if(!changed){
 		return showAlert("Nothing has been changed!")
-	}	
+	}
+		
 	if(submit&&changed){
-		return addUser(information)
+		// return function(dispatch){
+		// 	dispatch(showAlert(message))
+		// 	dispatch(addUser(information))
+		// }
+		return updateProfile(information,message)
+		
 	}
 }

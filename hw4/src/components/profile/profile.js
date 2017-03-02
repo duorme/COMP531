@@ -2,20 +2,32 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Avatar from './avatar'
 import ProfileForm from './profileForm'
-import {Col} from 'react-bootstrap'
-const Profile = ()=>{
+import {Col,button} from 'react-bootstrap'
+import {go_To_Main} from '../../actions'
+const Profile = ({main})=>{
 	return(
 	
 		<div className="container-fluid">
+		<header>
+		<div className="container">
+		<h1>Dear Diary</h1>
+ <button className="btn" id="Main"  onClick={main} >Go To Main</button>
+    </div>
+		</header>
 		<div className="row">
-		<Col>
-			<Avatar className="col-md-2"></Avatar>
-			</Col>
-		<Col>
-			<ProfileForm className="col-md-5 col-md-offset-4"></ProfileForm>
-			</Col>
+		  <div className="col-md-3 col-md-offset-1">
+		  <br/>
+			<Avatar className="col-md-12 "></Avatar>
+			</div>
+			<div  className="col-md-6 col-md-offset-1">
+			<ProfileForm className="col-md-12"></ProfileForm>
+			</div>
 		</div>
 		</div>
 	)
 }
-export default Profile
+export default connect(null,
+	(dispatch) => ({
+	main:()=>dispatch(go_To_Main())
+})
+	)(Profile)

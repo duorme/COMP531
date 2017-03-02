@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col,Panel,ListGroup,ListGroupItem,HelpBlock} from 'react-bootstrap'
 import {validation} from './profileActions'
 import Message from '../message'
-let ProfileForm = ({message,userInfo,validation}) => {
+
+let ProfileForm = ({message,userInfo,updateProfile}) => {
 
 	let passWord;
 	let passConfirm;
@@ -39,7 +40,7 @@ const onUpdateClick = function() {
 		tel:tel.value,
 		email:email.value
 	}
-	validation(information,userInfo)
+	updateProfile(information,userInfo)
 }
 	return (
 		//Log in Form
@@ -58,7 +59,7 @@ const onUpdateClick = function() {
 	<FieldGroup id= "formHorizontalTel" sm_title = {2} label="Tel" sm_input={5} type="tel" name="tel" 
 	placeholder="xxx-xxx-xxxx" pattern="\d\d\d-\d\d\d-\d\d\d\d"  inputRef={(ref)=>{tel=ref;}} current={userInfo.tel}></FieldGroup>
 	<FieldGroup id= "formHorizontalBirth" sm_title = {2} label="Birthday" sm_input={5} type="date" disabled
-	placeholder="MM-DD-YYYY" name="date" inputRef={(ref)=>{birthday=ref;}}  current={userInfo.birthday}></FieldGroup>
+	name="date" inputRef={(ref)=>{birthday=ref;}}  value={userInfo.birthday}></FieldGroup>
 	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
 	placeholder="77005" pattern = "^\d{5}$"  inputRef={(ref)=>{zipcode=ref;}} current={userInfo.zipcode}></FieldGroup>
     <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" 
@@ -85,6 +86,8 @@ ProfileForm.PropTypes ={
 
 }
 
+
+
 export default connect(
 	(state)=>{
 	return{
@@ -92,8 +95,7 @@ export default connect(
 		userInfo:state.userInfo
 	}
 },
-(dispatch)=>
- {return{
-	validation:(information,userInfo)=>dispatch(validation(information,userInfo))
-}
-})(ProfileForm)
+(dispatch) => ({
+	updateProfile:(information,userInfo)=>dispatch(validation(information,userInfo))
+})
+)(ProfileForm)

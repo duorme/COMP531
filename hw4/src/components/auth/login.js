@@ -1,9 +1,11 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateUser, go_To_Main} from './LandingAction'
+import {updateUser} from './LandingAction'
+import {go_To_Main} from '../../actions'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 
-let Login = ({main,addUser}) => {
+let Login = ({main,updateUser}) => {
+  console.log(main)
 
 	let name;
 
@@ -21,7 +23,7 @@ let Login = ({main,addUser}) => {
   );
 }
 const _Login=function(){
-	addUser(name.value);
+	updateUser(name.value);
 	main()
 
 }
@@ -57,6 +59,6 @@ null,
 (dispatch)=>
  {return{
 	main:()=>dispatch(go_To_Main()),
-	addUser:(name)=>dispatch(updateUser(name))
+	updateUser:(name)=>dispatch(updateUser(name))
 }
 })(Login)

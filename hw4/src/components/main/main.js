@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,button} from 'react-bootstrap'
-import {logOut,go_To_Profile} from './FollowerActions'
+import {logOut,go_To_Profile} from '../../actions'
 import ArticleList from '../article/articleList'
 import Brief from './brief'
 import FollowerList from './followerList'
