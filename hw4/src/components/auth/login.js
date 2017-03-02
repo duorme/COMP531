@@ -48,9 +48,7 @@ Login.PropTypes ={
 
 }
 
-export default connect(
-null,
-(dispatch)=>
+export default connect(null,(dispatch)=>
  {return{
 	main:()=>dispatch(go_To_Main()),
 	updateUser:(name)=>dispatch(updateUser(name))

@@ -48,7 +48,7 @@ export default connect(
 	(state)=>{
 		return{
 		follower:state.follower.followers,
-		message:state.User.message
+		message:state.Location.message
 	}
 	},
 	(dispatch)=>{

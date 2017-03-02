@@ -1,11 +1,5 @@
-import {showAlert,go_To_Main} from '../../actions'
+import {showAlert,go_To_Main,addUser} from '../../actions'
 
-export const addUser=(info)=>{
-	return{
-		type:'Add_My_User',
-		info
-	}
-}
 export const updateUser=(name)=>{
 	return{
 		type:'Login',

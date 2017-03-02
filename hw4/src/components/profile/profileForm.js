@@ -87,19 +87,14 @@ ProfileForm.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		message:state.User.message,
+		message:state.Location.message,
 		userInfo:state.User.userInfo
 	}
 },
-(dispatch) => ({
-	updateProfile:(information,userInfo)=>dispatch(validation(information,userInfo))
-})
+(dispatch)=>{
+	return {updateProfile:(information,userInfo)=> dispatch(validation(information,userInfo))
+	}
+}
 )(ProfileForm)
 
-    // <FormGroup>
-    //   <Col smOffset={2} sm={5}>
-    //     <Button type="submit">
-    //       Update
-    //     </Button>
-    //   </Col>
-    // </FormGroup>
+  

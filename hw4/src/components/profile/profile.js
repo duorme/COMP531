@@ -28,7 +28,6 @@ const Profile = ({main})=>{
 	)
 }
 export default connect(null,
-	(dispatch) => ({
+	(dispatch) => {return { 
 	main:()=>dispatch(go_To_Main())
-})
-	)(Profile)
+}})(Profile)

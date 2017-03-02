@@ -89,7 +89,7 @@ Registration.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		message:state.User.message
+		message:state.Location.message
 	}
 },
 (dispatch)=>

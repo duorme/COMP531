@@ -38,8 +38,7 @@ Main.PropTypes={
 	profile:PropTypes.func.isRequired
 }
 
-export default connect(
-  null,
+export default connect(null,
   (dispatch)=>{
     return{
       logout:()=>dispatch(logOut()),

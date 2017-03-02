@@ -23,5 +23,4 @@ export default connect(
 		return{
 			img:state.User.userInfo.myPic
 		}
-	},null
-	)(Avatar)
+	},null)(Avatar)

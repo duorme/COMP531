@@ -3,6 +3,27 @@ const initialArticles = require('./data/articles.json')
 const initialFollowers = require('./data/followers.json')
 const images = require('./data/image.json')
 
+const Location = (state ={
+location:'LANDING',
+message:'',
+hmessage:''
+},action)=>{
+	switch(action.type){
+	case 'info':
+			return {...state,message: action.message}
+		case 'Alert_Headline':
+			return {...state,hmessage:action.message}
+	case 'Go_To_Main':
+			return {...state,message: '',hmessage:'',location: 'MAIN_PAGE'}
+		case 'Go_To_Profile':
+			return {...state,message: '',hmessage:'',location: 'PROFILE_PAGE'}
+		case 'Go_To_Landing':
+			return {...state,message: '',hmessage:'',location: 'LANDING'}
+		default:
+			return state;
+		}
+}
+
 const User = (state = {
 	userInfo: {
 		myPic: '',
@@ -16,29 +37,22 @@ const User = (state = {
 		tel: '832-999-8888',
 		email: 't@rice.edu'
 	},
-	message: '',
-	hmessage:'',
-	location: 'LANDING'
 }, action) => {
 	switch (action.type) {
-		case 'info':
-			return {...state,message: action.message}
-		case 'Alert_Headline':
-			return {...state,hmessage:action.message}
 		case 'Add_My_User':
 			return {
 				...state,
 				userInfo: {
 					myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					myName: action.info.myName,
+					myName: action.info.name == "" ? state.userInfo.name : action.info.myName,
 					myHeadLine: state.userInfo.myHeadLine,
-					password: action.info.password,
-					passConfirm: action.info.passConfirm,
-					birthday:action.info.birthday,
-					displayName: action.info.displayName,
-					zipcode:action.info.zipcode,
-					tel:action.info.tel,
-					email:action.info.email
+					password: action.info.password == "" ? state.userInfo.password : action.info.password,
+					passConfirm: action.info.passConfirm == "" ? state.userInfo.passConfirm : action.info.passConfirm,
+					birthday: action.info.birthday == "" ? state.userInfo.birthday : action.info.birthday,
+					displayName: action.info.displayName == "" ? state.userInfo.displayName : action.info.displayName,
+					zipcode: action.info.zipcode == "" ? state.userInfo.zipcode : action.info.zipcode,
+					tel: action.info.tel == "" ? state.userInfo.tel : action.info.tel,
+					email: action.info.email == "" ? state.userInfo.email : action.info.email
 				}
 			}
 		case 'Login':
@@ -55,30 +69,6 @@ const User = (state = {
 				...state,
 				userInfo: {myPic: state.userInfo.myPic,myName: state.userInfo.myName,myHeadLine: action.text}
 			}
-		case 'Update_Profile':
-			return {
-				...state,
-				userInfo: {
-					myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					myName: action.info.name == "" ? state.userInfo.name : action.info.myName,
-					myHeadLine: state.userInfo.myHeadLine,
-					password: action.info.password == "" ? state.userInfo.password : action.info.password,
-					passConfirm: action.info.passConfirm == "" ? state.userInfo.passConfirm : action.info.passConfirm,
-					birthday: action.info.birthday == "" ? state.userInfo.birthday : action.info.birthday,
-					displayName: action.info.displayName == "" ? state.userInfo.displayName : action.info.displayName,
-					zipcode: action.info.zipcode == "" ? state.userInfo.zipcode : action.info.zipcode,
-					tel: action.info.tel == "" ? state.userInfo.tel : action.info.tel,
-					email: action.info.email == "" ? state.userInfo.email : action.info.email
-				},
-				message: action.message
-
-			}
-		case 'Go_To_Main':
-			return {...state,message: '',hmessage:'',location: 'MAIN_PAGE'}
-		case 'Go_To_Profile':
-			return {...state,message: '',hmessage:'',location: 'PROFILE_PAGE'}
-		case 'Go_To_Landing':
-			return {...state,message: '',hmessage:'',location: 'LANDING'}
 		default:
 			return state;
 	}
@@ -134,6 +124,6 @@ export const articles = (state = {
 }
 
 const Reducer = combineReducers(
-	{User,follower,articles})
+	{User,follower,articles,Location})
 
 export default Reducer

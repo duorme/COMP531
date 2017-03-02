@@ -20,6 +20,6 @@ export default connect(
 
 	(state)=>{
 	return{
-		location:state.User.location
+		location:state.Location.location
 	}
 },null)(APP)

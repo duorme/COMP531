@@ -43,7 +43,7 @@ export default connect(
 			img:state.User.userInfo.myPic,
 			name:state.User.userInfo.myName,
 			headline:state.User.userInfo.myHeadLine,
-			hmessage:state.User.hmessage
+			hmessage:state.Location.hmessage
 		}
 	},
 	(dispatch)=>{

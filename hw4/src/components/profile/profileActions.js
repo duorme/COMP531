@@ -1,15 +1,19 @@
 
-import {showAlert} from '../../actions'
-export const updateProfile=(info,message)=>{
-	return{
-		type:'Update_Profile',
-		info,
-		message
-	}
-}
+import {showAlert,addUser} from '../../actions'
+// export const updateProfile=(info,message)=>{
+// 	return{
+// 		type:'Update_Profile',
+// 		info,
+// 		message
+// 	}
+// }
 
-// If nothing is changed, alert. Else show the change and save to state.
-export const validation=(information,userInfo)=>{
+
+
+
+// return an action which is a function.
+//If nothing is changed, alert. Else show the change and save to state.
+export const validation=(information,userInfo)=> (dispatch) => {
 	event.preventDefault();
 	var submit=true;
 	var changed=false;
@@ -29,14 +33,18 @@ export const validation=(information,userInfo)=>{
 		}
 	})
 	if(information.password != information.passConfirm){
-		return showAlert(" Password and confirmation are not matched! ")		
+		dispatch(showAlert(" Password and confirmation are not matched! "))
+		return
 	}	
 	if(!changed){
-		return showAlert("Nothing has been changed!")
+		dispatch(showAlert("Nothing has been changed!"))
 	}
 		
 	if(submit&&changed){
-		return updateProfile(information,message)
+		//return updateProfile(information,message)
 		
+	dispatch(showAlert(message))//an action
+	dispatch(addUser(information))
+	return // an action		
 	}
 }

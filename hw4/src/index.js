@@ -6,6 +6,7 @@ import { render } from 'react-dom'
 
 import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducers'
@@ -13,7 +14,7 @@ import APP from './components/app'
 require('./styles.css')
 
 const logger = createLogger()
-const store = createStore(Reducer, applyMiddleware(logger))
+const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
 
 render(
     <Provider store={store}>
