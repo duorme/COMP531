@@ -47,7 +47,7 @@ const onUpdateClick = function() {
 	<div>
     <Message text={message}></Message>
 
-    <Form horizontal id="Registration" onSubmit={onUpdateClick} action="#" method="">
+    <Form horizontal id="Registration"  action="#" method="">
     <h1>Update Profile</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} type="text"
 	placeholder="Your name" inputRef={(ref)=>{name=ref;}} current={userInfo.myName}></FieldGroup>	
@@ -66,15 +66,11 @@ const onUpdateClick = function() {
 	placeholder="Your Password" current={userInfo.password}></FieldGroup>
 	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" 
 	placeholder="Your Password" current={userInfo.passConfirm}></FieldGroup>
-    <FormGroup>
-      <Col smOffset={2} sm={5}>
-        <Button type="submit">
-          Update
-        </Button>
-      </Col>
-    </FormGroup>
+
   </Form>
-  
+  <Button type="submit" onClick={onUpdateClick}>
+         Update
+     </Button>
 
   </div>
 );
@@ -99,3 +95,11 @@ export default connect(
 	updateProfile:(information,userInfo)=>dispatch(validation(information,userInfo))
 })
 )(ProfileForm)
+
+    // <FormGroup>
+    //   <Col smOffset={2} sm={5}>
+    //     <Button type="submit">
+    //       Update
+    //     </Button>
+    //   </Col>
+    // </FormGroup>

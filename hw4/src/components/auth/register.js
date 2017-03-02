@@ -48,7 +48,7 @@ const onRegisterClick = function() {
 
 	<div>
    <Message text={message}></Message>
-    <Form horizontal id="Registration" onSubmit={onRegisterClick} action="#" method="">
+    <Form horizontal id="Registration"  action="#" method="">
     <h1>Registration</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
 	placeholder="Your name" inputRef={(ref)=>{name=ref;}}></FieldGroup>
@@ -70,14 +70,11 @@ const onRegisterClick = function() {
 	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" required
 	placeholder="Your Password"></FieldGroup>
 
-    <FormGroup>
-      <Col smOffset={2} sm={5}>
-        <Button type="submit">
+    
+  </Form>
+        <Button type="submit" onClick={onRegisterClick}>
           Registrate
         </Button>
-      </Col>
-    </FormGroup>
-  </Form>
 
 
   </div>
