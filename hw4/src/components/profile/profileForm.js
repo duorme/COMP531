@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col,Panel,ListGroup,ListGroupItem,HelpBlock} from 'react-bootstrap'
 import {validation} from './profileActions'
 import Message from '../message'
-
+//Send data to validate.
 let ProfileForm = ({message,userInfo,updateProfile}) => {
 
 	let passWord;

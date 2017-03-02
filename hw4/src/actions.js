@@ -1,5 +1,5 @@
 export const showAlert=(text)=>{
-	return {
+	return{
 		type:'info',
 		message:text
 	}

@@ -2,7 +2,6 @@ import {combineReducers} from 'redux'
 const initialArticles = require('./data/articles.json')
 const initialFollowers = require('./data/followers.json')
 const images = require('./data/image.json')
-// Combine user,follower and article reducers.
 
 const User = (state = {
 	userInfo: {

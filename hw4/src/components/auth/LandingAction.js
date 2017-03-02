@@ -12,17 +12,6 @@ export const updateUser=(name)=>{
 		name
 	}
 }
-// export const showAlert=(text)=>{
-// 	return {
-// 		type:'info',
-// 		message:text
-// 	}
-// }
-// export const go_To_Main = ()=>{
-// 	return {
-// 	type: 'Go_To_Main'
-// }
-// }
 
 // Validate form on birth must larger than 18 and password should match confirmation.
 export const updateText = (info) => {

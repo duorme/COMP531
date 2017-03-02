@@ -10,6 +10,7 @@ export const updateProfile=(info,message)=>{
 
 // If nothing is changed, alert. Else show the change and save to state.
 export const validation=(information,userInfo)=>{
+	event.preventDefault();
 	var submit=true;
 	var changed=false;
 	var message=""
@@ -28,20 +29,13 @@ export const validation=(information,userInfo)=>{
 		}
 	})
 	if(information.password != information.passConfirm){
-		return showAlert(" Password and confirmation are not matched! ")
-		
-	}
-		
-	
+		return showAlert(" Password and confirmation are not matched! ")		
+	}	
 	if(!changed){
 		return showAlert("Nothing has been changed!")
 	}
 		
 	if(submit&&changed){
-		// return function(dispatch){
-		// 	dispatch(showAlert(message))
-		// 	dispatch(addUser(information))
-		// }
 		return updateProfile(information,message)
 		
 	}

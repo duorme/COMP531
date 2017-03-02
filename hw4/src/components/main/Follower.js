@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import {Media} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import {remove} from './FollowerActions'
+// Item of follower, can remove any follower.
 const Follower = ({img,name,headline,remove})=>{
 		return(
 			<div>

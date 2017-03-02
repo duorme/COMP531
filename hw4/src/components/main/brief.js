@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
 import {updateHeadline,showHeadlineAlert} from './FollowerActions'
 import Message from '../message'
-
+// Brief profile of user. 
 const Brief=({img,name,headline,updateHeadline,hmessage,showAlert})=>{
 	let input;
 	const updateText=()=>{
