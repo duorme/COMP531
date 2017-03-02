@@ -45,7 +45,8 @@ const User = (state = {
 			return {
 				...state,
 				userInfo: {
-					...state.userInfo,myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
+					...state.userInfo,
+					myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
 					myName: action.name
 				}
 			}
