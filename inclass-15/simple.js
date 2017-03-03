@@ -51,12 +51,19 @@ function server(req, res) {
     }
 
     if (req.url === '/login' && req.method === 'POST') {
-        var json = JSON.parse(req.body)
-        const payload = { 'username': json.username, 'result': 'success' }
-        console.log(payload)
-        res.setHeader('Content-Type', 'application/json')
-        res.statusCode = 200
-        res.end(JSON.stringify(payload) + '\n')
+     // check whether data contain username and password
+        if (req.body === '') {
+            payload = 'No username and password'
+            res.setHeader('Content-Type', 'application/json')
+            res.statusCode = 404
+            res.end(JSON.stringify(payload) + '\n')
+        } else {
+            var json = JSON.parse(req.body)
+            const payload = { 'username': json.username, 'result': 'success' }
+            res.setHeader('Content-Type', 'application/json')
+            res.statusCode = 200
+            res.end(JSON.stringify(payload) + '\n')
+        }
     }
     if (req.url === '/logout' && req.method === 'PUT') {
         res.setHeader('Content-Type', 'text/plain')
