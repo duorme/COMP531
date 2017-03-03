@@ -46,7 +46,7 @@ const onRegisterClick = function() {
 
 	<div>
    <Message text={message}></Message>
-    <Form horizontal id="Registration"  action="#" method="">
+    <Form horizontal id="Registration">
     <h1>Registration</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
 	placeholder="Your name" inputRef={(ref)=>{name=ref;}}></FieldGroup>

@@ -1,14 +1,5 @@
 
 import {showAlert,addUser} from '../../actions'
-// export const updateProfile=(info,message)=>{
-// 	return{
-// 		type:'Update_Profile',
-// 		info,
-// 		message
-// 	}
-// }
-
-
 
 
 // return an action which is a function.
