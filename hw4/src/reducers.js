@@ -37,6 +37,9 @@ const User = (state = {
 		tel: '832-999-8888',
 		email: 't@rice.edu'
 	},
+	nextCardId: 11,
+	articles: initialArticles.articles,
+	filter: ''
 }, action) => {
 	switch (action.type) {
 		case 'Add_My_User':
@@ -69,6 +72,21 @@ const User = (state = {
 				...state,
 				userInfo: {myPic: state.userInfo.myPic,myName: state.userInfo.myName,myHeadLine: action.text}
 			}
+		case 'Add_New_Article':
+			return {
+				...state,
+				nextCardId: state.nextCardId + 1,
+				articles: [{
+					_id: state.nextCardId,
+					author: state.userInfo.myName,
+					comments: [],
+					date: action.Date,
+					img: state.userInfo.myPic,
+					text: action.content
+				}, ...state.articles]
+			}
+		case 'Search_Articles':
+			return {...state,filter: action.text}
 		default:
 			return state;
 	}
@@ -108,10 +126,10 @@ export const articles = (state = {
 				nextCardId: state.nextCardId + 1,
 				articles: [{
 					_id: state.nextCardId,
-					author: state.userInfo.myName,
+					author: "aa",
 					comments: [],
 					date: action.Date,
-					img: state.userInfo.myPic,
+					img:'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
 					text: action.content
 				}, ...state.articles]
 			}

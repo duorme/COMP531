@@ -17,14 +17,39 @@ function preprocess(req, res) {
      })
 }
 
+
 function server(req, res) {
      console.log('Request method        :', req.method)
      console.log('Request URL           :', req.url)
      console.log('Request content-type  :', req.headers['content-type'])
      console.log('Request payload       :', req.body)
 
+
+    if(req.url==='/'){
      const payload = { 'hello': 'world' }
      res.setHeader('Content-Type', 'application/json')
      res.statusCode = 200
      res.end(JSON.stringify(payload))
+}
+
+
+     if(req.url ==='/articles'){
+const payload = { 'articles':[{ id:1,author: 'Scott', 
+  body:'A post' },{ id:2,author: 'Tong', 
+  body:'A post' },{id:3,author:'CZ',body:'A post'}] }
+     res.setHeader('Content-Type', 'application/json')
+     res.statusCode = 200
+     res.end(JSON.stringify(payload))
+     }
+
+     if(req.url==='/login' && req.method==='POST'){
+     var json = JSON.parse(req.body)
+               const payload={'username':json.username,'result':'success'}
+               res.setHeader('Content-Type','application/json')
+               res.statusCode=200
+               res.end(JSON.stringify(payload))
+          }
+     
+
+
 }
