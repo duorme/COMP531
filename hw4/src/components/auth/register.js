@@ -29,7 +29,6 @@ let Registration = ({message,validation,addUser}) => {
   );
 }
 const onRegisterClick = function() {
-	event.preventDefault();
 	const information={
 		password:passWord.value,
 		passConfirm:passConfirm.value,
@@ -40,7 +39,6 @@ const onRegisterClick = function() {
 		tel:tel.value,
 		email:email.value
 	}
-	addUser(information);
 	validation(information)
 }
 	return (
@@ -94,8 +92,7 @@ export default connect(
 },
 (dispatch)=>
  {return{
-	validation:(information)=>dispatch(updateText(information)),
-	addUser:(info)=>dispatch(addUser(info))
+	validation:(information)=>dispatch(updateText(information))
 }
 })(Registration)
 
