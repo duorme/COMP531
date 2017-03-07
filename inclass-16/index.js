@@ -20,6 +20,7 @@ const addArticle = (req, res) => {
      console.log('Payload received', req.body)
      var newArticle={id:next,author:author,body:req.body['text']}
      data['articles'].push(newArticle)
+     next++
      res.send(req.body)
 }
 
