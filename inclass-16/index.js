@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 let next=4
 let author='Tong'
-const data={'articles': [{
+var data={'articles': [{
                 id: 1,
                 author: 'Scott',
                 body: 'A post'
