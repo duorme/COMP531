@@ -66,15 +66,17 @@ it('resource should be POSTable',(done)=>{
 })
 it('should update error message (for displaying error mesage to user)',()=>{
   const ErrorAct={
-    type:Action.ERROR
+    type:Action.ERROR,
+    message:'wrong'
   }
-  expect(actions.error()).to.eql(ErrorAct);
+  expect(actions.error('wrong')).to.eql(ErrorAct);
 })
 it('should update success message (for displaying success mesage to user)',()=>{
   const SuccessAct={
-    type:Action.Success
+    type:Action.Success,
+    message:'success'
   }
-  expect(actions.sucess()).to.eql(SuccessAct);
+  expect(actions.sucess('success')).to.eql(SuccessAct);
 })
 it('should navigate (to profile, main, or landing)',()=>{
   expect(actions.go_To_Main()).to.eql({type: Action.Go_To_Main})

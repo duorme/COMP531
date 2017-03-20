@@ -32,7 +32,7 @@ NewArticle.PropTypes={
 }
 export default connect(
 	(state)=>{
-		return {author:state.User.userInfo.myName}
+		return {author:state.User.userInfo.username}
 	},
 	(dispatch)=>{
 		return{

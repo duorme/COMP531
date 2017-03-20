@@ -28,7 +28,7 @@ export const _Login =(username,password)=> (dispatch) => {
 	})
 }
 // Validate form can't be empty and on birth must larger than 18 and password should match confirmation.
-export const updateText = (info) => (dispatch)=>{
+export const validation = (info) => (dispatch)=>{
 	var empty=false
 	Object.keys(info).forEach((key)=>{
 		if(info.hasOwnProperty(key)){			

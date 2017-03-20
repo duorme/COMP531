@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
 import {searchArticles} from './ArticleActions'
-import {logOut} from '../../actions'
-import {go_To_Profile} from '../../actions'
+import {go_To_Profile,logOut} from '../../actions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
@@ -38,7 +37,7 @@ ArticleList.PropTypes={
     }).isRequired).isRequired
 }
 
-const getFilteredArticles=(articleList,filter)=>{
+export const getFilteredArticles=(articleList,filter)=>{
   let articles = Object.keys(articleList).map((id) => articleList[id])
   if(filter){
     const reg=new RegExp(filter)

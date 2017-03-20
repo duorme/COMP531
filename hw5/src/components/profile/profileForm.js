@@ -4,7 +4,7 @@ import {Button,Form,FormGroup,ControlLabel,FormControl,Col,Panel,ListGroup,ListG
 import {validation} from './profileActions'
 import Message from '../message'
 //Send data to validate.
-let ProfileForm = ({message,userInfo,updateProfile}) => {
+let ProfileForm = ({Error,sucess,userInfo,updateProfile}) => {
 
 	let passWord;
 	let passConfirm;
@@ -50,7 +50,7 @@ const onUpdateClick = function() {
     <Form horizontal id="Registration"  action="#" method="">
     <h1>Update Profile</h1>
     <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} type="text"
-	placeholder="Your name" inputRef={(ref)=>{name=ref;}} current={userInfo.myName}></FieldGroup>	
+	placeholder="Your name" inputRef={(ref)=>{name=ref;}} current={userInfo.username}></FieldGroup>	
 
 	<FieldGroup id= "formHorizontalDisplayName" sm_title = {2} label="Display name" sm_input={5}  type="text"
 	placeholder="Your Display name" inputRef={(ref)=>{displayName=ref;}} current={userInfo.displayName}></FieldGroup>	
@@ -87,7 +87,8 @@ ProfileForm.PropTypes ={
 export default connect(
 	(state)=>{
 	return{
-		message:state.Location.message,
+		Error:state.Location.ERROR,
+		sucess:state.Location.Success,
 		userInfo:state.User.userInfo
 	}
 },

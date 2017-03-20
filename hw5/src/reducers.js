@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux'
 import Action from './actions'
 const images = require('./data/image.json')
-
 const Location = (state ={
 location:'LANDING',
 success:'',
@@ -26,7 +25,7 @@ error:''
 const User = (state = {
 	userInfo: {
 		avatar: '',
-		myName: '',
+		username: '',
 		headline: '',
 		password: '',
 		dob: '',
@@ -40,7 +39,7 @@ const User = (state = {
 				...state,
 				userInfo: {
 					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					myName: action.info.name == "" ? state.userInfo.name : action.info.myName,
+					username: action.info.name == "" ? state.userInfo.name : action.info.myName,
 					headline: state.userInfo.myHeadLine,
 					password: action.info.password == "" ? state.userInfo.password : action.info.password,
 					dob: action.info.birthday == "" ? state.userInfo.birthday : action.info.birthday,
@@ -54,7 +53,7 @@ const User = (state = {
 				userInfo: {
 					...state.userInfo,
 					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					myName: action.name
+					username: action.name
 				}
 			}
 		case Action.Update_Headline:
@@ -97,8 +96,8 @@ export const articles = (state = {
 
 		return {
 			...state,
-			nextId:state.nextId+Object.keys(Action.articles).length,
-			articles:Action.articles
+			nextId:state.nextId+Object.keys(action.articles).length,
+			articles:action.articles
 		}
 		case Action.Add_New_Article:
 		    const articles=state.articles
@@ -107,7 +106,8 @@ export const articles = (state = {
 		    articles[nextId]=action.article
 			return {
 				...state,
-				articles
+				articles,
+				nextId
 			}
 		case Action.Search_Articles:
 			return {...state,filter: action.text}

@@ -40,7 +40,7 @@ export default connect(
 	(state)=>{
 		return{
 			img:state.User.userInfo.avatar,
-			name:state.User.userInfo.myName,
+			name:state.User.userInfo.username,
 			headline:state.User.userInfo.headline
 		}
 	},
