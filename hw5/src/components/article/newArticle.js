@@ -3,11 +3,11 @@ import {ButtonGroup,Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {addNewArticle} from './ArticleActions'
 // Post new article
-const NewArticle=({addArticle})=>{
+const NewArticle=({author,addArticle})=>{
 	let post;
 	const _addArticle = ()=>{
 		if(post && post.value){
-			addArticle(post.value,new Date().toJSON());
+			addArticle(author,post.value,new Date().toJSON());
 			post.value=""
 		}
 	}
@@ -27,14 +27,17 @@ const NewArticle=({addArticle})=>{
 
 }
 NewArticle.PropTypes={
+	author:PropTypes.string.isRequired,
 	addNewArticle:PropTypes.func.isRequired
 }
 export default connect(
-	null,
+	(state)=>{
+		return {author:state.User.userInfo.myName}
+	},
 	(dispatch)=>{
 		return{
-		addArticle: (text,date)=>dispatch(addNewArticle(text,date))
+		addArticle: (author,text,date)=>dispatch(addNewArticle(author,text,date))
+	    }
 	}
-		}
 	)(NewArticle)
 	

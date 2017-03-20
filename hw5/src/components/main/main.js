@@ -5,8 +5,9 @@ import {logOut,go_To_Profile} from '../../actions'
 import ArticleList from '../article/articleList'
 import Brief from './brief'
 import FollowerList from './followerList'
+import Message from '../message'
 
-const Main=({logout,profile})=>{
+const Main=({logout,profile,message})=>{
 	return(
 		<div  className="container-fluid">
 
@@ -23,6 +24,7 @@ const Main=({logout,profile})=>{
   <div className="col-md-4">
   <div className="col-md-12">
   <Brief></Brief>
+  <Message text={message}></Message>
   <FollowerList></FollowerList>
   </div>
   </div>
@@ -35,10 +37,14 @@ const Main=({logout,profile})=>{
 }
 Main.PropTypes={
 	logout:PropTypes.func.isRequired,
-	profile:PropTypes.func.isRequired
+	profile:PropTypes.func.isRequired,
+  message:PropTypes.string.isRequired
 }
 
-export default connect(null,
+export default connect((state)=>{
+  return{
+    message:state.Location.error
+  }},
   (dispatch)=>{
     return{
       logout:()=>dispatch(logOut()),

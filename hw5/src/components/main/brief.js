@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
-import {updateHeadline,showHeadlineAlert} from './FollowerActions'
-import Message from '../message'
+import {updateHeadline} from './FollowerActions'
+import {error} from '../../actions'
 // Brief profile of user. 
-const Brief=({img,name,headline,updateHeadline,hmessage,showAlert})=>{
+const Brief=({img,name,headline,updateHeadline,error})=>{
 	let input;
 	const updateText=()=>{
 		if(input && input.value){
@@ -12,7 +12,7 @@ const Brief=({img,name,headline,updateHeadline,hmessage,showAlert})=>{
 		input.value=''
 	}
 	else{
-		showAlert("headline can't be empty")
+		error("headline can't be empty")
 	}
 	}
 	return(
@@ -21,7 +21,6 @@ const Brief=({img,name,headline,updateHeadline,hmessage,showAlert})=>{
 		<img className="Mypic col-md-12" src={img} ></img>
 			<h3 className="name col-md-offset-6">{name}</h3>
 			<p className="headline col-md-offset-4 ">{headline}</p>
-			<Message text={hmessage}></Message>
 			<input ref={(node)=>{input=node;}} placeholder="update your headline"></input>
 			<Button onClick={updateText} >update</Button>
 			</div>
@@ -40,16 +39,15 @@ Brief.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-			img:state.User.userInfo.myPic,
+			img:state.User.userInfo.avatar,
 			name:state.User.userInfo.myName,
-			headline:state.User.userInfo.myHeadLine,
-			hmessage:state.Location.hmessage
+			headline:state.User.userInfo.headline
 		}
 	},
 	(dispatch)=>{
 		return{
 			updateHeadline:(text)=>dispatch(updateHeadline(text)),
-			showAlert:(text)=>dispatch(showHeadlineAlert(text))
+			error:(text)=>dispatch(error(text))
 		}
 	}
 	)(Brief)

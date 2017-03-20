@@ -24,6 +24,7 @@ const ArticleList = ({articleList,search})=>{
   <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
   </Form>
   <ul className="articles col-md-8 col-md-offset-1">
+
   {articleList.map(({_id,text,date,img,comments,author})=>(
     <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author}></ArticleItem>))}
   </ul>
@@ -36,15 +37,16 @@ ArticleList.PropTypes={
         ...ArticleItem.propTypes
     }).isRequired).isRequired
 }
+
 const getFilteredArticles=(articleList,filter)=>{
+  let articles = Object.keys(articleList).map((id) => articleList[id])
   if(filter){
     const reg=new RegExp(filter)
-    return articleList.filter((item)=>reg.exec(item.author) || reg.exec(item.text))
+    return articles.filter((item)=>reg.exec(item.author) || reg.exec(item.text))
   }
   else{
-    return articleList
+    return articles
   }
-
 }
 export default connect(
   (state)=>{

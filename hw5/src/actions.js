@@ -1,8 +1,6 @@
 import "isomorphic-fetch"
-import Promise from 'bluebird'
 
 const Action={
-	INFO:'info',
 	Go_To_Main:'Go_To_Main',
 	Go_To_Landing:'Go_To_Landing',
 	Go_To_Profile:'Go_To_Profile',
@@ -10,22 +8,17 @@ const Action={
 	Update_Headline:'Update_Headline',
 	Add_Follower:'Add_Follower',
 	Remove_Follower:'Remove_Follower',
-	Alert_Headline:'Alert_Headline',
 	Login:'Login',
 	Add_New_Article:'Add_New_Article',
 	Search_Articles:'Search_Articles',
 	Success:'Success',
 	ERROR:'ERROR',
-	Load_Articles:'Load_Articles'
+	Load_Articles:'Load_Articles',
+	Load_Profile:'Load_Profile',
+	Update_Profile:'Update_Profile'
 }
 export default Action
 
-export const showAlert=(text)=>{
-	return{
-		type:Action.INFO,
-		message:text
-	}
-}
 
 export const logOut = ()=>{
 	return {
@@ -50,14 +43,16 @@ export const addUser=(info)=>{
 		info
 	}
 }
-export const sucess=()=>{
+export const sucess=(message)=>{
 	return{
-		type:Action.Success
+		type:Action.Success,
+		message
 	}
 }
-export const error=()=>{
+export const error=(message)=>{
 	return{
-		type:Action.ERROR
+		type:Action.ERROR,
+		message
 	}
 }
 

@@ -1,4 +1,4 @@
-import Action,{showAlert,go_To_Main,addUser,resource,url,logOut} from '../../actions'
+import Action,{sucess,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
 
 
 export const updateUser=(name)=>{
@@ -12,8 +12,8 @@ export const logout=()=>(dispatch)=>{
 	.then((r)=>{
 		dispatch(logOut())
 	})
-	.catch((error)=>{
-		dispatch(showAlert("There was an error logging out"))
+	.catch((Error)=>{
+		dispatch(error("There was an error logging out"))
 	})
 }
 
@@ -23,8 +23,8 @@ export const _Login =(username,password)=> (dispatch) => {
 	.then((response)=>{
 	dispatch(updateUser(response.username))
 	dispatch(go_To_Main())
-	}).catch((error)=>{
-		dispatch(showAlert(`There was an error logging in as ${username}`))
+	}).catch((Error)=>{
+		dispatch(error(`There was an error logging in as ${username}`))
 	})
 }
 // Validate form can't be empty and on birth must larger than 18 and password should match confirmation.
@@ -38,7 +38,7 @@ export const updateText = (info) => (dispatch)=>{
 		}
 	})
 	if(empty){
-		dispatch(showAlert("Form can't be empty"))
+		dispatch(error("Form can't be empty"))
 		return
 	}
 	var text=""
@@ -49,12 +49,12 @@ export const updateText = (info) => (dispatch)=>{
 	if(m < 0) age--;
 	if(age < 18){
 		text= "age should no less than 18!";
-		dispatch(showAlert(text))
+		dispatch(error(text))
 		return 
 	}
     if (info.password != info.passConfirm) {
     	text="password and confirmation are not matched! ";
-    	dispatch(showAlert(text))
+    	dispatch(error(text))
     	return
     }   
     	dispatch(addUser(info))

@@ -1,25 +1,23 @@
 import {combineReducers} from 'redux'
 import Action from './actions'
-const initialArticles = require('./data/articles.json')
-const initialFollowers = require('./data/followers.json')
 const images = require('./data/image.json')
 
 const Location = (state ={
 location:'LANDING',
-message:'',
-hmessage:''
+success:'',
+error:''
 },action)=>{
 	switch(action.type){
-	case Action.INFO:
-			return {...state,message: action.message}
-	case Action.Alert_Headline:
-			return {...state,hmessage:action.message}
+	case Action.Success:
+			return {...state,success: action.message}
+	case Action.ERROR:
+			return {...state,error:action.message}
 	case Action.Go_To_Main:
-			return {...state,message: '',hmessage:'',location: 'MAIN_PAGE'}
+			return {...state,success: '',error:'',location: 'MAIN_PAGE'}
 	case Action.Go_To_Profile:
-			return {...state,message: '',hmessage:'',location: 'PROFILE_PAGE'}
+			return {...state,success: '',error:'',location: 'PROFILE_PAGE'}
 	case Action.Go_To_Landing:
-			return {...state,message: '',hmessage:'',location: 'LANDING'}
+			return {...state,sucesss: '',error:'',location: 'LANDING'}
 	default:
 			return state;
 		}
@@ -27,35 +25,26 @@ hmessage:''
 
 const User = (state = {
 	userInfo: {
-		myPic: '',
-		myName: 'Tong Zhou',
-		myHeadLine: 'JS learner',
-		password: 'aa',
-		passConfirm: 'aa',
-		birthday: '1994-01-07',
-		displayName: 'Honey',
-		zipcode: '77005',
-		tel: '832-999-8888',
-		email: 't@rice.edu'
+		avatar: '',
+		myName: '',
+		headline: '',
+		password: '',
+		dob: '',
+		zipcode: '',
+		email: ''
 	},
-	nextCardId: 11,
-	articles: initialArticles.articles,
-	filter: ''
 }, action) => {
 	switch (action.type) {
 		case Action.Add_My_User:
 			return {
 				...state,
 				userInfo: {
-					myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
+					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
 					myName: action.info.name == "" ? state.userInfo.name : action.info.myName,
-					myHeadLine: state.userInfo.myHeadLine,
+					headline: state.userInfo.myHeadLine,
 					password: action.info.password == "" ? state.userInfo.password : action.info.password,
-					passConfirm: action.info.passConfirm == "" ? state.userInfo.passConfirm : action.info.passConfirm,
-					birthday: action.info.birthday == "" ? state.userInfo.birthday : action.info.birthday,
-					displayName: action.info.displayName == "" ? state.userInfo.displayName : action.info.displayName,
+					dob: action.info.birthday == "" ? state.userInfo.birthday : action.info.birthday,
 					zipcode: action.info.zipcode == "" ? state.userInfo.zipcode : action.info.zipcode,
-					tel: action.info.tel == "" ? state.userInfo.tel : action.info.tel,
 					email: action.info.email == "" ? state.userInfo.email : action.info.email
 				}
 			}
@@ -64,49 +53,32 @@ const User = (state = {
 				...state,
 				userInfo: {
 					...state.userInfo,
-					myPic: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
+					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
 					myName: action.name
 				}
 			}
 		case Action.Update_Headline:
 			return {
 				...state,
-				userInfo: {myPic: state.userInfo.myPic,myName: state.userInfo.myName,myHeadLine: action.text}
+				userInfo: {...state.userInfo,headline: action.text}
 			}
-		case Action.Add_New_Article:
-			return {
-				...state,
-				nextCardId: state.nextCardId + 1,
-				articles: [{
-					_id: state.nextCardId,
-					author: state.userInfo.myName,
-					comments: [],
-					date: action.Date,
-					img: state.userInfo.myPic,
-					text: action.content
-				}, ...state.articles]
-			}
-		case Action.Search_Articles:
-			return {...state,filter: action.text}
 		default:
 			return state;
 	}
 }
 export const follower = (state = {
-	nextfollowerId: 4,
-	followers: initialFollowers.followers
+	nextfollowerId: 0,
+	followers: {}
 }, action) => {
 	switch (action.type) {
 		case Action.Add_Follower:
+			const followers=state.followers
+			action.newFollower['id']=state.nextfollowerId
+			followers[state.nextfollowerId]=action.newFollower
 			return {
 				...state,
 				nextfollowerId: state.nextfollowerId + 1,
-				followers: [...state.followers, {
-					id: state.nextfollowerId,
-					img: images.images[Math.floor(Math.random() * 3)],
-					name: action.text,
-					headline: "new follower"
-				}]
+				followers
 			}
 		case Action.Remove_Follower:
 			return {...state,followers: state.followers.filter((item) => item.id != action.id)}
@@ -116,18 +88,23 @@ export const follower = (state = {
 }
 
 export const articles = (state = {
+	nextId:0,
 	articles: {},
 	filter: ''
 }, action) => {
 	switch (action.type) {
 		case Action.Load_Articles:
+
 		return {
 			...state,
+			nextId:state.nextId+Object.keys(Action.articles).length,
 			articles:Action.articles
 		}
 		case Action.Add_New_Article:
 		    const articles=state.articles
-		    articles[action.article._id]=action.article
+		    const nextId=state.nextId+1
+		    action.article["_id"]=nextId
+		    articles[nextId]=action.article
 			return {
 				...state,
 				articles
