@@ -1,4 +1,4 @@
-import Action,{sucess,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
+import Action,{success,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
 
 
 export const updateUser=(name)=>{
@@ -42,7 +42,7 @@ export const validation = (info) => (dispatch)=>{
 		return
 	}
 	var text=""
-	var birth = new Date(info.birthday);
+	var birth = new Date(info.dob);
 	var today = new Date();
 	var age = today.getFullYear() - birth.getFullYear();
 	var m = today.getMonth() - birth.getMonth();
@@ -57,6 +57,15 @@ export const validation = (info) => (dispatch)=>{
     	dispatch(error(text))
     	return
     }   
-    	dispatch(addUser(info))
-    	dispatch(go_To_Main())
+    	// dispatch(addUser(info))
+    	// dispatch(go_To_Main())
+    delete info.passConfirm
+    const username=info.username
+    resource('POST','register',info)
+    .then((r)=>{
+    	dispatch(success(`${r.username} has registered`))
+    })
+    .catch((Error)=>{
+    	dispatch(error(`There was an error registering as ${username}`))
+    })
 }

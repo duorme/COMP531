@@ -1,13 +1,13 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {validatoin} from './LandingAction'
+import {validation} from './LandingAction'
 import { go_To_Main,addUser} from '../../actions'
 import Message from '../message'
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
 // Get input from Form, validate data and then save to state.
 let Registration = ({message,validation,addUser}) => {
 
-	let passWord;
+	let password;
 	let passConfirm;
 	let dob;
 	let username;
@@ -28,10 +28,10 @@ let Registration = ({message,validation,addUser}) => {
 }
 const onRegisterClick = function() {
 	const information={
-		password:passWord.value,
+		password:password.value,
 		passConfirm:passConfirm.value,
 		dob:dob.value,
-		usernname:name.value,
+		username:username.value,
 		zipcode:zipcode.value,
 		email:email.value
 	}
@@ -52,7 +52,7 @@ const onRegisterClick = function() {
 	placeholder="MM-DD-YYYY" name="date" inputRef={(ref)=>{dob=ref;}} required></FieldGroup>
 	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
 	placeholder="77005" pattern = "^\d{5}$" required inputRef={(ref)=>{zipcode=ref;}}></FieldGroup>
-    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" required
+    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{password=ref;}}  sm_input={5} type="password" placeholder="Password" required
 	placeholder="Your Password"></FieldGroup>
 	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" required
 	placeholder="Your Password"></FieldGroup>

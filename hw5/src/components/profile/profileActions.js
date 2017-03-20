@@ -6,7 +6,6 @@ export const fetchProfile=()=>(dispatch)=>{
 	dispatch(fetchItem('zipcode'))
 	dispatch(fetchItem('dob'))
 	dispatch(fetchItem('avatar'))
-	dispatch(fetchItem('password'))
 }
 export const fetchItem=(field)=>(dispatch)=>{
 	const action={type:Action.Load_Profile}
@@ -21,6 +20,7 @@ resource('GET',field)
 		actoin.dob=r.dob;break;
 		case 'avatar':
 		action.avatar=r.avatar;break;
+
 	}
 	dispatch(action)
 })
@@ -40,6 +40,9 @@ const updateItem=(field,value)=>(dispatch)=>{
 		    const action={type:Action.Update_Profile}
 			action[field]=r[field]
 			dispatch(action)
+		})
+		.catch((Error)=>{
+			dispatch(error("there's error when updating headline"))
 		})
 		
 	}

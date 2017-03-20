@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
-import {updateHeadline} from './FollowerActions'
+import {updateHeadline} from '../profile/profileActions'
 import {error} from '../../actions'
 // Brief profile of user. 
 const Brief=({img,name,headline,updateHeadline,error})=>{

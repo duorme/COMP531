@@ -38,7 +38,7 @@ it('should update headline',(done)=>{
   const username = 'sep1test'
   const headline = 'A new headline!'
   mock(`${url}/headline`, {
-    method: 'GET',
+    method: 'PUT',
     headers: {'Content-Type':'application/json'},
     json:{username,headline}
   })
