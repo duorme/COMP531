@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,Button,Col} from 'react-bootstrap'
-const ArticleItem = ({text,date,img,author})=>{
+import {Comment} from './Comment'
+const ArticleItem = ({id,text,date,img,author,comments,showcomm,showCommAction})=>{
+  const show=()=>{
+    showCommAction(id)
+  }
   return(   
     //Create Article card
   <div>
@@ -14,10 +18,17 @@ const ArticleItem = ({text,date,img,author})=>{
         <p >{text}</p>      
       </Media.Body>
       <ButtonGroup>
-      <Button>Show Comments</Button>
+      <Button onClick={show}>Show Comments</Button>
       <Button>Add a Comment</Button>
       <Button>Edit Post</Button>
       </ButtonGroup>
+
+      <ul>
+        {
+          showcomm?comments.map((item)=>(
+          <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text}></Comment>)):''}
+      </ul>
+
     </Media>
 
   </div>

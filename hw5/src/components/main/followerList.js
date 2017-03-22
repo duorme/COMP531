@@ -2,15 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
 import Follower from './Follower'
-import {addFollower} from './FollowerActions'
+import {follow} from './FollowerActions'
 import {error} from '../../actions'
 
 //Folower List and input to create new follower
-const FollowerList=({follower,addFollower,error})=>{
+const FollowerList=({follower,follow,error})=>{
 	let input;
 	const _addFollower=()=>{
 		if(input && input.value){
-			addFollower(input.value)
+			follow(input.value)
 			input.value=''
 		}
 		else{
@@ -48,11 +48,12 @@ export default connect(
 		//let follower=Object.keys(state.follower.followers).map((id) => state.follower.followers[id])
 		return{
 		follower:state.follower.followers
+
 	}
 	},
 	(dispatch)=>{
 		return{
-		addFollower:(text)=>dispatch(addFollower(text)),
+		follow:(text)=>dispatch(follow(text)),
 		error:(text)=>dispatch(error(text))
 	}
 	}

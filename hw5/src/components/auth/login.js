@@ -34,7 +34,7 @@ _Login(name.value,pass.value)
     <h1>Please Log In</h1>
 	<FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required  inputRef={(ref)=>{name=ref;}} type="text"
 	placeholder="Your name"></FieldGroup>
-	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="password"  sm_input={5} type="password" placeholder="Password" required
+	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="password"  sm_input={5} type="password"  required
 	placeholder="Your Password" inputRef={(ref)=>{pass=ref;}}></FieldGroup>
    
     </Form>

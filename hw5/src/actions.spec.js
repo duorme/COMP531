@@ -51,8 +51,8 @@ it('resource should give he http error',(done)=>{
   })
 
 it('resource should be POSTable',(done)=>{
-  const username='guest'
-  const password='visitor'
+  const username='tz13'
+  const password='wrapped-feed-scientific'
   mock(`${url}/login`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -60,7 +60,7 @@ it('resource should be POSTable',(done)=>{
   })
   resource('POST','login',{username,password})
   .then((r)=>{
-    expect(r).to.eql({username:'guest',result:"success"})
+    expect(r).to.eql({username:'tz13',result:"success"})
   })
   .then(done)
   .catch(done)

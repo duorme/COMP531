@@ -32,5 +32,13 @@ export const searchArticles=(text)=>{
 		text
 	}
 }
+export const showComment=(id)=>{
+	console.log(id)
+	return {
+		type:Action.Show_Comment,
+		id
+	}
+}
+
 
 

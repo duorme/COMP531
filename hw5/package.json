@@ -11,7 +11,7 @@
     "deploy": "webpack -p && surge -p dist",
     "start": "serve -p 8080 dist",
     "dev": "webpack-dev-server --content-base dist --inline -d",
-    "test": "mocha --opts mocha.opts src/**/ArticleAction.spec.js",
+    "test": "mocha --opts mocha.opts src/reducers.spec.js",
     "test:watch": "npm run test -- -w",
     "karma": "karma start --single-run",
     "karma:watch": "karma start"
@@ -67,11 +67,12 @@
     "loader-utils": "^0.2.15",
     "mocha": "^2.4.5",
     "mock-fetch": "https://www.clear.rice.edu/comp431/sample/mock-fetch.tgz",
+    "mockery": "^2.0.0",
     "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.0.2",
     "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "redux": "^3.5.2",
@@ -90,6 +91,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "mockery": "^2.0.0"
   }
 }

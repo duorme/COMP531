@@ -15,7 +15,8 @@ const Action={
 	Load_Articles:'Load_Articles',
 	Load_Profile:'Load_Profile',
 	Load_Followers:'Load_Followers',
-	Update_Profile:'Update_Profile'
+	Update_Profile:'Update_Profile',
+	Show_Comment:'Show_Comment'
 }
 export default Action
 

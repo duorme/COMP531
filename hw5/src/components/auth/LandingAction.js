@@ -1,6 +1,6 @@
 import Action,{success,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
 import {fetchArticle} from '../article/ArticleActions'
-import {fetchFollower} from '../main/FollowerActions'
+import {fetchFollowers} from '../main/FollowerActions'
 
 
 export const updateUser=(name)=>{
@@ -27,7 +27,7 @@ export const _Login =(username,password)=> (dispatch) => {
 	dispatch(updateUser(response.username))
 	dispatch(go_To_Main())
 	dispatch(fetchArticle())
-	dispatch(fetchFollower())
+	dispatch(fetchFollowers())
 	}).catch((Error)=>{
 		dispatch(error(`There was an error logging in as ${username}`))
 	})

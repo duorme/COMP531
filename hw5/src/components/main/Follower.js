@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import {Media} from 'react-bootstrap'
 import { connect } from 'react-redux'
-import {remove} from './FollowerActions'
+import {unfollow} from './FollowerActions'
 // Item of follower, can remove any follower.
-const Follower = ({img,name,headline,remove})=>{
+const Follower = ({img,name,headline,unfollow})=>{
 		return(
 			<div>
 			<Media className="follower">
@@ -13,7 +13,7 @@ const Follower = ({img,name,headline,remove})=>{
       <Media.Body>
         <Media.Heading>{name}</Media.Heading>
         <p>{headline}</p>  
-        <i className="destroy glyphicon glyphicon-remove" onClick={remove}></i>    
+        <i className="destroy glyphicon glyphicon-remove" onClick={unfollow}></i>    
       </Media.Body>
     </Media>
     </div>
@@ -25,12 +25,12 @@ Follower.PropTypes={
 	img:PropTypes.string.isRequired,
 	name:PropTypes.string.isRequired,
 	headline:PropTypes.string.isRequired,
-	remove:PropTypes.func.isRequired
+	unfollow:PropTypes.func.isRequired
 }
 export default connect(
 	null,(dispatch,ownProps)=>{
 		return {
-			remove:()=>dispatch(remove(ownProps.id))
+			unfollow:()=>dispatch(unfollow(ownProps.id))
 		}
 	}
 	)(Follower)

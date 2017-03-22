@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
-import {searchArticles} from './ArticleActions'
+import {searchArticles,showComment} from './ArticleActions'
 import {go_To_Profile,logOut} from '../../actions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
-const ArticleList = ({articleList,search})=>{
+const ArticleList = ({articleList,search,showCommAction})=>{
   let input;
   // search article based on filter
   const _search=()=>{
@@ -24,8 +24,9 @@ const ArticleList = ({articleList,search})=>{
   </Form>
   <ul className="articles col-md-8 col-md-offset-1">
 
-  {articleList.map(({_id,text,date,img,comments,author})=>(
-    <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author}></ArticleItem>))}
+  {articleList.map(({_id,text,date,img,comments,author,showcomm})=>(
+    <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author} comments={comments} showComment={showcomm}
+    showCommAction={showCommAction}></ArticleItem>))}
   </ul>
     
   </div>
@@ -58,7 +59,8 @@ export default connect(
     return{
       logout:()=>dispatch(logOut()),
       profile:()=>dispatch(go_To_Profile()),
-      search:(text)=>dispatch(searchArticles(text))
+      search:(text)=>dispatch(searchArticles(text)),
+      showCommAction:(id)=>dispatch(showComment(id))
     }
   }
 

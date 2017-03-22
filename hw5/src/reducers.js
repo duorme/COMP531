@@ -92,11 +92,12 @@ export const articles = (state = {
 }, action) => {
 	switch (action.type) {
 		case Action.Load_Articles:
-
+		const articles=action.articles.map((item)=>{
+			return {...item,showcomm:false}})
 		return {
 			...state,
 			nextId:state.nextId+Object.keys(action.articles).length,
-			articles:action.articles
+			articles
 		}
 		case Action.Add_New_Article:
 			const nextId=state.nextId+1
@@ -109,6 +110,13 @@ export const articles = (state = {
 			}
 		case Action.Search_Articles:
 			return {...state,filter: action.text}
+		case Action.Show_Comment:
+			const article=state.articles.filter((item)=> item._id==action.id)
+			article[0].showcomm=!article[0].showcomm
+			return{
+				...state,
+				articles:state.articles
+			}
 		default:
 			return state;
 	}

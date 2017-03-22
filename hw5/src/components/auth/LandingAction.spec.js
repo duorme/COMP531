@@ -23,12 +23,12 @@ afterEach(() => {
 })
 it('should log in a user',(done)=>{
 
-const username='guest'
-const password='visitor'
+const username='tz13'
+const password='wrapped-feed-scientific'
 mock(`${url}/login`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    json:{username:"guest",password:"visitor"}
+    json:{username:"tz13",password:"wrapped-feed-scientific"}
   })
   actions._Login(username,password)(
     (action) => {
