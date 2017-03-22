@@ -23,8 +23,8 @@ const FollowerList=({follower,addFollower,error})=>{
 		<div className="card">
 		<h3> Followers</h3>
 		<ul>
-		{follower.map(({id,img,name,headline})=>(
-			<Follower key={id} id={id} img={img} name={name} headline={headline}></Follower>
+		{follower.map(({id,img,author,headline})=>(
+			<Follower key={id} id={id} img={img} name={author} headline={headline}></Follower>
 		))}
 		</ul>
 		<input ref={(node)=>{input=node}} placeholder="add a follower"></input>
@@ -45,9 +45,9 @@ FollowerList.PropTypes={
 
 export default connect(
 	(state)=>{
-		let follower=Object.keys(state.follower.followers).map((id) => state.follower.followers[id])
+		//let follower=Object.keys(state.follower.followers).map((id) => state.follower.followers[id])
 		return{
-		follower
+		follower:state.follower.followers
 	}
 	},
 	(dispatch)=>{

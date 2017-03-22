@@ -66,6 +66,7 @@ it('should log out a user (state should be cleared)',(done)=>{
   actions.logout()(
     (action)=>{expect(action).to.eql({type: Action.Go_To_Landing})
   })
+  
   done()
 })
 })

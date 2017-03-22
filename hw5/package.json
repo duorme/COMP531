@@ -11,7 +11,7 @@
     "deploy": "webpack -p && surge -p dist",
     "start": "serve -p 8080 dist",
     "dev": "webpack-dev-server --content-base dist --inline -d",
-    "test": "mocha --opts mocha.opts src/**/*.spec.js",
+    "test": "mocha --opts mocha.opts src/**/ArticleAction.spec.js",
     "test:watch": "npm run test -- -w",
     "karma": "karma start --single-run",
     "karma:watch": "karma start"

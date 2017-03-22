@@ -1,6 +1,7 @@
 //Add new Article
-import Action,{url,resource,showAlert} from '../../actions'
+import Action,{url,resource,sucess,error} from '../../actions'
 export const addNewArticle=(author,text,date)=>{
+	//use resource to post article
 	const article={
 		author,
 		text,
@@ -22,10 +23,7 @@ export const loadArticle=(articles)=>{
 export const fetchArticle=()=>(dispatch)=>{
 	resource('GET','articles')
 	.then((r)=>{
-		const articles=r.articles.reduce((o,v)=>{
-			o[v._id]=v
-		},{});
-		dispatch(loadArticle(articles))
+		dispatch(loadArticle(r.articles))
 	})
 }
 export const searchArticles=(text)=>{

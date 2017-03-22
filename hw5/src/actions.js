@@ -4,7 +4,6 @@ const Action={
 	Go_To_Main:'Go_To_Main',
 	Go_To_Landing:'Go_To_Landing',
 	Go_To_Profile:'Go_To_Profile',
-	Add_My_User:'Add_My_User',
 	Update_Headline:'Update_Headline',
 	Add_Follower:'Add_Follower',
 	Remove_Follower:'Remove_Follower',
@@ -15,6 +14,7 @@ const Action={
 	ERROR:'ERROR',
 	Load_Articles:'Load_Articles',
 	Load_Profile:'Load_Profile',
+	Load_Followers:'Load_Followers',
 	Update_Profile:'Update_Profile'
 }
 export default Action
@@ -65,6 +65,7 @@ export const resource = (method, endpoint, payload) => {
     headers: {
       'Content-Type': 'application/json'
     }
+
   }
   if (payload) options.body = JSON.stringify(payload)
 

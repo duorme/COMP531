@@ -3,9 +3,9 @@ import Action,{error,success,addUser,url,resource} from '../../actions'
 
 export const fetchProfile=()=>(dispatch)=>{
 	dispatch(fetchItem('email'))
-	dispatch(fetchItem('zipcode'))
-	dispatch(fetchItem('dob'))
-	dispatch(fetchItem('avatar'))
+	// dispatch(fetchItem('zipcode'))
+	// dispatch(fetchItem('dob'))
+	// dispatch(fetchItem('avatar'))
 }
 export const fetchItem=(field)=>(dispatch)=>{
 	const action={type:Action.Load_Profile}
@@ -24,6 +24,7 @@ resource('GET',field)
 	}
 	dispatch(action)
 })
+.catch(e => console.error(`There was an error in fetchItem ${field}`, e))
 }
 
 
@@ -42,7 +43,7 @@ const updateItem=(field,value)=>(dispatch)=>{
 			dispatch(action)
 		})
 		.catch((Error)=>{
-			dispatch(error("there's error when updating headline"))
+			dispatch(error(`there's error when updating ${field}`))
 		})
 		
 	}

@@ -10,10 +10,11 @@ beforeEach(() => {
 	mockery.registerMock('node-fetch', fetch)
 	require('node-fetch')
   }
-  Action = require('../../actions').default
+  const actionModule = require('../../actions')
+  Action = actionModule.default
   actions = require('./ArticleActions')
-  url=actions.url
-  resource=actions.resource
+  url=actionModule.url
+  resource=actionModule.resource
 })
 
 
@@ -24,13 +25,15 @@ afterEach(() => {
   }
 })
 it('should fetch articles (mocked request)',(done)=>{
+  const articles = [{_id:1,author:'tz13'}]
   mock(`${url}/articles`, {
     method: 'GET',
     headers: {'Content-Type':'application/json'},
-    json:{articles:[{_id:1,author:'tz13'}]}
+    json: { articles }
   })
   actions.fetchArticle()((action)=>{
-    expect(action).to.eql({type:Action.Load_Articles,articles:{1:{_id:1,author:'tz13'}}})
+    console.log(action, articles)
+   expect(action).to.eql({type:Action.Load_Articles,articles})
   })
   done()
 })

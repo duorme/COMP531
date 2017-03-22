@@ -1,4 +1,6 @@
 import Action,{success,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
+import {fetchArticle} from '../article/ArticleActions'
+import {fetchFollower} from '../main/FollowerActions'
 
 
 export const updateUser=(name)=>{
@@ -17,12 +19,15 @@ export const logout=()=>(dispatch)=>{
 	})
 }
 
+
 // Form can't be empty, if it's empty, alert. Else go to main page and update user.
 export const _Login =(username,password)=> (dispatch) => {
 	resource('POST','login',{username,password})
 	.then((response)=>{
 	dispatch(updateUser(response.username))
 	dispatch(go_To_Main())
+	dispatch(fetchArticle())
+	dispatch(fetchFollower())
 	}).catch((Error)=>{
 		dispatch(error(`There was an error logging in as ${username}`))
 	})

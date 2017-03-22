@@ -10,10 +10,11 @@ beforeEach(() => {
 	mockery.registerMock('node-fetch', fetch)
 	require('node-fetch')
   }
-  Action = require('./actions').default
+  const actionModule = require('./actions')
+  Action = actionModule.default
   actions = require('./actions')
-  url=actions.url
-  resource=actions.resource
+  url=actionModule.url
+  resource=actionModule.resource
 })
 
 afterEach(() => {

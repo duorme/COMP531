@@ -10,10 +10,11 @@ beforeEach(() => {
 	mockery.registerMock('node-fetch', fetch)
 	require('node-fetch')
   }
-  Action = require('../../actions').default
+  const actionModule = require('../../actions')
+  Action = actionModule.default
   actions = require('./profileActions')
-  url=actions.url
-  resource=actions.resource
+  url=actionModule.url
+  resource=actionModule.resource
 })
 
 
@@ -24,6 +25,7 @@ afterEach(() => {
   }
 })
 it('should fetch the user\'s proile information',(done)=>{
+  console.log('url', url)
   mock(`${url}/email`, {
     method: 'GET',
     headers: {'Content-Type':'application/json'},

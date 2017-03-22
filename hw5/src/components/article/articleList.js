@@ -38,13 +38,14 @@ ArticleList.PropTypes={
 }
 
 export const getFilteredArticles=(articleList,filter)=>{
-  let articles = Object.keys(articleList).map((id) => articleList[id])
+  //let articles = Object.keys(articleList).map((id) => articleList[id])
+  // sort articleList first
   if(filter){
     const reg=new RegExp(filter)
-    return articles.filter((item)=>reg.exec(item.author) || reg.exec(item.text))
+    return articleList.filter((item)=>reg.exec(item.author) || reg.exec(item.text))
   }
   else{
-    return articles
+    return articleList
   }
 }
 export default connect(
