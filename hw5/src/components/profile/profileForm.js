@@ -54,11 +54,11 @@ const onUpdateClick = function() {
 	placeholder="Your Password" ></FieldGroup>
 	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Password" 
 	placeholder="Your Password Confirm" ></FieldGroup>
-	<Button type="submit" onClick={onUpdateClick} className="col-md-offset-3">
+
+  </Form>
+  	<Button type="submit" onClick={onUpdateClick} className="col-md-offset-3">
          Update
      </Button>
-  </Form>
-  
 
   </div>
 );
