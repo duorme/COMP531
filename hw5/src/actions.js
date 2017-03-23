@@ -1,4 +1,5 @@
-import "isomorphic-fetch"
+import fetch from 'isomorphic-fetch'
+//console.log(require.cache)
 // Actions in this app
 const Action={
 	Go_To_Main:'Go_To_Main',
@@ -59,8 +60,8 @@ export const error=(message)=>{
 	}
 }
 
-export const url = 'https://webdev-dummy.herokuapp.com'
- // export const url='localhost'
+// export const url = 'https://webdev-dummy.herokuapp.com'
+ export const url='aaa'
 
 export const resource = (method, endpoint, payload) => {
   const options =  {

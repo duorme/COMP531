@@ -23,7 +23,6 @@ let Login = ({_Login}) => {
   );
 }
 const onLogin=function(){
-  event.preventDefault()
 _Login(name.value,pass.value)
 
 }

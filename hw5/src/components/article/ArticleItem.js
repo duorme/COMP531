@@ -24,7 +24,6 @@ const ArticleItem = ({id,text,date,img,author,comments,showcomm,showCommAction})
       </ButtonGroup>
 
       <ul>
-      {console.log('showcomm'+showcomm)}
         {showcomm?
           comments.map((item)=>(
           <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text}></Comment>)):''}

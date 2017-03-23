@@ -19,7 +19,7 @@ describe('ArticlesView (component tests)', () => {
      
     const node = TestUtils.renderIntoDocument(
         <div>
-        <ArticleItem key={1} id={1} text="hello" date={"3/19/2017"}  author='tz13'></ArticleItem>
+        <ArticleItem key={1} id={1} text="hello" date={"3/19/2017"}  author='tz13' showcomm={true} showCommAction={(_)=>(_)} comments={[]}  ></ArticleItem>
         </div>)
     const articleItem = findDOMNode(node).children[0]
     expect(articleItem.children).to.have.length(1)
