@@ -60,7 +60,7 @@ export const error=(message)=>{
 }
 
 export const url = 'https://webdev-dummy.herokuapp.com'
-// export const url='localhost'
+ // export const url='localhost'
 
 export const resource = (method, endpoint, payload) => {
   const options =  {

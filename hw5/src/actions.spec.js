@@ -77,7 +77,7 @@ it('should update success message (for displaying success mesage to user)',()=>{
     type:Action.Success,
     message:'success'
   }
-  expect(actions.sucess('success')).to.eql(SuccessAct);
+  expect(actions.success('success')).to.eql(SuccessAct);
 })
 it('should navigate (to profile, main, or landing)',()=>{
   expect(actions.go_To_Main()).to.eql({type: Action.Go_To_Main})

@@ -9,7 +9,6 @@
     "watch": "webpack --watch",
     "deploy": "webpack -p && surge -p dist",
     "build": "webpack -d",
-    "deploy": "webpack -p && surge -p dist",
     "start": "serve -p 8080 dist",
     "dev": "webpack-dev-server --content-base dist --inline -d",
     "test": "mocha --opts mocha.opts src/**/**.spec.js",
