@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,button} from 'react-bootstrap'
-import {logOut,go_To_Profile} from '../../actions'
+import {logOut} from '../../actions'
+import {go_to_profile} from '../profile/profileActions'
 import ArticleList from '../article/articleList'
 import Brief from './brief'
 import FollowerList from './followerList'
 import Message from '../message'
-
+// main page with user brif,follower list and article list
 const Main=({logout,profile,message})=>{
 	return(
 		<div  className="container-fluid">
@@ -48,7 +49,7 @@ export default connect((state)=>{
   (dispatch)=>{
     return{
       logout:()=>dispatch(logOut()),
-      profile:()=>dispatch(go_To_Profile()),
+      profile:()=>dispatch(go_to_profile()),
     }
   }
 

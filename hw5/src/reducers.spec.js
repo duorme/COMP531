@@ -22,13 +22,13 @@ describe('Validate reducer (no fetch requests here)', () => {
             mockery.disable()
         }
     })
-    let initialState = {
+    const initialState = {
             Location: { location: 'LANDING', success: '', error: '' },
             User: {
-                userInfo: { avatar: '', username: '', headline: '', password: '', dob: '', zipcode: '', email: '' }
+                 avatar: '', username: '', headline: '', dob: '', zipcode: '', email: '' 
             },
-            follower: { nextfollowerId: 0, followers: [] },
-            articles: {nextId: 0,articles: [],filter: ''}
+            follower: {followers: [] },
+            articles: {articles: [],filter: ''}
         }
     it('should initialize state', () => {        
         expect(reducer(undefined,{})).to.eql(initialState)
@@ -45,7 +45,7 @@ describe('Validate reducer (no fetch requests here)', () => {
     it('should set the articles',()=>{
     const articles=[{_id:1,author:'tz13'}]
     expect(reducer(undefined,{type:Action.Load_Articles,articles})).to.eql({...initialState,articles:{...initialState.articles,
-        articles:[{_id:1,author:'tz13',showcomm:false}],nextId:1}})
+        articles:[{_id:1,author:'tz13',showcomm:false}]}})
     })
     it('should set the search keyword',()=>{
     const text='abc'
@@ -55,20 +55,5 @@ describe('Validate reducer (no fetch requests here)', () => {
     const articles=[{_id:1,author:'tz13'},{_id:2,author:'cz'}]
     expect(getFilteredArticles(articles,'cz')).to.eql([{_id:2,author:'cz'}])
     })
-
-
-   
-    // it('should change the showcomm',()=>{
-    //      const beforeState = {
-    //         Location: { location: 'LANDING', success: '', error: '' },
-    //         User: {
-    //             userInfo: { avatar: '', username: '', headline: '', password: '', dob: '', zipcode: '', email: '' }
-    //         },
-    //         follower: { nextfollowerId: 0, followers: [] },
-    //         articles: {nextId: 0,articles: [{_id:1,author:'tz13',showcomm:false}],filter: ''}
-    //     }
-    // //articles:[{_id:1,author:'tz13',showcomm:false}]
-    // expect(reducer(beforeState,{type:Action.Show_Comment,id:1})).to.eql({...beforeState,articles:{...beforeState.articles,articles:[{_id:1,author:'tz13',showcomm:true}]}})
-    // })
 
 })

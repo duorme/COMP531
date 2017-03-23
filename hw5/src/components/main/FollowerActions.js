@@ -1,11 +1,5 @@
 import Action,{resource} from '../../actions'
-// export const updateHeadline=(text)=>{
-// 	return{
-// 		type:Action.Update_Headline,
-// 		text
-// 	}
-// }
-
+// fetch follower from server
 export const fetchFollowers=(method, name)=>{
     return (dispatch) => {
        resource(method?method:'GET','following'+(name?'/'+name:''))
@@ -20,19 +14,20 @@ export const fetchFollowers=(method, name)=>{
         .catch((err) => {dispatch({type:'ON_ERROR', error:'error happened when fetching followers'})})
     }
 }
-
+// unfollow and fetch new followers from server
 export const unfollow=(name)=>{
     return fetchFollowers('DELETE',name)
 
 }
-
+// follow a new one and fetch new followers from server
 export  const follow=(name)=>{
     return fetchFollowers('PUT',name)
 }
-
+// action to load follower
 export const loadFollower=(following)=>{
 	return{
 		type:Action.Load_Followers,
 		following
 	}
 }
+

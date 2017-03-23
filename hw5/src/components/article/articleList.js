@@ -6,6 +6,8 @@ import {go_To_Profile,logOut} from '../../actions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
+//create card list, pass showComment Action to each Article Item
+
 const ArticleList = ({articleList,search,showCommAction})=>{
   let input;
   // search article based on filter
@@ -23,9 +25,8 @@ const ArticleList = ({articleList,search,showCommAction})=>{
   <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
   </Form>
   <ul className="articles col-md-8 col-md-offset-1">
-
   {articleList.map(({_id,text,date,img,comments,author,showcomm})=>(
-    <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author} comments={comments} showComment={showcomm}
+    <ArticleItem key={_id} id={_id} text={text} date={date} img={img} author={author} comments={comments} showcomm={showcomm}
     showCommAction={showCommAction}></ArticleItem>))}
   </ul>
     
@@ -39,8 +40,11 @@ ArticleList.PropTypes={
 }
 
 export const getFilteredArticles=(articleList,filter)=>{
-  //let articles = Object.keys(articleList).map((id) => articleList[id])
-  // sort articleList first
+
+  // sort articleList first then filter
+  articleList.sort((a,b)=>{if(a.date==b.date) return 0
+    else if(a.date > b.date) return -1
+      else return 1})
   if(filter){
     const reg=new RegExp(filter)
     return articleList.filter((item)=>reg.exec(item.author) || reg.exec(item.text))

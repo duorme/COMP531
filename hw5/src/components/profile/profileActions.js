@@ -1,12 +1,19 @@
 
-import Action,{error,success,addUser,url,resource} from '../../actions'
-
+import Action,{error,success,addUser,url,resource,go_To_Profile} from '../../actions'
+// navigate to profile and fetch data from server
+export const go_to_profile=()=>(dispatch)=>{
+	dispatch(go_To_Profile())
+	dispatch(fetchProfile())
+}
+// fetch data from server
 export const fetchProfile=()=>(dispatch)=>{
 	dispatch(fetchItem('email'))
-	// dispatch(fetchItem('zipcode'))
-	// dispatch(fetchItem('dob'))
-	// dispatch(fetchItem('avatar'))
+	dispatch(fetchItem('zipcode'))
+	dispatch(fetchItem('dob'))
+	dispatch(fetchItem('avatars'))
+	dispatch(fetchItem('headlines'))
 }
+// fetch each item
 export const fetchItem=(field)=>(dispatch)=>{
 	const action={type:Action.Load_Profile}
 resource('GET',field)
@@ -17,21 +24,22 @@ resource('GET',field)
 		case 'zipcode':
 		action.zipcode=r.zipcode;break;
 		case 'dob':
-		actoin.dob=r.dob;break;
-		case 'avatar':
-		action.avatar=r.avatar;break;
-
+		action.dob=new Date(r.dob);break;
+		case 'avatars':
+		action.avatar=r.avatars[0].avatar;break;
+		case 'headlines':
+		action.headline=r.headlines[0].headline;break;
 	}
 	dispatch(action)
 })
-.catch(e => console.error(`There was an error in fetchItem ${field}`, e))
+.catch((e) => console.error(`There was an error in fetchItem ${field}`, e))
 }
 
-
+// uodate headline to server
 export const updateHeadline=(text)=>(dispatch)=>{
 	dispatch(updateItem('headline',text))
 }
-
+// update each item
 const updateItem=(field,value)=>(dispatch)=>{
 	const payload={}
 	payload[field]=value
@@ -39,8 +47,13 @@ const updateItem=(field,value)=>(dispatch)=>{
 		resource('PUT',field,payload)
 		.then((r)=>{
 		    const action={type:Action.Update_Profile}
+		    if(field=='password'){
+		    	dispatch(error("password will not persist on server"))
+		    }
+			else{
 			action[field]=r[field]
 			dispatch(action)
+		}
 		})
 		.catch((Error)=>{
 			dispatch(error(`there's error when updating ${field}`))
@@ -50,40 +63,33 @@ const updateItem=(field,value)=>(dispatch)=>{
 }
 
 // return an action which is a function.
-// If nothing is changed, alert. Else show the change and save to state.
+// If nothing is changed, alert. Else show the change and post to server
 export const validation=(information,userInfo)=> (dispatch) => {
-	event.preventDefault();
-	var submit=true;
-	var changed=false;
-	var message=""
-	Object.keys(information).forEach((key)=>{
-		if(information.hasOwnProperty(key)){
-			if(information[key] && key !="birthday"){
-				if(information[key]===userInfo[key]){
-					return error(key+" has not been changed ")
-				}
-				else{
-					changed=true;
-					message+=key+" has been changed from "+userInfo[key]+" to "+information[key]+" "
-				}
-			}
-
-		}
-	})
+	if(information.email==userInfo.email){
+			dispatch(error("email hasn't been changed"))
+			return
+	}
+	if(information.zipcode==userInfo.zipcode){
+			dispatch(error("email hasn't been changed"))
+			return
+	}
 	if(information.password != information.passConfirm){
 		dispatch(error(" Password and confirmation are not matched! "))
 		return
 	}	
-	if(!changed){
+	if(!information.email && !information.zipcode && !information.password){
 		dispatch(error("Nothing has been changed!"))
-		return 
+		return
 	}
-		
-	if(submit&&changed){
-		//return updateProfile(information,message)
-		
-	dispatch(success(message))//an action
-	dispatch(addUser(information))
-	return // an action		
+	Object.keys(information).forEach((key)=>{
+		if(information.hasOwnProperty(key) && information[key]){	
+			dispatch(error(`${key} has been changed from ${userInfo[key]} to ${information[key]}`))
+		}
 	}
+	)
+	
+	dispatch(updateItem('email',information.email))
+	dispatch(updateItem('zipcode',information.zipcode))
+	dispatch(updateItem('password',information.password))
+
 }

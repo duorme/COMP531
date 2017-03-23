@@ -21,6 +21,6 @@ Avatar.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-			img:state.User.userInfo.myPic
+			img:state.User.avatar
 		}
 	},null)(Avatar)

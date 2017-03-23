@@ -39,9 +39,9 @@ Brief.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-			img:state.User.userInfo.avatar,
-			name:state.User.userInfo.username,
-			headline:state.User.userInfo.headline
+			img:state.User.avatar,
+			name:state.User.username,
+			headline:state.User.headline
 		}
 	},
 	(dispatch)=>{

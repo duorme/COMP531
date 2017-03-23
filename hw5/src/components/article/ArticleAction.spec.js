@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import mockery from 'mockery'
 import fetch, { mock } from 'mock-fetch'
-
+//validate articles's action.
 describe('Validate Article actions', () => {
 let Action, actions,url,resource
 beforeEach(() => {
@@ -24,6 +24,9 @@ afterEach(() => {
 	mockery.disable()
   }
 })
+//this returns a complex action
+  // the complex action is called with dispatch as an argument
+  // dispatch is then called with an action as an argument
 it('should fetch articles (mocked request)',(done)=>{
   const articles = [{_id:1,author:'tz13'}]
   mock(`${url}/articles`, {
@@ -32,12 +35,11 @@ it('should fetch articles (mocked request)',(done)=>{
     json: { articles }
   })
   actions.fetchArticle()((action)=>{
-    console.log(action, articles)
    expect(action).to.eql({type:Action.Load_Articles,articles})
   })
   done()
 })
-
+// expect an action
 it('should update the search keyword',(done)=>{
   expect(actions.searchArticles('tz13')).to.eql({
     type:Action.Search_Articles,
@@ -45,4 +47,5 @@ it('should update the search keyword',(done)=>{
   })
   done()
 })
+
 })

@@ -4,7 +4,7 @@ import {updateUser,_Login} from './LandingAction'
 import {go_To_Main} from '../../actions'
 
 import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
-
+// component for login
 let Login = ({_Login}) => {
 	let name;
   let pass;

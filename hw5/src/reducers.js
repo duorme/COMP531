@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux'
 import Action from './actions'
-const images = require('./data/image.json')
 const Location = (state ={
 location:'LANDING',
 success:'',
@@ -23,59 +22,64 @@ error:''
 }
 
 const User = (state = {
-	userInfo: {
-		avatar: '',
-		username: '',
-		headline: '',
-		password: '',
-		dob: '',
-		zipcode: '',
-		email: ''
-	},
+	username: '',
+	dob: '',
+	zipcode: '',
+	email: '',
+	avatar:'',
+	headline:''
 }, action) => {
 	switch (action.type) {
 		case Action.Update_Profile:
-			return {
-				...state,
-				userInfo: {
-					username:action.hasOwnProperty('username')?action.username:state.userInfo.username,
-					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					headline: action.hasOwnProperty('headline')? action.headline:state.userInfo.headline,
-					password: action.hasOwnProperty('password')? action.password:state.userInfo.password,
-					dob: action.hasOwnProperty('birthday')? action.birthday:state.userInfo.birthday,
-					zipcode: action.hasOwnProperty('zipcode')? action.zipcode:state.userInfo.zipcode,
-					email: action.hasOwnProperty('email')?  action.email:state.userInfo.email
+				if(action.dob){
+					return {...state,dob:action.dob}
 				}
-			}
+				if(action.zipcode){
+					return {...state,zipcode:action.zipcode}
+				}
+				if(action.email){
+					return{...state,email:action.email}
+				}
+				if(action.headline){
+					return{...state,headline:action.headline}
+				}
 		case Action.Login:
 			return {
 				...state,
-				userInfo: {
-					...state.userInfo,
-					avatar: 'https://s-media-cache-ak0.pinimg.com/564x/bc/a2/b9/bca2b9ca11810f19196d9323464d6b9d.jpg',
-					username: action.name
-				}
+				username: action.username
+			}
+		case Action.Load_Profile:
+			if(action.avatar){
+				return {...state,avatar:action.avatar}
+			}
+			if(action.dob){
+				return{...state,dob:action.dob}
+			}
+			if(action.zipcode){
+				return{...state,zipcode:action.zipcode}
+			}
+			if(action.headline){
+				return{...state,headline:action.headline}
+			}
+			if(action.email){
+				return{...state,email:action.email}
 			}
 		default:
 			return state;
 	}
 }
 export const follower = (state = {
-	nextfollowerId: 0,
 	followers: []
 }, action) => {
 	switch (action.type) {
 		case Action.Load_Followers:
 		return {
 			...state,
-			nextfollowerId:state.nextId+action.following.length,
 			followers:action.following
 		}
 		case Action.Add_Follower:
-			action.newFollower['id']=state.nextfollowerId
 			return {
 				...state,
-				nextfollowerId: state.nextfollowerId + 1,
 				followers:[...state.followers,action.newFollower]
 			}
 		case Action.Remove_Follower:
@@ -86,7 +90,6 @@ export const follower = (state = {
 }
 
 export const articles = (state = {
-	nextId:0,
 	articles: [],
 	filter: ''
 }, action) => {
@@ -96,17 +99,13 @@ export const articles = (state = {
 			return {...item,showcomm:false}})
 		return {
 			...state,
-			nextId:state.nextId+Object.keys(action.articles).length,
 			articles
 		}
 		case Action.Add_New_Article:
-			const nextId=state.nextId+1
-		    action.article["_id"]=nextId
+		const article_comm={...action.newArticle,showcomm:false}
 			return {
 				...state,
-				nextId,
-				articles: [
-				action.article, ...state.articles]
+				articles:[...state.articles,article_comm]
 			}
 		case Action.Search_Articles:
 			return {...state,filter: action.text}

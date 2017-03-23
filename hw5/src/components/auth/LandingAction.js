@@ -1,14 +1,16 @@
 import Action,{success,error,go_To_Main,addUser,resource,url,logOut} from '../../actions'
 import {fetchArticle} from '../article/ArticleActions'
 import {fetchFollowers} from '../main/FollowerActions'
+import {fetchProfile} from '../profile/profileActions'
 
-
+// action for log in
 export const updateUser=(name)=>{
 	return{
 		type:Action.Login,
-		name
+		username:name
 	}
 }
+// log out action
 export const logout=()=>(dispatch)=>{
 	resource('PUT','logout')
 	.then((r)=>{
@@ -20,14 +22,18 @@ export const logout=()=>(dispatch)=>{
 }
 
 
-// Form can't be empty, if it's empty, alert. Else go to main page and update user.
+// login and initialize login to fetch data from server
 export const _Login =(username,password)=> (dispatch) => {
-	resource('POST','login',{username,password})
+	const payload={}
+	payload['username']=username
+	payload['password']=password
+	resource('POST','login',payload)
 	.then((response)=>{
 	dispatch(updateUser(response.username))
 	dispatch(go_To_Main())
 	dispatch(fetchArticle())
 	dispatch(fetchFollowers())
+	dispatch(fetchProfile())
 	}).catch((Error)=>{
 		dispatch(error(`There was an error logging in as ${username}`))
 	})
@@ -62,13 +68,11 @@ export const validation = (info) => (dispatch)=>{
     	dispatch(error(text))
     	return
     }   
-    	// dispatch(addUser(info))
-    	// dispatch(go_To_Main())
     delete info.passConfirm
     const username=info.username
     resource('POST','register',info)
     .then((r)=>{
-    	dispatch(success(`${r.username} has registered`))
+    	dispatch(error(`${r.username} has registered`))
     })
     .catch((Error)=>{
     	dispatch(error(`There was an error registering as ${username}`))
