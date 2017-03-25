@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.36% </span>
+        <span class="strong">87.23% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>42/47</span>
+        <span class='fraction'>41/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>6/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>12/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.64% </span>
+        <span class="strong">86.36% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/44</span>
+        <span class='fraction'>38/44</span>
       </div>
       <div class='fl pad1y'>
         <span class="strong">1 branch</span>
@@ -181,7 +181,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,87 +228,87 @@ import mockery from 'mockery'
 import fetch, { mock } from 'mock-fetch'
 &nbsp;
 describe('Validate actions ', () =&gt; {
-let Action, actions,url,resource
-beforeEach(() =&gt; {
-  if (<span class="missing-if-branch" title="if path not taken" >I</span>mockery.enable) {
-	mockery.<span class="cstat-no" title="statement not covered" >enable({warnOnUnregistered: false, useCleanCache:true})</span>
-	mockery.<span class="cstat-no" title="statement not covered" >registerMock('node-fetch', fetch)</span>
-	require(<span class="cstat-no" title="statement not covered" >'node-fetch')</span>
-  }
-  const actionModule = require('./actions')
-  Action = actionModule.default
-  actions = require('./actions')
-  url=actionModule.url
-  resource=actionModule.resource
-})
+  let Action, actions,url,resource
+  beforeEach(() =&gt; {
+    if (<span class="missing-if-branch" title="if path not taken" >I</span>mockery.enable) {
+     mockery.<span class="cstat-no" title="statement not covered" >enable({warnOnUnregistered: false, useCleanCache:true})</span>
+     mockery.<span class="cstat-no" title="statement not covered" >registerMock('node-fetch', fetch)</span>
+     require(<span class="cstat-no" title="statement not covered" >'node-fetch')</span>
+   }
+   const actionModule = require('./actions')
+   Action = actionModule.default
+   actions = require('./actions')
+   url=actionModule.url
+   resource=actionModule.resource
+ })
 &nbsp;
-afterEach(() =&gt; {
-  if (<span class="missing-if-branch" title="if path not taken" >I</span>mockery.enable) {
-	mockery.<span class="cstat-no" title="statement not covered" >deregisterMock('node-fetch')</span>
-	mockery.<span class="cstat-no" title="statement not covered" >disable()</span>
-  }
-})
+  afterEach(() =&gt; {
+    if (<span class="missing-if-branch" title="if path not taken" >I</span>mockery.enable) {
+     mockery.<span class="cstat-no" title="statement not covered" >deregisterMock('node-fetch')</span>
+     mockery.<span class="cstat-no" title="statement not covered" >disable()</span>
+   }
+ })
 &nbsp;
-it('resource should be a resource',(done)=&gt;{
-  mock(`${url}/sample`, {
-    method: 'GET',
-    headers: {'Content-Type':'application/json'},
-    json:{articles:{id:1,author:'tz13'}}
+  it('resource should be a resource',(done)=&gt;{
+    mock(`${url}/sample`, {
+      method: 'GET',
+      headers: {'Content-Type':'application/json'},
+      json:{articles:{id:1,author:'tz13'}}
+    })
+    resource('GET','sample')
+    .then((response)=&gt;{
+      expect(response.articles).to.exist
+    })
+    .then(done)
+    .catch(done)
   })
-  resource('GET','sample')
-  .then((response)=&gt;{
-    expect(response.articles).to.exist
-  })
-  .then(done)
-  .catch(done)
-})
-it('resource should give he http error',(done)=&gt;{
-  mock(`${url}/headlines`, {
-    method: 'GET',
-    headers: {'Content-Type':'application/json'}
-  })
-  resource('GET','headlines')
-  .catch((error)=&gt;{
-    expect(error.toString()).to.eql('Error: Unauthorized')
-  })
-  .then(done)
-  .catch(done)
+  it('resource should give he http error',(done)=&gt;{
+    mock(`${url}/headlines`, {
+      method: 'GET',
+      headers: {'Content-Type':'application/json'}
+    })
+    resource('GET','headlines')
+    .catch(<span class="fstat-no" title="function not covered" >(error)=&gt;{</span>
+      expect(<span class="cstat-no" title="statement not covered" >error.toString()).to.eql('Error: Unauthorized')</span>
+    })
+    .then(done)
+    .catch(done)
   })
 &nbsp;
-it('resource should be POSTable',(done)=&gt;{
-  const username='tz13'
-  const password='wrapped-feed-scientific'
-  mock(`${url}/login`, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    json:{username,result:"success"}
+  it('resource should be POSTable',(done)=&gt;{
+    const username='tz13'
+    const password='wrapped-feed-scientific'
+    mock(`${url}/login`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      json:{username,result:"success"}
+    })
+    resource('POST','login',{username,password})
+    .then((r)=&gt;{
+      expect(r).to.eql({username:'tz13',result:"success"})
+    })
+    .then(done)
+    .catch(done)
   })
-  resource('POST','login',{username,password})
-  .then((r)=&gt;{
-    expect(r).to.eql({username:'tz13',result:"success"})
+  it('should update error message (for displaying error mesage to user)',()=&gt;{
+    const ErrorAct={
+      type:Action.ERROR,
+      message:'wrong'
+    }
+    expect(actions.error('wrong')).to.eql(ErrorAct);
   })
-  .then(done)
-  .catch(done)
-})
-it('should update error message (for displaying error mesage to user)',()=&gt;{
-  const ErrorAct={
-    type:Action.ERROR,
-    message:'wrong'
-  }
-  expect(actions.error('wrong')).to.eql(ErrorAct);
-})
-it('should update success message (for displaying success mesage to user)',()=&gt;{
-  const SuccessAct={
-    type:Action.Success,
-    message:'success'
-  }
-  expect(actions.sucess('success')).to.eql(SuccessAct);
-})
-it('should navigate (to profile, main, or landing)',()=&gt;{
-  expect(actions.go_To_Main()).to.eql({type: Action.Go_To_Main})
-  expect(actions.go_To_Profile()).to.eql({type: Action.Go_To_Profile});
-  expect(actions.logOut()).to.eql({type: Action.Go_To_Landing});
-})
+  it('should update success message (for displaying success mesage to user)',()=&gt;{
+    const SuccessAct={
+      type:Action.Success,
+      message:'success'
+    }
+    expect(actions.success('success')).to.eql(SuccessAct);
+  })
+  it('should navigate (to profile, main, or landing)',()=&gt;{
+    expect(actions.go_To_Main()).to.eql({type: Action.Go_To_Main})
+    expect(actions.go_To_Profile()).to.eql({type: Action.Go_To_Profile});
+    expect(actions.logOut()).to.eql({type: Action.Go_To_Landing});
+  })
 })
 &nbsp;
 &nbsp;</pre></td></tr>
@@ -317,7 +317,7 @@ it('should navigate (to profile, main, or landing)',()=&gt;{
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 22 2017 23:05:59 GMT-0500 (CDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 24 2017 20:55:10 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

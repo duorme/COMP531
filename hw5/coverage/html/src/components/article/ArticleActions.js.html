@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">68.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/21</span>
+        <span class='fraction'>15/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>4/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/15</span>
+        <span class='fraction'>10/16</span>
       </div>
       <div class='fl pad1y'>
         <span class="strong">1 branch</span>
@@ -89,9 +89,17 @@
 40
 41
 42
-43</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -103,23 +111,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -128,13 +119,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//Add new Article
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import 'isomorphic-fetch'
+//Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
 export const addNewArticle=<span class="fstat-no" title="function not covered" >(text)=&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(dispatch)=&gt;{</span></span></span>
 	//use resource to post article
+&nbsp;
 	const <span class="cstat-no" title="statement not covered" >article={text}</span>
 	resource(<span class="cstat-no" title="statement not covered" >'POST','article',article)</span>
 	.then(<span class="fstat-no" title="function not covered" >(r)=&gt;{</span>
@@ -145,24 +159,28 @@ export const addNewArticle=<span class="fstat-no" title="function not covered" >
 	})
 	
 }
+// get article action
 export const loadArticle=<span class="fstat-no" title="function not covered" >(articles)=&gt;{</span>
 	return<span class="cstat-no" title="statement not covered" >{</span>
 		type:Action.Load_Articles,
 		articles
 	}
 }
+//fetch article from server
 export const fetchArticle=()=&gt;(dispatch)=&gt;{
 	resource('GET','articles')
 	.then(<span class="fstat-no" title="function not covered" >(r)=&gt;{</span>
 		dispatch(<span class="cstat-no" title="statement not covered" >loadArticle(r.articles))</span>
 	})
 }
+// use search bar to search article
 export const searchArticles=(text)=&gt;{
 	return{
 		type:Action.Search_Articles,
 		text
 	}
 }
+// action to show comment
 export const showComment=<span class="fstat-no" title="function not covered" >(id)=&gt;{</span>
 	return <span class="cstat-no" title="statement not covered" >{</span>
 		type:Action.Show_Comment,
@@ -179,7 +197,7 @@ export const showComment=<span class="fstat-no" title="function not covered" >(i
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 22 2017 23:05:59 GMT-0500 (CDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 24 2017 20:55:10 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

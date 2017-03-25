@@ -27,7 +27,6 @@ const NewArticle=({addArticle})=>{
 
 }
 NewArticle.PropTypes={
-	author:PropTypes.string.isRequired,
 	addNewArticle:PropTypes.func.isRequired
 }
 export default connect(null,

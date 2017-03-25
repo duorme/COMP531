@@ -1,4 +1,3 @@
-import 'isomorphic-fetch'
 //Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
 export const addNewArticle=(text)=>(dispatch)=>{

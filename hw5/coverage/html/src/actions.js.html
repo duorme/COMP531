@@ -20,27 +20,27 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.88% </span>
+        <span class="strong">91.43% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>31/32</span>
+        <span class='fraction'>32/35</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/8</span>
+        <span class='fraction'>10/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/9</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96% </span>
+        <span class="strong">88% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>24/25</span>
+        <span class='fraction'>22/25</span>
       </div>
       <div class='fl pad1y'>
-        <span class="strong">1 statement, 1 branch</span>
+        <span class="strong">1 statement, 2 branches</span>
         <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
       </div>
     </div>
@@ -138,7 +138,8 @@
 89
 90
 91
-92</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+92
+93</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,6 +177,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,22 +217,22 @@
 <span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "isomorphic-fetch"
-&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import  fetch from 'isomorphic-fetch'
+// Actions in this app
 const Action={
 	Go_To_Main:'Go_To_Main',
 	Go_To_Landing:'Go_To_Landing',
@@ -252,31 +254,32 @@ const Action={
 }
 export default Action
 &nbsp;
-&nbsp;
+// log out action
 export const logOut = ()=&gt;{
 	return {
 	type: Action.Go_To_Landing
 }
 }
-&nbsp;
+// go to main page
 export const go_To_Main = ()=&gt;{
 	return {
 	type: Action.Go_To_Main
 }
 }
-&nbsp;
+// navigate to profile
 export const go_To_Profile = ()=&gt;{
 	return {
 	type: Action.Go_To_Profile
 }
 }
+// 
 export const addUser=<span class="fstat-no" title="function not covered" >(info)=&gt;{</span>
 	return<span class="cstat-no" title="statement not covered" >{</span>
 		type:Action.Add_My_User,
 		info
 	}
 }
-export const sucess=(message)=&gt;{
+export const success=(message)=&gt;{
 	return{
 		type:Action.Success,
 		message
@@ -290,7 +293,7 @@ export const error=(message)=&gt;{
 }
 &nbsp;
 export const url = 'https://webdev-dummy.herokuapp.com'
-// export const url='localhost'
+ // export const url='aaa'
 &nbsp;
 export const resource = (method, endpoint, payload) =&gt; {
   const options =  {
@@ -305,12 +308,12 @@ export const resource = (method, endpoint, payload) =&gt; {
 &nbsp;
   return fetch(`${url}/${endpoint}`, options)
     .then((r) =&gt; {
-      if (r.status === 200) {
+      if (<span class="missing-if-branch" title="else path not taken" >E</span>r.status === 200) {
         r</span>eturn (r.headers.get('Content-Type').indexOf('json') &gt; 0) ? r.json() : <span class="branch-1 cbranch-no" title="branch not covered" >r.text()
       } else {
         // useful for debugging, but remove in production
-        console.error(`${method} ${endpoint} ${r.statusText}`)
-        throw new Error(r.statusText)
+        console.<span class="cstat-no" title="statement not covered" >error(`${method} ${endpoint} ${r.statusText}`)</span>
+        throw <span class="cstat-no" title="statement not covered" >new Error(r.statusText)</span>
       }
     })
 }
@@ -326,7 +329,7 @@ export const resource = (method, endpoint, payload) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 22 2017 23:05:59 GMT-0500 (CDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 24 2017 20:55:10 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

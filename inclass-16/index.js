@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 let next=4
 let author='Tong'
-var data={'articles': [{
+let data={'articles': [{
                 id: 1,
                 author: 'Scott',
                 body: 'A post'
@@ -18,7 +18,7 @@ var data={'articles': [{
 
 const addArticle = (req, res) => {
      console.log('Payload received', req.body)
-     var newArticle={id:next,author:author,body:req.body['text']}
+     const newArticle={id:next,author:author,body:req.body['text']}
      data['articles'].push(newArticle)
      next++
      res.send(req.body)

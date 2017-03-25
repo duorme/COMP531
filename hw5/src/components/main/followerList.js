@@ -45,7 +45,6 @@ FollowerList.PropTypes={
 
 export default connect(
 	(state)=>{
-		//let follower=Object.keys(state.follower.followers).map((id) => state.follower.followers[id])
 		return{
 		follower:state.follower.followers
 
