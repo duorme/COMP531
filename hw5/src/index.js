@@ -13,7 +13,7 @@ import Reducer from './reducers'
 import APP from './components/app'
 require('./styles.css')
 
-//const logger = createLogger()
+// const logger = createLogger()
 // const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
 const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
 

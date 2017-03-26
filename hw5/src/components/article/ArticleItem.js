@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {Media,ButtonGroup,Button,Col} from 'react-bootstrap'
+import {Media,ButtonGroup,Button,Col,ListGroup} from 'react-bootstrap'
 import Comment from './Comment'
 const ArticleItem = ({id,text,date,img,author,comments,showcomm,showCommAction})=>{
   const show=()=>{
@@ -23,12 +23,12 @@ const ArticleItem = ({id,text,date,img,author,comments,showcomm,showCommAction})
       <Button>Edit Post</Button>
       </ButtonGroup>
 
-      <ul>
+      <ListGroup>
         {showcomm?
           comments.map((item)=>(
           <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text}></Comment>)):''}
       
-      </ul>
+      </ListGroup>
 
     </Media>
 

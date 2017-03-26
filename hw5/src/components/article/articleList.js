@@ -18,8 +18,6 @@ const ArticleList = ({articleList,search,showCommAction})=>{
   }
 	return(	
 <div>
-
-
   <NewArticle></NewArticle>
   <Form className="col-md-8 col-md-offset-1">
   <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >

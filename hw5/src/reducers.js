@@ -114,7 +114,7 @@ export const articles = (state = {
 			article[0].showcomm=!article[0].showcomm
 			return{
 				...state,
-				articles:state.articles
+				articles:[...state.articles]
 			}
 		default:
 			return state;
