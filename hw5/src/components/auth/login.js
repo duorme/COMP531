@@ -2,26 +2,14 @@ import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {updateUser,_Login} from './LandingAction'
 import {go_To_Main} from '../../actions'
+import FieldGroup from '../FieldGroup'
 
-import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
+import {Button,Form} from 'react-bootstrap'
 // component for login
 let Login = ({_Login}) => {
 	let name;
   let pass;
 
-	function FieldGroup({ id, sm_title,label,sm_input ,...props }) {
-  	return (
-
-  	<FormGroup controlId={id}>
-      <Col componentClass={ControlLabel} sm={sm_title}>
-        {label}
-      </Col>
-      <Col sm={sm_input}>
-        <FormControl {...props}/>
-      </Col>
-    </FormGroup>
-  );
-}
 const onLogin=function(){
 _Login(name.value,pass.value)
 

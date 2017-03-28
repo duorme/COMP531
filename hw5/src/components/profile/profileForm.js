@@ -1,8 +1,9 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {Button,Form,FormGroup,ControlLabel,FormControl,Col,Panel,ListGroup,ListGroupItem,HelpBlock} from 'react-bootstrap'
+import {Button,Form,Panel,ListGroup,ListGroupItem,HelpBlock} from 'react-bootstrap'
 import {validation} from './profileActions'
 import Message from '../message'
+import FieldGroup from '../FieldGroup'
 //Component to show the profile and change the data
 let ProfileForm = ({Error,success,userInfo,updateProfile}) => {
 
@@ -10,20 +11,6 @@ let ProfileForm = ({Error,success,userInfo,updateProfile}) => {
 	let zipcode;
 	let email;
 	let passConfirm
-
-	function FieldGroup({ id, sm_title,label,sm_input,current,...props }) {
-  	return (
-  	<FormGroup controlId={id}>
-      <Col componentClass={ControlLabel} sm={sm_title}>
-        {label}
-      </Col>
-      <Col sm={sm_input}>
-        <FormControl {...props}/>
-      </Col>
-      <HelpBlock>{current}</HelpBlock>
-    </FormGroup>
-  );
-}
 const onUpdateClick = function() {
 	event.preventDefault();
 	const information={

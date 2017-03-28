@@ -7,6 +7,7 @@ import {error} from '../../actions'
 
 //Folower List and input to create new follower
 const FollowerList=({follower,follow,error})=>{
+
 	let input;
 	const _addFollower=()=>{
 		if(input && input.value){
@@ -17,14 +18,14 @@ const FollowerList=({follower,follow,error})=>{
 			error("Follower's name can't be empty")
 		}
 	}
-
 	return(
 		<div>
 		<div className="card">
 		<h3> Followers</h3>
 		<ul>
-		{follower.map(({id,img,author,headline})=>(
-			<Follower key={id} id={id} img={img} name={author} headline={headline}></Follower>
+		{
+			follower.map(({avatar,author,headline})=>(			
+			<Follower key={author} id={author} avatar={avatar} author={author} headline={headline}></Follower>
 		))}
 		</ul>
 		<input ref={(node)=>{input=node}} placeholder="add a follower"></input>
@@ -46,7 +47,7 @@ FollowerList.PropTypes={
 export default connect(
 	(state)=>{
 		return{
-		follower:state.follower.followers
+		follower:Object.keys(state.follower.followers).map((v)=>state.follower.followers[v])
 
 	}
 	},

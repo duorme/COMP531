@@ -69,7 +69,7 @@ const User = (state = {
 	}
 }
 export const follower = (state = {
-	followers: []
+	followers: {}
 }, action) => {
 	switch (action.type) {
 		case Action.Load_Followers:
@@ -78,9 +78,11 @@ export const follower = (state = {
 			followers:action.following
 		}
 		case Action.Add_Follower:
+			const newfollowers=state.followers
+			newfollowers[action.newFollower.author]=action.newFollower
 			return {
 				...state,
-				followers:[...state.followers,action.newFollower]
+				followers:newfollowers
 			}
 		case Action.Remove_Follower:
 			return {...state,followers: state.followers.filter((item) => item.id != action.id)}

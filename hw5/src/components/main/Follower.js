@@ -3,15 +3,15 @@ import {Media} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import {unfollow} from './FollowerActions'
 // Item of follower, can remove any follower.
-const Follower = ({img,name,headline,unfollow})=>{
+const Follower = ({avatar,author,headline,unfollow})=>{
 		return(
 			<div>
 			<Media className="follower">
       <Media.Left align="top" >
-        <img className="followerImg" src={img}/>
+        <img className="followerImg" src={avatar}/>
       </Media.Left>
       <Media.Body>
-        <Media.Heading>{name}</Media.Heading>
+        <Media.Heading>{author}</Media.Heading>
         <p>{headline}</p>  
         <i className="destroy glyphicon glyphicon-remove" onClick={unfollow}></i>    
       </Media.Body>

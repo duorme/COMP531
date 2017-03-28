@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {validation} from './LandingAction'
 import { go_To_Main,addUser} from '../../actions'
 import Message from '../message'
-import {Button,Form,FormGroup,ControlLabel,FormControl,Col} from 'react-bootstrap'
+import FieldGroup from '../FieldGroup'
+import {Button,Form} from 'react-bootstrap'
 // Get input from Form, validate data and then save to state.
 let Registration = ({message,validation,addUser}) => {
 
@@ -14,18 +15,6 @@ let Registration = ({message,validation,addUser}) => {
 	let zipcode;
 	let email;
 
-	function FieldGroup({ id, sm_title,label,sm_input ,...props }) {
-  	return (
-  	<FormGroup controlId={id}>
-      <Col componentClass={ControlLabel} sm={sm_title}>
-        {label}
-      </Col>
-      <Col sm={sm_input}>
-        <FormControl {...props}/>
-      </Col>
-    </FormGroup>
-  );
-}
 const onRegisterClick = function() {
 	const information={
 		password:password.value,
