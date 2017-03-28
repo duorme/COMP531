@@ -1,4 +1,4 @@
 {
 "netid":"tz13",
-"mongourl":"mongodb://mongodb://heroku_gglshpc6:7ktol664c77ms01nqbmhbeb9vu@ds143980.mlab.com:43980/heroku_gglshpc6"
+"backend":"https://tongbook.herokuapp.com"
 }
