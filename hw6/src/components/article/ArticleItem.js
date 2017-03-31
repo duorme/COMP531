@@ -25,12 +25,10 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
                 onChange={(e)=>{console.log(e)}} // handle innerHTML change
               />
            </Media.Heading>
-          <ContentEditable  html={`<p>${text}<p>`} // innerHTML of the editable div
+          <ContentEditable  html={`<p>${text}<p> <img src=${img}></img>`} // innerHTML of the editable div
                 disabled={!isEdited}       // use true to disable edition
                 onChange={(e)=>{console.log(e)}} >
-        </ContentEditable>  
-        <p>{text}</p>
-        <img src={img}></img> 
+        </ContentEditable> 
       </Media.Body>
       <ButtonGroup>
       <Button onClick={show}>Show Comments</Button>
