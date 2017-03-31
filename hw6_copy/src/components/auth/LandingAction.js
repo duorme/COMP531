@@ -31,8 +31,8 @@ export const _Login =(username,password)=> (dispatch) => {
 	.then((response)=>{
 	dispatch(updateUser(response.username))
 	dispatch(go_To_Main())
-	dispatch(fetchArticle())
 	dispatch(fetchFollowers())
+	dispatch(fetchArticle())
 	dispatch(fetchProfile())
 	}).catch((Error)=>{
 		dispatch(error(`There was an error logging in as ${username}`))

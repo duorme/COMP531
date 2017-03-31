@@ -51,4 +51,14 @@ img.myPic{
 	margin-left:0px;
 }
 
+#profileAvatar{
+	max-height: 200px;
+	max-width:200px
+}
+#briefAvatar{
+	max-height: 200px;
+	max-width:200px
+}
+
+
 
