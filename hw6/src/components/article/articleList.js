@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
-import {searchArticles,showComment} from './ArticleActions'
+import {searchArticles,showComment,editArticle} from './ArticleActions'
 import {go_To_Profile,logOut,resource,url} from '../../actions'
 import ArticleItem  from './ArticleItem'
 import NewArticle from './newArticle'
 
 //create card list, pass showComment Action to each Article Item
 
-const ArticleList = ({loginUser,articleList,search,showCommAction})=>{
+const ArticleList = ({loginUser,articleList,search,showCommAction,editArticleAction})=>{
   let input;
   // search article based on filter
   const _search=()=>{
@@ -23,9 +23,9 @@ const ArticleList = ({loginUser,articleList,search,showCommAction})=>{
   <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
   </Form>
   <ul className="articles col-md-8 col-md-offset-1">
-  {articleList.map(({_id,text,avatar,date,img,comments,author,showcomm})=>(
+  {articleList.map(({_id,text,avatar,date,img,comments,author,showcomm,isEdited})=>(
     <ArticleItem key={_id} id={_id} text={text} avatar={avatar} date={date} img={img} author={author} comments={comments} showcomm={showcomm}
-    showCommAction={showCommAction} loginUser={loginUser}></ArticleItem>))}
+    showCommAction={showCommAction} loginUser={loginUser} editArticle={editArticleAction} isEdited={isEdited}></ArticleItem>))}
   </ul>
     
   </div>
@@ -69,7 +69,9 @@ export default connect(
       logout:()=>dispatch(logOut()),
       profile:()=>dispatch(go_To_Profile()),
       search:(text)=>dispatch(searchArticles(text)),
-      showCommAction:(id)=>dispatch(showComment(id))
+      showCommAction:(id)=>dispatch(showComment(id)),
+      editArticleAction:(id)=>dispatch(editArticle(id))
+
     }
   }
 

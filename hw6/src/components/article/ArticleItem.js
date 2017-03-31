@@ -16,9 +16,9 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
       <Media.Left align="top" >
         <img className="postImg" src={avatar}/>
       </Media.Left>
-      <Media.Body className="content">
+      <Media.Body contentEditable={isEdited} className="content">
         <Media.Heading>{author} {" "} said on {" "} {date}</Media.Heading>
-        <p contentEditable={isEdited}>{text}</p>
+        <p>{text}</p>
         <img src={img}></img>   
       </Media.Body>
       <ButtonGroup>
