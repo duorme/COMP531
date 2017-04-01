@@ -7,9 +7,10 @@ export const addNewArticle=(text,file)=>(dispatch)=>{
 	fd.append('text',text)
 	resource('POST','article',fd,false)
 	.then((r)=>{
+		const newArticle={...r.articles[0],showcomm:false,isEdited:false}
 		dispatch({
 		type:Action.Add_New_Article,
-		newArticle:r.articles[0]
+		newArticle
 	})
 	})
 	
@@ -54,15 +55,19 @@ export const editArticle=(id)=>{
 		id
 	}
 }
-console.error = (function() {
-    var error = console.error
-
-    return function(exception) {
-        if ((exception + '').indexOf('Warning: A component is `contentEditable`') != 0) {
-            error.apply(console, arguments)
-        }
-    }
-})()
+export const updateArticle=(message,id,commentId)=>(dispatch)=>{
+	const payload={}
+	payload["text"]=message
+	if(commentId) payload[commentId]=commentId
+	resource('PUT',`articles/${id}`,payload)
+	.then((r)=>{
+		const newArticle={...r.articles[0],showcomm:false,isEdited:true}
+		dispatch({
+			type:Action.Update_Article,
+			newArticle
+		})
+	})
+}
 
 
 

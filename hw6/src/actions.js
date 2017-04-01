@@ -18,7 +18,8 @@ const Action={
 	Update_Profile:'Update_Profile',
 	Show_Comment:'Show_Comment',
 	Add_New_Article:'Add_New_Article',
-	Edit_Article:'Edit_Article'
+	Edit_Article:'Edit_Article',
+	Update_Article:'Update_Article'
 }
 export default Action
 

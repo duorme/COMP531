@@ -3,12 +3,15 @@ import { connect } from 'react-redux'
 import {Media,ButtonGroup,Button,Col,ListGroup} from 'react-bootstrap'
 import Comment from './Comment'
 import ContentEditable from 'react-contenteditable'
-const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction})=>{
+const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction})=>{
   const show=()=>{
     showCommAction(id)
   }
   const edit=()=>{
     editArticleAction(id)
+  }
+  const saveArticle=(e)=>{
+    updateArticleAction(e.target.value,id)
   }
   return(   
     //Create Article card
@@ -19,16 +22,13 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
       </Media.Left>
       <Media.Body className="content">
         <Media.Heading>
-          <ContentEditable
-                html={`${author} said on ${date}`} // innerHTML of the editable div
+         {author} {" "}said{" "} on{" "} {date}
+        </Media.Heading>
+          <ContentEditable  html={`${text}`} // innerHTML of the editable div
                 disabled={!isEdited}       // use true to disable edition
-                onChange={(e)=>{console.log(e)}} // handle innerHTML change
-              />
-           </Media.Heading>
-          <ContentEditable  html={`<p>${text}<p> <img src=${img}></img>`} // innerHTML of the editable div
-                disabled={!isEdited}       // use true to disable edition
-                onChange={(e)=>{console.log(e)}} >
+                onChange={(e)=>{saveArticle(e)}}>
         </ContentEditable> 
+        <img src={img}></img>
       </Media.Body>
       <ButtonGroup>
       <Button onClick={show}>Show Comments</Button>

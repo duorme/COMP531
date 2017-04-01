@@ -104,8 +104,8 @@ export const articles = (state = {
 			...state,
 			articles:action.articles
 		}
+		case Action.Update_Article:
 		case Action.Add_New_Article:
-		const article_comm={...action.newArticle,showcomm:false,isEdited:false}
 		const newarticles=state.articles
 		newarticles[action.newArticle['_id']]=action.newArticle
 			return {
