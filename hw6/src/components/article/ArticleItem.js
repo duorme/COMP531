@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,Button,Col,ListGroup} from 'react-bootstrap'
+import {showComment,editArticle,updateArticle} from './ArticleActions'
 import Comment from './Comment'
+import NewComment from './NewComment'
 import ContentEditable from 'react-contenteditable'
 const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction})=>{
   const show=()=>{
@@ -33,6 +35,8 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
       <ButtonGroup>
       <Button onClick={show}>Show Comments</Button>
       <Button>Add a Comment</Button>
+
+
       {
         loginUser!=author?'':<Button onClick={edit}>
         {isEdited? "Save" : "Edit"}</Button>   
@@ -45,6 +49,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
           <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text}></Comment>)):''}
       
       </ListGroup>
+      <NewComment></NewComment>
 
     </Media>
 
@@ -63,6 +68,14 @@ ArticleItem.PropTypes={
     author: PropTypes.string.isRequired
 }
 
-export default ArticleItem
+export default connect(null,
+  (dispatch)=>{
+    return{
+      editArticleAction:(id)=>dispatch(editArticle(id)),
+      showCommAction:(id)=>dispatch(showComment(id)),
+      updateArticleAction:(text,id,commentId)=>dispatch(updateArticle(text,id,commentId))
+      }
+  }
+  )(ArticleItem)
 
   

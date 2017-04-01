@@ -1,9 +1,11 @@
 //Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
 
-const addAttribute=(article,showcomm=false,isEdited=false)=>{
+const addAttribute=(article,showcomm=false,isEdited=false,editComment=false,addComment=false)=>{
 		article["showcomm"]= showcomm
 		article["isEdited"]= isEdited
+		article["editComment"]=editComment
+		article["addComment"]=addComment
 	return article
 
 }
