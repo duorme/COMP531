@@ -1,5 +1,12 @@
 //Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
+
+const addAttribute=(article,showcomm=false,isEdited=false)=>{
+		article["showcomm"]= showcomm
+		article["isEdited"]= isEdited
+	return article
+
+}
 export const addNewArticle=(text,file)=>(dispatch)=>{
 	//use resource to post article
 	const fd = new FormData()
@@ -7,7 +14,7 @@ export const addNewArticle=(text,file)=>(dispatch)=>{
 	fd.append('text',text)
 	resource('POST','article',fd,false)
 	.then((r)=>{
-		const newArticle={...r.articles[0],showcomm:false,isEdited:false}
+		const newArticle=addAttribute(r.articles[0])
 		dispatch({
 		type:Action.Add_New_Article,
 		newArticle
@@ -27,9 +34,7 @@ export const fetchArticle=()=>(dispatch)=>{
 	resource('GET','articles')
 	.then((r)=>{
 		const articles=r.articles.reduce((o,v)=>{
-			v['showcomm']=false;
-			v['isEdited']=false;
-			o[v._id]=v;
+			o[v._id]=addAttribute(v);
 			return o},{})
 
 		dispatch(loadArticle(articles))
@@ -61,10 +66,10 @@ export const updateArticle=(message,id,commentId)=>(dispatch)=>{
 	if(commentId) payload[commentId]=commentId
 	resource('PUT',`articles/${id}`,payload)
 	.then((r)=>{
-		const newArticle={...r.articles[0],showcomm:false,isEdited:true}
+		
 		dispatch({
 			type:Action.Update_Article,
-			newArticle
+			newArticle:addAttribute(r.articles[0],false,true)
 		})
 	})
 }
