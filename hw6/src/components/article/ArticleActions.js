@@ -62,10 +62,16 @@ export const editArticle=(id)=>{
 		id
 	}
 }
+export const addnewComment=(id)=>{
+	return{
+		type:Action.Add_Comment,
+		id
+	}
+}
 export const updateArticle=(message,id,commentId)=>(dispatch)=>{
 	const payload={}
 	payload["text"]=message
-	if(commentId) payload[commentId]=commentId
+	if(commentId) payload["commentId"]=commentId
 	resource('PUT',`articles/${id}`,payload)
 	.then((r)=>{
 		

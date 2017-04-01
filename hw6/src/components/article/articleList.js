@@ -26,9 +26,10 @@ const ArticleList = ({loginUser,articleList,search})=>{
   <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
   </Form>
   <ul className="articles col-md-8 col-md-offset-1">
-  {articleList.map(({_id,text,avatar,date,img,comments,author,showcomm,isEdited})=>(
-    <ArticleItem key={_id} id={_id} text={text} avatar={avatar} date={date} img={img} author={author} comments={comments} showcomm={showcomm}
-     loginUser={loginUser} isEdited={isEdited}></ArticleItem>))}
+  {
+    articleList.map((c)=>(
+    <ArticleItem key={c._id} id={c._id} text={c.text} avatar={c.avatar} date={c.date} img={c.img} author={c.author} comments={c.comments} showcomm={c.showcomm}
+     loginUser={loginUser} isEdited={c.isEdited} addComment={c.addComment}></ArticleItem>))}
   </ul>
     
   </div>

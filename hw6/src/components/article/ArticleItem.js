@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,Button,Col,ListGroup} from 'react-bootstrap'
-import {showComment,editArticle,updateArticle} from './ArticleActions'
+import {showComment,editArticle,updateArticle,addnewComment} from './ArticleActions'
 import Comment from './Comment'
 import NewComment from './NewComment'
 import ContentEditable from 'react-contenteditable'
-const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction})=>{
+const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction,addComment,addCommentAction})=>{
   const show=()=>{
     showCommAction(id)
   }
@@ -34,7 +34,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
       </Media.Body>
       <ButtonGroup>
       <Button onClick={show}>Show Comments</Button>
-      <Button>Add a Comment</Button>
+      <Button onClick={()=>addCommentAction(id)}>Add a Comment</Button>
 
 
       {
@@ -44,12 +44,17 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         </ButtonGroup>
 
       <ListGroup>
-        {showcomm?
-          comments.map((item)=>(
-          <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text}></Comment>)):''}
+        {
+          showcomm?
+          comments.sort((a, b) => {
+          if (a.date == b.date) return 0
+          else if (a.date > b.date) return -1
+          else return 1
+      }).map((item)=>(
+          <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text} loginUser={loginUser}></Comment>)):''}
       
       </ListGroup>
-      <NewComment></NewComment>
+      {addComment?<NewComment articleId={id}></NewComment>:""}
 
     </Media>
 
@@ -73,7 +78,8 @@ export default connect(null,
     return{
       editArticleAction:(id)=>dispatch(editArticle(id)),
       showCommAction:(id)=>dispatch(showComment(id)),
-      updateArticleAction:(text,id,commentId)=>dispatch(updateArticle(text,id,commentId))
+      updateArticleAction:(text,id,commentId)=>dispatch(updateArticle(text,id,commentId)),
+      addCommentAction:(id)=>dispatch(addnewComment(id))
       }
   }
   )(ArticleItem)

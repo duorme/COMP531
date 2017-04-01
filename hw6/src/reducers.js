@@ -121,6 +121,14 @@ export const articles = (state = {
 				...state,
 				articles:{...state.articles}
 			}
+		case Action.Add_Comment:
+			const article_comment=state.articles[action.id]
+			article_comment.addComment=!article_comment.addComment
+			return{
+				...state,
+				articles:{...state.articles}
+			}
+
 		case Action.Edit_Article:
 			const newarticle=state.articles[action.id]
 			newarticle.isEdited=!newarticle.isEdited

@@ -19,7 +19,8 @@ const Action={
 	Show_Comment:'Show_Comment',
 	Add_New_Article:'Add_New_Article',
 	Edit_Article:'Edit_Article',
-	Update_Article:'Update_Article'
+	Update_Article:'Update_Article',
+	Add_Comment:'Add_Comment'
 }
 export default Action
 
