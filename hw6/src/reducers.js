@@ -133,6 +133,15 @@ export const articles = (state = {
 			const newarticle=state.articles[action.id]
 			newarticle.isEdited=!newarticle.isEdited
 			return{...state,articles:{...state.articles}}
+		case Action.Edit_Comment:
+			const article_editComment=state.articles[action.articleId]
+			const comment=article_editComment.comments.filter((v)=>v.commentId==action.commentId)
+			comment[0].editComment=!comment[0].editComment
+			return{
+				...state,
+				articles:{...state.articles}
+			}
+
 		default:
 			return state;
 	}

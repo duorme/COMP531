@@ -20,7 +20,9 @@ const Action={
 	Add_New_Article:'Add_New_Article',
 	Edit_Article:'Edit_Article',
 	Update_Article:'Update_Article',
-	Add_Comment:'Add_Comment'
+	Add_Comment:'Add_Comment',
+	Edit_Comment:'Edit_Comment'
+
 }
 export default Action
 

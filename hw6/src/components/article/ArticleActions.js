@@ -4,8 +4,8 @@ import Action,{url,resource,sucess,error} from '../../actions'
 const addAttribute=(article,showcomm=false,isEdited=false,editComment=false,addComment=false)=>{
 		article["showcomm"]= showcomm
 		article["isEdited"]= isEdited
-		article["editComment"]=editComment
 		article["addComment"]=addComment
+		article.comments.forEach((v)=>{v["editComment"]=false})
 	return article
 
 }
@@ -66,6 +66,13 @@ export const addnewComment=(id)=>{
 	return{
 		type:Action.Add_Comment,
 		id
+	}
+}
+export const editCommentAction=(articleId,commentId)=>{
+	return{
+		type:Action.Edit_Comment,
+		articleId,
+		commentId
 	}
 }
 export const updateArticle=(message,id,commentId)=>(dispatch)=>{

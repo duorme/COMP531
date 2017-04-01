@@ -51,7 +51,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
           else if (a.date > b.date) return -1
           else return 1
       }).map((item)=>(
-          <Comment key={item.commentId} id={item.commentId} author={item.author} date={item.date} text={item.text} loginUser={loginUser}></Comment>)):''}
+          <Comment key={item.commentId} commentId={item.commentId} author={item.author} date={item.date} text={item.text} loginUser={loginUser} articleId={id} editComment={item.editComment}></Comment>)):''}
       
       </ListGroup>
       {addComment?<NewComment articleId={id}></NewComment>:""}
