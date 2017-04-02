@@ -2,12 +2,23 @@ import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {Media,Button} from 'react-bootstrap'
 import ContentEditable from 'react-contenteditable'
-import {editCommentAction} from './ArticleActions'
+import {editCommentAction,updateComment} from './ArticleActions'
 // component for each article item
-let Comment=({commentId,avatar, author, date, text,loginUser,editComment,articleId,editCommentAction})=>{
-	console.log("editComment",editComment,commentId)
+let Comment=({commentId,avatar, author, date, text,loginUser,editComment,articleId,editCommentAction,updateComment})=>{
+	let post
 	const edit=()=>{
+		console.log(post)
+		if(!editComment){
 		editCommentAction(articleId,commentId)
+		}
+		else{
+			updateComment(post,articleId,commentId)
+			post.value=""
+		}
+	}
+	const saveArticle=(e)=>{
+		post=e.target.value
+		console.log(post)
 	}
 	return(
 
@@ -22,10 +33,11 @@ let Comment=({commentId,avatar, author, date, text,loginUser,editComment,article
         </Media.Heading>
           <ContentEditable  html={`${text}`} // innerHTML of the editable div
                 disabled={!editComment}       // use true to disable edition
-                onChange={(e)=>{saveArticle(e)}}>
+                onChange={(e)=>{saveComment(e)}}>
         </ContentEditable> 
       </Media.Body>
-     {loginUser === author?<Button onClick={edit}>Edit</Button>:""}
+     {loginUser === author?<Button onClick={edit}>{
+     	editComment?Save:Edit}</Button>:""}
     </Media>
 
   </div>
@@ -35,7 +47,8 @@ let Comment=({commentId,avatar, author, date, text,loginUser,editComment,article
 export default connect(null,
 	(dispatch)=>{
 		return{
-		editCommentAction: (articleId,commentId)=>dispatch(editCommentAction(articleId,commentId))
+		editCommentAction: (articleId,commentId)=>dispatch(editCommentAction(articleId,commentId)),
+		updateComment:(post,articleId,commentId)=>dispatch(updateComment(post,articleId,commentId))
 	    }
 	}
 	)(Comment)

@@ -33,22 +33,22 @@ const onRegisterClick = function() {
    <Message text={message}></Message>
     <Form horizontal id="Registration">
     <h1>Registration</h1>
-    <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} required type="text"
+    <FieldGroup id= "formHorizontalUserName" sm_title = {2} id="registerName" label="Your name" sm_input={5} required type="text"
 	placeholder="Your name" inputRef={(ref)=>{username=ref;}}></FieldGroup>
-	<FieldGroup id= "formHorizontalEmail" sm_title = {2} label="Email" sm_input={5} required type="email"
+	<FieldGroup id= "formHorizontalEmail" sm_title = {2} label="Email" id="registerEmail" sm_input={5} required type="email"
 	placeholder="t@gmail.com" inputRef={(ref)=>{email=ref;}}></FieldGroup>
-	<FieldGroup id= "formHorizontalBirth" sm_title = {2} label="Birthday" sm_input={5} type="date" 
+	<FieldGroup id= "formHorizontalBirth" sm_title = {2} label="Birthday" id="registerdob" sm_input={5} type="date" 
 	placeholder="MM-DD-YYYY" name="date" inputRef={(ref)=>{dob=ref;}} required></FieldGroup>
-	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
+	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" id="registerZipcode" sm_input={5} type="text" 
 	placeholder="77005" pattern = "^\d{5}$" required inputRef={(ref)=>{zipcode=ref;}}></FieldGroup>
-    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{password=ref;}}  sm_input={5} type="password" placeholder="Password" required
+    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" id="registerPassword" inputRef={(ref)=>{password=ref;}}  sm_input={5} type="password" placeholder="Password" required
 	placeholder="Your Password"></FieldGroup>
-	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" required
+	<FieldGroup id= "formHorizontalConfirmation" sm_title = {2} label="Confirmation" id="registerConfirmation"inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Confirmation Password" required
 	placeholder="Your Password"></FieldGroup>
 
     
   </Form>
-        <Button type="submit" onClick={onRegisterClick} className="col-md-offset-4">
+        <Button type="submit" onClick={onRegisterClick} id="submitBtn" className="col-md-offset-4">
           Register
         </Button>
 

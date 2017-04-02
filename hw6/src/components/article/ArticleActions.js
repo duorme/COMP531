@@ -72,7 +72,7 @@ export const editCommentAction=(articleId,commentId)=>{
 	return{
 		type:Action.Edit_Comment,
 		articleId,
-		commentId
+		commentId,
 	}
 }
 export const updateArticle=(message,id,commentId)=>(dispatch)=>{
@@ -81,12 +81,22 @@ export const updateArticle=(message,id,commentId)=>(dispatch)=>{
 	if(commentId) payload["commentId"]=commentId
 	resource('PUT',`articles/${id}`,payload)
 	.then((r)=>{
+		if(commentId){
+			dispatch({
+			type:Action.Update_Article,
+			newArticle:addAttribute(r.articles[0],true,true)
+			})
+			return
+		}
 		
 		dispatch({
 			type:Action.Update_Article,
 			newArticle:addAttribute(r.articles[0],false,true)
 		})
 	})
+}
+export updateComment=(message,id,commentId)=>(dispatch)=>{
+
 }
 
 

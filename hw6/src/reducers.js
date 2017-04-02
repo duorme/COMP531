@@ -81,7 +81,7 @@ export const follower = (state = {
 			followers:action.following
 		}
 		case Action.Add_Follower:
-			const newfollowers=state.followers
+			const newfollowers={...state.followers}
 			newfollowers[action.newFollower.author]=action.newFollower
 			return {
 				...state,
@@ -106,7 +106,7 @@ export const articles = (state = {
 		}
 		case Action.Update_Article:
 		case Action.Add_New_Article:
-		const newarticles=state.articles
+		const newarticles={...state.articles}
 		newarticles[action.newArticle['_id']]=action.newArticle
 			return {
 				...state,
@@ -115,31 +115,64 @@ export const articles = (state = {
 		case Action.Search_Articles:
 			return {...state,filter: action.text}
 		case Action.Show_Comment:
-			const article=state.articles[action.id]
-			article.showcomm=!article.showcomm
 			return{
 				...state,
-				articles:{...state.articles}
+				articles:Object.keys(state.articles).reduce((o,key)=>{
+					if(key != action.id){
+						o[key]=state.articles[key];return o
+					}
+					else{
+						o[key]={...state.articles[key],showcomm:!state.articles[key].showcomm};
+						return o
+					}
+				},{})
 			}
 		case Action.Add_Comment:
-			const article_comment=state.articles[action.id]
-			article_comment.addComment=!article_comment.addComment
 			return{
 				...state,
-				articles:{...state.articles}
+				articles:Object.keys(state.articles).reduce((o,key)=>{
+					if(key != action.id){
+						o[key]=state.articles[key];return o
+					}
+					else{
+						o[key]={...state.articles[key],addComment:!state.articles[key].addComment}
+						return o
+					}
+				},{})
 			}
 
 		case Action.Edit_Article:
-			const newarticle=state.articles[action.id]
-			newarticle.isEdited=!newarticle.isEdited
-			return{...state,articles:{...state.articles}}
+			return{...state,articles:Object.keys(state.articles).reduce((o,key)=>{
+					if(key != action.id){
+						o[key]=state.articles[key];return o
+					}
+					else{
+						o[key]={...state.articles[key],isEdited:!state.articles[key].isEdited}
+						return o
+					}
+				},{})}
 		case Action.Edit_Comment:
-			const article_editComment=state.articles[action.articleId]
-			const comment=article_editComment.comments.filter((v)=>v.commentId==action.commentId)
-			comment[0].editComment=!comment[0].editComment
+			const newcomments=state.articles[action.articleId].comments.map((item)=>{
+				if(item.commentId ==action.commentId){
+					return{
+						...item,
+						editComment:!item.editComment
+					}
+					}
+				return item
+			})
+			const newArticle={...state.articles[action.articleId],comments:newcomments}
+			const articles=Object.keys(state.articles).reduce((o,key)=>{
+				if(key!=action.articleId){
+					o[key]=state.articles[key]
+					return o
+				}
+				else {
+					o[key]=newArticle;return o}
+			},{})
 			return{
 				...state,
-				articles:{...state.articles}
+				articles
 			}
 
 		default:

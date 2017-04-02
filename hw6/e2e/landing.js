@@ -3,18 +3,18 @@ import { findId, sleep } from './selenium'
 
 // TODO add your test user credentials here!
 exports.creds = {
-    username: 'sep1test',
-    password: 'native-web-tester',
+    username: 'tz13',
+    password: 'wrapped-feed-scientific',
 
 }
 
 exports.login = () =>
     sleep(500)
-        .then(findId('username').clear())
-        .then(findId('password').clear())
-        .then(findId('username').sendKeys(exports.creds.username))
-        .then(findId('password').sendKeys(exports.creds.password))
-        .then(findId('login').click())
+        .then(findId('loginusername').clear())
+        .then(findId('loginpassword').clear())
+        .then(findId('loginusername').sendKeys(exports.creds.username))
+        .then(findId('loginpassword').sendKeys(exports.creds.password))
+        .then(findId('Login').click())
         .then(sleep(2000))
 
 exports.logout = () =>
@@ -28,7 +28,9 @@ exports.logout = () =>
         )
         .then(sleep(500))
         
-    // IMPLEMENT ME
-    // validate the message says: 'You have logged out'
+exports register=()=>
+    sleep(500)
+        .then(findId('registerName')).clear())
+        .then(findId('register'))
 
 

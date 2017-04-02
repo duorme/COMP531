@@ -42,7 +42,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         {isEdited? "Save" : "Edit"}</Button>   
       }
         </ButtonGroup>
-
+      {addComment?<NewComment articleId={id}></NewComment>:""}
       <ListGroup>
         {
           showcomm?
@@ -54,7 +54,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
           <Comment key={item.commentId} commentId={item.commentId} author={item.author} date={item.date} text={item.text} loginUser={loginUser} articleId={id} editComment={item.editComment}></Comment>)):''}
       
       </ListGroup>
-      {addComment?<NewComment articleId={id}></NewComment>:""}
+      
 
     </Media>
 
