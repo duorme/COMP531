@@ -8,6 +8,7 @@ exports.creds = {
 
 }
 
+
 exports.login = () =>
     sleep(500)
         .then(findId('loginusername').clear())
@@ -28,9 +29,21 @@ exports.logout = () =>
         )
         .then(sleep(500))
         
-exports register=()=>
+exports.register=()=>
     sleep(500)
-        .then(findId('registerName')).clear())
-        .then(findId('register'))
+    .then(findId('registerName').clear())
+    .then(findId('registerEmail').clear())
+    .then(findId('registerdob').clear())
+    .then(findId('registerZipcode').clear())
+    .then(findId('registerPassword').clear())
+    .then(findId('registerConfirmation').clear())
+    .then(findId('registerName').sendKeys(exports.registerInfo.username))
+    .then(findId('registerEmail').sendKeys(exports.registerInfo.email))
+    .then(findId('registerdob').sendKeys(exports.registerInfo.dob))
+    .then(findId('registerZipcode').sendKeys(exports.registerInfo.zipcode))
+    .then(findId('registerPassword').sendKeys(exports.registerInfo.password))
+    .then(findId('registerConfirmation').sendKeys(exports.registerInfo.confirmation))
+    .then(findId('indexSubmit').click())
+    .then(sleep(2000))
 
 

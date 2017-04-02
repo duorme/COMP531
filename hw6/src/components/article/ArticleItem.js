@@ -6,14 +6,23 @@ import Comment from './Comment'
 import NewComment from './NewComment'
 import ContentEditable from 'react-contenteditable'
 const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction,addComment,addCommentAction})=>{
+  let post
   const show=()=>{
     showCommAction(id)
   }
   const edit=()=>{
+    if(!isEdited){
     editArticleAction(id)
   }
+    else{
+      if(post){
+      updateArticleAction(post,id)
+    }
+    }
+  }
   const saveArticle=(e)=>{
-    updateArticleAction(e.target.value,id)
+    post=e.target.value
+   
   }
   return(   
     //Create Article card
@@ -33,7 +42,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         <img src={img}></img>
       </Media.Body>
       <ButtonGroup>
-      <Button onClick={show}>Show Comments</Button>
+      <Button onClick={show}>{showcomm?"Hide Comments":"Show Comments"}</Button>
       <Button onClick={()=>addCommentAction(id)}>Add a Comment</Button>
 
 
@@ -78,7 +87,7 @@ export default connect(null,
     return{
       editArticleAction:(id)=>dispatch(editArticle(id)),
       showCommAction:(id)=>dispatch(showComment(id)),
-      updateArticleAction:(text,id,commentId)=>dispatch(updateArticle(text,id,commentId)),
+      updateArticleAction:(text,id)=>dispatch(updateArticle(text,id)),
       addCommentAction:(id)=>dispatch(addnewComment(id))
       }
   }

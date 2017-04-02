@@ -157,7 +157,7 @@ export const articles = (state = {
 					return{
 						...item,
 						editComment:!item.editComment
-					}
+						}
 					}
 				return item
 			})

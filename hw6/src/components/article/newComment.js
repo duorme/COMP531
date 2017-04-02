@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import {ButtonGroup,Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {updateArticle} from './ArticleActions'
+import {putArticle} from './ArticleActions'
 const NewComment=({articleId,addComment})=>{
 	let post;
 	const _addComment = ()=>{
@@ -31,7 +31,7 @@ NewComment.PropTypes={
 export default connect(null,
 	(dispatch)=>{
 		return{
-		addComment: (text,id,CommentId)=>dispatch(updateArticle(text,id,CommentId))
+		addComment: (text,id,CommentId)=>dispatch(putArticle(text,id,CommentId))
 	    }
 	}
 	)(NewComment)

@@ -75,7 +75,7 @@ export const editCommentAction=(articleId,commentId)=>{
 		commentId,
 	}
 }
-export const updateArticle=(message,id,commentId)=>(dispatch)=>{
+export const putArticle=(message,id,commentId)=>(dispatch)=>{
 	const payload={}
 	payload["text"]=message
 	if(commentId) payload["commentId"]=commentId
@@ -84,19 +84,24 @@ export const updateArticle=(message,id,commentId)=>(dispatch)=>{
 		if(commentId){
 			dispatch({
 			type:Action.Update_Article,
-			newArticle:addAttribute(r.articles[0],true,true)
+			newArticle:addAttribute(r.articles[0],true,false)
 			})
 			return
 		}
 		
 		dispatch({
 			type:Action.Update_Article,
-			newArticle:addAttribute(r.articles[0],false,true)
+			newArticle:addAttribute(r.articles[0],false,false)
 		})
 	})
 }
-export updateComment=(message,id,commentId)=>(dispatch)=>{
-
+export const updateComment=(message,id,commentId)=>(dispatch)=>{
+ dispatch(editCommentAction(id,commentId))
+ dispatch(putArticle(message,id,commentId))
+}
+export const updateArticle=(message,id)=>(dispatch)=>{
+	dispatch(editArticle(id))
+ dispatch(putArticle(message,id))
 }
 
 

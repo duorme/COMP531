@@ -7,18 +7,17 @@ import {editCommentAction,updateComment} from './ArticleActions'
 let Comment=({commentId,avatar, author, date, text,loginUser,editComment,articleId,editCommentAction,updateComment})=>{
 	let post
 	const edit=()=>{
-		console.log(post)
 		if(!editComment){
 		editCommentAction(articleId,commentId)
 		}
 		else{
+			if(post){
 			updateComment(post,articleId,commentId)
-			post.value=""
+			}
 		}
 	}
-	const saveArticle=(e)=>{
+	const saveComment=(e)=>{
 		post=e.target.value
-		console.log(post)
 	}
 	return(
 
@@ -37,7 +36,7 @@ let Comment=({commentId,avatar, author, date, text,loginUser,editComment,article
         </ContentEditable> 
       </Media.Body>
      {loginUser === author?<Button onClick={edit}>{
-     	editComment?Save:Edit}</Button>:""}
+     	editComment?"Save":"Edit"}</Button>:""}
     </Media>
 
   </div>
