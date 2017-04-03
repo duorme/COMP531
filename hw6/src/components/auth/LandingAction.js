@@ -35,7 +35,7 @@ export const _Login =(username,password)=> (dispatch) => {
 	dispatch(fetchFollowers())
 	dispatch(fetchProfile())
 	}).catch((Error)=>{
-		dispatch(error(`There was an error logging in as ${username}`))
+		dispatch(error(`Error! There was an error logging in as ${username}`))
 	})
 }
 // Validate form can't be empty and on birth must larger than 18 and password should match confirmation.
@@ -49,7 +49,7 @@ export const validation = (info) => (dispatch)=>{
 		}
 	})
 	if(empty){
-		dispatch(error("Form can't be empty"))
+		dispatch(error("Error! Form can't be empty"))
 		return
 	}
 	var text=""
@@ -72,9 +72,9 @@ export const validation = (info) => (dispatch)=>{
     const username=info.username
     resource('POST','register',info)
     .then((r)=>{
-    	dispatch(error(`${r.username} has registered`))
+    	dispatch(error(`Success! You have regstered as ${r.username}`))
     })
     .catch((Error)=>{
-    	dispatch(error(`There was an error registering as ${username}`))
+    	dispatch(error(`Error! There was an error registering as ${username}`))
     })
 }

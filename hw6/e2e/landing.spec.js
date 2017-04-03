@@ -1,65 +1,32 @@
 import { expect } from 'chai'
 import { go, sleep, findId, findCSS, By } from './selenium'
-import common from './common'
+import landing from './landing'
 
-describe('Test Dummy Server Example Page', () => {
+describe('Landing Page', () => {
 
     const preamble = 'you are logged in as'
 
-    before('should log in', (done) => {
-        go().then(common.login).then(done)
+    before('should register a new user', (done) => {
+        go().then(landing.register).then(done)
+    })
+    it('should register new user and display the success message',(done)=>{
+        var username=landing.registerInfo.username
+        sleep(200)
+        .then(findCSS(".alert.alert-info").getText()
+         .then(text => {
+                expect(text).to.equal(`Success! You have regstered as ${username}`)
+            })
+            .then(done))
+    })
+     it('should login as test user', (done) => {
+        var loginname = landing.creds.username;
+        sleep(200)
+        .then(landing.login)
+        .then(findId('main_username').getText()
+            .then(text => {
+                expect(text).to.equal(loginname)
+            })
+            .then(done))
     })
 
-
-
-    it('should log in as the test user', (done) => {
-        sleep(500)
-            .then(findId('message').getText()
-                .then(text => {
-                    expect(text.indexOf(preamble)).to.equal(0)
-                })
-                .then(done))
-    })
-
-    // it("Update the headline and verify the change", (done) => {
-    //     // IMPLEMENT ME
-    //     // find the headline input
-    //     // .sendKeys(new headline message)
-    //     // verify the headline is updated
-    //     // .sendKeys(the old headline message)
-    //     // verify the headline is updated
-    //     const newHeadline="this is new Headline"
-    //     const oldHeadline="this is old Headline"
-
-    //     sleep(500)
-    //     findId("newHeadline").sendKeys(newHeadline)
-    //     .then(sleep(500))
-    //     .then(findId("headline").click())
-    //     .then(sleep(500))
-    //     .then(findId("message").getText()
-    //         .then(text=>{
-    //             expect(text).to.equal(`you are logged in as ${common.creds.username} "${newHeadline}"`)
-    //     }))
-    //     .then(findId("newHeadline").clear())
-    //     .then(sleep(500))
-    //     .then(findId("newHeadline").sendKeys(oldHeadline))
-    //     .then(sleep(500))
-    //     .then(findId("headline").click())
-    //     .then(sleep(500))
-    //     .then(findId("message").getText()
-    //         .then(text=>{
-    //             expect(text).to.equal(`you are logged in as ${common.creds.username} "${oldHeadline}"`)
-    //     }))
-    //     // .then(findId("headline").click())
-    //     // .then(findId("message").getText()
-    //     //     .then(text=>{
-    //     //         expect(text.indexOf("hello")).to.larger.than(0)
-    //     //     }))
-
-    //     .then(done)
-    // })
-
-    after('should log out', (done) => {
-        common.logout().then(done)
-    })
 })

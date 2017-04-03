@@ -35,7 +35,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         <Media.Heading>
          {author} {" "}said{" "} on{" "} {date}
         </Media.Heading>
-          <ContentEditable  html={`${text}`} // innerHTML of the editable div
+          <ContentEditable className="userfeed" html={`${text}`} // innerHTML of the editable div
                 disabled={!isEdited}       // use true to disable edition
                 onChange={(e)=>{saveArticle(e)}}>
         </ContentEditable> 
@@ -47,7 +47,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
 
 
       {
-        loginUser!=author?'':<Button onClick={edit}>
+        loginUser!=author?'':<Button onClick={edit} id="editArticle">
         {isEdited? "Save" : "Edit"}</Button>   
       }
         </ButtonGroup>
