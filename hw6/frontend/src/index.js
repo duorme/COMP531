@@ -13,9 +13,10 @@ import Reducer from './reducers'
 import APP from './components/app'
 require('./styles.css')
 
-const logger = createLogger()
-const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
-// const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
+
+// const logger = createLogger()
+// const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
+const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
 
 render(
     <Provider store={store}>
