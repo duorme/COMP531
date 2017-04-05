@@ -11,9 +11,9 @@ const Follower = ({avatar,author,headline,unfollow})=>{
         <img className="followerImg" src={avatar}/>
       </Media.Left>
       <Media.Body>
-        <Media.Heading>{author}</Media.Heading>
+        <Media.Heading id="FollowerAuthor">{author}</Media.Heading>
         <p>{headline}</p>  
-        <i className="destroy glyphicon glyphicon-remove" onClick={unfollow}></i>    
+        <i className="destroy glyphicon glyphicon-remove" id="btn_unfollow" onClick={unfollow}></i>    
       </Media.Body>
     </Media>
     </div>

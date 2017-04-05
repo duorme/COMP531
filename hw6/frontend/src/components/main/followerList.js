@@ -28,9 +28,9 @@ const FollowerList=({follower,follow,error})=>{
 			<Follower key={author} id={author} avatar={avatar} author={author} headline={headline}></Follower>
 		))}
 		</ul>
-		<input ref={(node)=>{input=node}} placeholder="add a follower"></input>
+		<input ref={(node)=>{input=node}} placeholder="add a follower" id="newFollower"></input>
 		
-		  <Button onClick={_addFollower}>Add</Button>
+		  <Button onClick={_addFollower} id="btn_addfollower">Add</Button>
 	
 		</div>
 		</div>

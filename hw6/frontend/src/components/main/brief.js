@@ -20,9 +20,9 @@ const Brief=({img,name,headline,updateHeadline,error})=>{
 		<div className="card">
 		<img className="Mypic col-md-12" id='briefAvatar' src={img}></img>
 			<h3 id="main_username" className="name col-md-offset-6">{name}</h3>
-			<p className="headline col-md-offset-4 ">{headline}</p>
-			<input ref={(node)=>{input=node;}} placeholder="update your headline"></input>
-			<Button onClick={updateText} >update</Button>
+			<p className="headline col-md-offset-4 " id="headline">{headline}</p>
+			<input ref={(node)=>{input=node;}} id="newHeadline" placeholder="update your headline"></input>
+			<Button onClick={updateText} id="btn_updateHeadline">update</Button>
 			</div>
 		</div>
 			)

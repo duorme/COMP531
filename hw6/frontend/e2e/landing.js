@@ -3,8 +3,8 @@ import { findId, sleep } from './selenium'
 
 // TODO add your test user credentials here!
 exports.creds = {
-    username: 'tz13',
-    password: 'wrapped-feed-scientific',
+    username: 'tz13test',
+    password: 'deep-cabin-bean',
 
 }
 exports.registerInfo = {
@@ -18,18 +18,18 @@ exports.registerInfo = {
 
 
 exports.login = () =>
-    sleep(500)
+    sleep(200)
         .then(findId('loginusername').clear())
         .then(findId('loginpassword').clear())
         .then(findId('loginusername').sendKeys(exports.creds.username))
         .then(findId('loginpassword').sendKeys(exports.creds.password))
         .then(findId('Login').click())
-        .then(sleep(2000))
+        .then(sleep(200))
 
 
 
 exports.register=()=>
-    sleep(500)
+    sleep(200)
     .then(findId('registerName').clear())
     .then(findId('emailAddress').clear())
     .then(findId('registerZipcode').clear())
@@ -42,6 +42,6 @@ exports.register=()=>
     .then(findId('registerPassword').sendKeys(exports.registerInfo.password))
     .then(findId('registerConfirmation').sendKeys(exports.registerInfo.confirmation))
     .then(findId('submitBtn').click())
-    .then(sleep(2000))
+    .then(sleep(200))
 
 

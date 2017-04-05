@@ -32,7 +32,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         <img className="postImg" src={avatar}/>
       </Media.Left>
       <Media.Body className="content">
-        <Media.Heading>
+        <Media.Heading className="articleTitle">
          {author} {" "}said{" "} on{" "} {date}
         </Media.Heading>
           <ContentEditable className="userfeed" html={`${text}`} // innerHTML of the editable div

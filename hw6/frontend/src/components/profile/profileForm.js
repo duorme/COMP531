@@ -18,7 +18,12 @@ const onUpdateClick = function() {
 		email:email.value,
 		passConfirm:passConfirm.value
 	}
+	passWord.value=''
+	zipcode.value=''
+	email.value=''
+	passConfirm.value=''
 	updateProfile(information,userInfo)
+
 }
 	return (
 		//Log in Form
@@ -28,21 +33,21 @@ const onUpdateClick = function() {
 
     <Form horizontal id="Registration"  action="#" method="">
     <h1>Update Profile</h1>
-    <FieldGroup id= "formHorizontalUserName" sm_title = {2} label="Your name" sm_input={5} type="text"
+    <FieldGroup sm_title = {2} label="Your name" sm_input={5} type="text"
 	value={userInfo.username} disabled></FieldGroup>	
-	<FieldGroup id= "formHorizontalEmail" sm_title = {2} label="Email" sm_input={5}  type="email"
-	placeholder="your email" inputRef={(ref)=>{email=ref;}} current={userInfo.email}></FieldGroup>
-	<FieldGroup id= "formHorizontalBirth" sm_title = {2} label="Birthday" sm_input={5} type="text" disabled
+	<FieldGroup id= "profileEmail" sm_title = {2} label="Email" sm_input={5}  type="email"
+	 inputRef={(ref)=>{email=ref;}} placeholder={userInfo.email}></FieldGroup>
+	<FieldGroup  sm_title = {2} label="Birthday" sm_input={5} type="text" disabled
 	name="date"   value={userInfo.dob}></FieldGroup>
-	<FieldGroup id= "formHorizontalZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
-	placeholder="Zipcode xxxxx" pattern = "^\d{5}$"  inputRef={(ref)=>{zipcode=ref;}} current={userInfo.zipcode}></FieldGroup>
-    <FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" 
+	<FieldGroup id= "profileZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
+	pattern = "^\d{5}$"  inputRef={(ref)=>{zipcode=ref;}} placeholder={userInfo.zipcode}></FieldGroup>
+    <FieldGroup id="profilePassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" 
 	placeholder="Your Password" ></FieldGroup>
-	<FieldGroup id= "formHorizontalPassword" sm_title = {2} label="Password" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Password" 
+	<FieldGroup id= "profilePassConfirm" sm_title = {2} label="Password" inputRef={(ref)=>{passConfirm=ref;}}  sm_input={5} type="password" placeholder="Password" 
 	placeholder="Your Password Confirm" ></FieldGroup>
 
   </Form>
-  	<Button type="submit" onClick={onUpdateClick} className="col-md-offset-3">
+  	<Button type="submit" onClick={onUpdateClick} id="submitProfile" className="col-md-offset-3">
          Update
      </Button>
 

@@ -10,5 +10,6 @@ exports.driver = driver
 exports.By = webdriver.By
 exports.findId = id => driver.findElement(webdriver.By.id(id))
 exports.findCSS = css => driver.findElement(webdriver.By.css(css))
+exports.findElements=element=>driver.findElements(webdriver.By.css(element))
 exports.go = _ => driver.navigate().to(url)
 exports.sleep = millis => driver.sleep(millis)
