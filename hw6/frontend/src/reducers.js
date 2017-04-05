@@ -96,7 +96,8 @@ export const follower = (state = {
 
 export const articles = (state = {
 	articles: {},
-	filter: ''
+	filter: '',
+	avatars:{}
 }, action) => {
 	switch (action.type) {
 		case Action.Load_Articles:
@@ -174,7 +175,6 @@ export const articles = (state = {
 				...state,
 				articles
 			}
-
 		default:
 			return state;
 	}

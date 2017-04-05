@@ -10,7 +10,7 @@ import NewArticle from './newArticle'
 
 //create card list, pass showComment Action to each Article Item
 
-const ArticleList = ({loginUser,articleList,search})=>{
+const ArticleList = ({loginUser,articleList,search,avatars})=>{
   let input;
   // search article based on filter
   const _search=()=>{
@@ -28,7 +28,7 @@ const ArticleList = ({loginUser,articleList,search})=>{
   <ul className="articles col-md-8 col-md-offset-1">
   {
     articleList.map((c)=>(
-    <ArticleItem key={c._id} id={c._id} text={c.text} avatar={c.avatar} date={c.date} img={c.img} author={c.author} comments={c.comments} showcomm={c.showcomm}
+    <ArticleItem key={c._id} id={c._id} text={c.text}  avatar={c.avatar} date={c.date} img={c.img} author={c.author} comments={c.comments} showcomm={c.showcomm}
      loginUser={loginUser} isEdited={c.isEdited} addComment={c.addComment}></ArticleItem>))}
   </ul>
     
@@ -64,7 +64,8 @@ export default connect(
   (state)=>{
     return{
     articleList:getFilteredArticles(state.articles.articles,state.articles.filter),
-    loginUser:state.User.username
+    loginUser:state.User.username,
+    avatars:state.articles.avatars
 
   }
   },

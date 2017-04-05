@@ -1,5 +1,6 @@
 //Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
+import Promise from 'bluebird'
 
 const addAttribute=(article,showcomm=false,isEdited=false,editComment=false,addComment=false)=>{
 		article["showcomm"]= showcomm
@@ -35,11 +36,20 @@ export const loadArticle=(articles)=>{
 export const fetchArticle=()=>(dispatch)=>{
 	resource('GET','articles')
 	.then((r)=>{
+		const avatars={}
 		const articles=r.articles.reduce((o,v)=>{
 			o[v._id]=addAttribute(v);
-			return o},{})
-
-		dispatch(loadArticle(articles))
+			return o},{})		
+		const authors = new Set(r.articles.reduce((o, article) => {
+                o.push(article.author)
+                return o
+            }, []))
+		const avatarPromise=resource('GET',`avatars/${[...authors].join(',')}`)
+		.then(r=>{
+			const avatars=r.avatars.reduce((o,v)=>{o[v.username]=v.avatar; return o},{})
+			Object.keys(articles).forEach((key)=>articles[key].avatar=avatars[articles[key].author])
+		})
+		Promise.all([avatarPromise]).then(dispatch(loadArticle(articles)))
 	})
 }
 // use search bar to search article

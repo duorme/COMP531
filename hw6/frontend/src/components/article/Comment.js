@@ -4,7 +4,7 @@ import {Media,Button} from 'react-bootstrap'
 import ContentEditable from 'react-contenteditable'
 import {editCommentAction,updateComment} from './ArticleActions'
 // component for each article item
-let Comment=({commentId,avatar, author, date, text,loginUser,editComment,articleId,editCommentAction,updateComment})=>{
+let Comment=({commentId,avatar,author, date, text,loginUser,editComment,articleId,editCommentAction,updateComment})=>{
 	let post
 	const edit=()=>{
 		if(!editComment){
