@@ -12,7 +12,7 @@ describe('Landing Page', () => {
     it('should register new user and display the success message',(done)=>{
         var username=landing.registerInfo.username
         sleep(200)
-        .then(findCSS(".alert.alert-info").getText()
+        .then(findCSS('.alert.alert-info').getText()
          .then(text => {
                 expect(text).to.equal(`Success! You have regstered as ${username}`)
             })

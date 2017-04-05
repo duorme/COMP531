@@ -42,6 +42,6 @@ exports.register=()=>
     .then(findId('registerPassword').sendKeys(exports.registerInfo.password))
     .then(findId('registerConfirmation').sendKeys(exports.registerInfo.confirmation))
     .then(findId('submitBtn').click())
-    .then(sleep(200))
+    .then(sleep(500))
 
 

@@ -6,7 +6,7 @@ import {unfollow} from './FollowerActions'
 const Follower = ({avatar,author,headline,unfollow})=>{
 		return(
 			<div>
-			<Media className="follower">
+			<Media className="follower" id="follower">
       <Media.Left align="top" >
         <img className="followerImg" src={avatar}/>
       </Media.Left>

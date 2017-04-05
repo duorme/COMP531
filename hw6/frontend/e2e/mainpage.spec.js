@@ -74,26 +74,21 @@ describe('End-to-End Test: Main Page', () => {
 			})
 			.then(done))	
 	})
-	// it('should Remove the Follower user and verify following count decreases by one',(done) => {
-	// 	var count
-	// 	sleep(200)
-	// 	.then(findElements('.follower')
-	// 		.then(elements => {
-	// 			count = elements.length
-	// 			const toDeleted=elements.filter(element=>
-	// 				element.findElements(webdriver.By.className('FollowerAuthor')).then(
- //                        (spans)=>{
- //                            const span = spans[0]
- //                            return span.getText()==='Follower'}))
-	// 			toDeleted.findElements(By.id('btn_unfollow'))[0].click()
-	// 			sleep(300)
-	// 			findElements('.follower')
-	// 			.then(elements => {
-	// 				expect(count).to.equal(elements.length+1)
-	// 			})
-	// 		})
-	// 		.then(done))	
-	// })
+	it('should Remove the Follower user and verify following count decreases by one',(done) => {
+		var count
+		sleep(200)
+		.then(findElements('.follower')
+			.then(elements => {
+				count = elements.length
+				findId('btn_unfollow').click()
+				sleep(300)
+				findElements('.follower')
+				.then(elements => {
+					expect(count).to.equal(elements.length+1)
+				})
+			})
+			.then(done))	
+	})
 	it('Search for "Only One Article Like This" and verify only one article shows, and verify the author',(done)=>{
 		var searchKey="Only One Article Like This"
 		sleep(200)
