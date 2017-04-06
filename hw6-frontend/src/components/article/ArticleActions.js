@@ -1,7 +1,7 @@
 //Add new Article
 import Action,{url,resource,sucess,error} from '../../actions'
 import Promise from 'bluebird'
-
+// add fields to article object in order to show comment, edit article, add comments, edit comments
 const addAttribute=(article,showcomm=false,isEdited=false,editComment=false,addComment=false)=>{
 		article["showcomm"]= showcomm
 		article["isEdited"]= isEdited
@@ -66,12 +66,14 @@ export const showComment=(id)=>{
 		id
 	}
 }
+// edit article
 export const editArticle=(id)=>{
 	return {
 		type:Action.Edit_Article,
 		id
 	}
 }
+// add comment
 export const addnewComment=(id)=>{
 	return{
 		type:Action.Add_Comment,
@@ -85,6 +87,7 @@ export const editCommentAction=(articleId,commentId)=>{
 		commentId,
 	}
 }
+
 export const putArticle=(message,id,commentId)=>(dispatch)=>{
 	const payload={}
 	payload["text"]=message
@@ -105,10 +108,13 @@ export const putArticle=(message,id,commentId)=>(dispatch)=>{
 		})
 	})
 }
+//complicated actions, put comment to server as well as set button from save to edit.
 export const updateComment=(message,id,commentId)=>(dispatch)=>{
  dispatch(editCommentAction(id,commentId))
  dispatch(putArticle(message,id,commentId))
 }
+// complicated actions, when click 'Save' button, put article to server as well as set button from 'Save'
+// to 'Edit'
 export const updateArticle=(message,id)=>(dispatch)=>{
 	dispatch(editArticle(id))
  dispatch(putArticle(message,id))
