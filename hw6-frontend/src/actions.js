@@ -26,12 +26,6 @@ const Action={
 }
 export default Action
 
-// log out action
-export const logOut = ()=>{
-	return {
-	type: Action.Go_To_Landing
-}
-}
 // go to main page
 export const go_To_Main = ()=>{
 	return {
@@ -64,8 +58,9 @@ export const error=(message)=>{
 	}
 }
 
-export const url = 'https://webdev-dummy.herokuapp.com'
-// export const url='http://localhost:3000'
+// export const url = 'https://webdev-dummy.herokuapp.com'
+// export const url="https://nameless-peak-71326.herokuapp.com"
+export const url='http://localhost:3000'
  // export const url='aaa'
 
 export const resource = (method, endpoint, payload,submitJson=true) => {
