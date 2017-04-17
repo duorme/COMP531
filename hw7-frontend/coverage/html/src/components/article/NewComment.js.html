@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/article/NewComment.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/article/</a> NewComment.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.29% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.44% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>8/18</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 branch</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, PropTypes } from 'react'
+import {ButtonGroup,Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {putArticle} from './ArticleActions'
+const NewComment=<span class="fstat-no" title="function not covered" >({<span class="cstat-no" title="statement not covered" >articleId,addComment})=&gt;{</span></span>
+	let <span class="cstat-no" title="statement not covered" >post;</span>
+	const <span class="cstat-no" title="statement not covered" >_addComment = <span class="fstat-no" title="function not covered" >()=&gt;{</span></span>
+		if(<span class="cstat-no" title="statement not covered" >post &amp;&amp; post.value){</span>
+			addComment(<span class="cstat-no" title="statement not covered" >post.value,articleId,-1);</span>
+			post.<span class="cstat-no" title="statement not covered" >value=""</span>
+&nbsp;
+		}
+	}
+	return(
+<span class="cstat-no" title="statement not covered" >		&lt;div&gt;</span>
+		&lt;textarea className = "col-md-8 col-md-offset-1 textarea" ref={ <span class="fstat-no" title="function not covered" >(node) =&gt; <span class="cstat-no" title="statement not covered" >post = node } &gt;&lt;/textarea&gt;</span></span>
+		&lt;div className="row "&gt;
+		&lt;ButtonGroup className="col-md-offset-3 post"&gt;
+  	&lt;button className="btn btn-primary" id="Post" onClick={_addComment}&gt;Post&lt;/button&gt;
+    &lt;button className="btn btn-primary" id="Cancel" onClick={<span class="fstat-no" title="function not covered" >()=&gt;<span class="cstat-no" title="statement not covered" >post.value=""}&gt;Cancel&lt;/button&gt;</span></span>
+    &lt;/ButtonGroup&gt;
+   
+   &lt;/div&gt;
+  &lt;/div&gt;
+	)
+&nbsp;
+}
+NewComment.PropTypes={
+	addComment:PropTypes.func.isRequired
+}
+export default connect(null,
+<span class="fstat-no" title="function not covered" >	(dispatch)=&gt;{</span>
+		return<span class="cstat-no" title="statement not covered" >{</span>
+		addComment: <span class="fstat-no" title="function not covered" >(text,id,CommentId)=&gt;<span class="cstat-no" title="statement not covered" >dispatch(putArticle(text,id,CommentId))</span></span>
+	    }
+	}
+	)(NewComment)
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Apr 05 2017 16:54:52 GMT-0500 (CDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

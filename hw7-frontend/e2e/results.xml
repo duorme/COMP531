@@ -1,0 +1,18 @@
+
+> starter@1.0.0 e2e:base /Users/user/Desktop/COMP531/hw6/frontend
+> mocha --opts e2e/mocha.opts e2e/*.spec.js "--reporter" "xunit"
+
+<testsuite name="Mocha Tests" tests="12" failures="0" errors="0" skipped="0" timestamp="Wed, 05 Apr 2017 21:18:43 GMT" time="19.223">
+<testcase classname="Landing Page" name="should register new user and display the success message" time="0.562"/>
+<testcase classname="Landing Page" name="should login as test user" time="2.267"/>
+<testcase classname="End-to-End Test: Main Page" name="should create new article and the article appears in feed" time="2.007"/>
+<testcase classname="End-to-End Test: Main Page" name="should edit an article and validate the article text has updated" time="1.62"/>
+<testcase classname="End-to-End Test: Main Page" name="should update headline and verify change" time="0.644"/>
+<testcase classname="End-to-End Test: Main Page" name="should count the number of followed users" time="0.234"/>
+<testcase classname="End-to-End Test: Main Page" name="should add the &quot;Follower&quot; user and verify following count increases by one" time="0.701"/>
+<testcase classname="End-to-End Test: Main Page" name="should Remove the Follower user and verify following count decreases by one" time="0.601"/>
+<testcase classname="End-to-End Test: Main Page" name="Search for &quot;Only One Article Like This&quot; and verify only one article shows, and verify the author" time="0.728"/>
+<testcase classname="End-to-End Test: Profile Page" name="should update the email and verify" time="1.04"/>
+<testcase classname="End-to-End Test: Profile Page" name="should update the zipcode and verify" time="0.944"/>
+<testcase classname="End-to-End Test: Profile Page" name="should update the password and verify a &quot;will not change&quot; message is returned" time="0.973"/>
+</testsuite>
