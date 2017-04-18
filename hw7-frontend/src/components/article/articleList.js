@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {ButtonGroup,button,Form,FormControl } from 'react-bootstrap'
+import {ButtonGroup,button,Form,FormControl,Col,Row} from 'react-bootstrap'
 import {searchArticles} from './ArticleActions'
 import {go_To_Profile,logOut,resource,url} from '../../actions'
 import ArticleItem  from './ArticleItem'
@@ -20,18 +20,22 @@ const ArticleList = ({loginUser,articleList,search,avatars})=>{
   }
 	return(	
 <div>
-  <NewArticle></NewArticle>
-
-  <Form className="col-md-8 col-md-offset-1">
-  <FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
-  </Form>
-  <ul className="articles col-md-8 col-md-offset-1">
-  {
-    articleList.map((c)=>(
+<Col xsOffset={1}>
+<NewArticle></NewArticle>
+</Col>
+<Col xsOffset={1}>
+<Form>
+<FormControl  className="search" inputRef={(ref)=>{input=ref;}} placeholder="search" onChange={_search}></FormControl >
+</Form>
+</Col>
+<Col>
+<ul>
+{
+  articleList.map((c)=>(
     <ArticleItem key={c._id} id={c._id} text={c.text}  avatar={c.avatar} date={c.date} img={c.img} author={c.author} comments={c.comments} showcomm={c.showcomm}
-     loginUser={loginUser} isEdited={c.isEdited} addComment={c.addComment}></ArticleItem>))}
+    loginUser={loginUser} isEdited={c.isEdited} addComment={c.addComment}></ArticleItem>))}
   </ul>
-    
+  </Col>
   </div>
 )
 }

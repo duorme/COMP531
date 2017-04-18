@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {Button} from 'react-bootstrap'
+import {Button,Row,Col,Grid,Image} from 'react-bootstrap'
 import {updateHeadline} from '../profile/profileActions'
 import {error} from '../../actions'
 // Brief profile of user. 
@@ -18,14 +18,35 @@ const Brief=({img,name,headline,updateHeadline,error})=>{
 	return(
 		<div>
 		<div className="card">
-		<img className="Mypic col-md-12" id='briefAvatar' src={img}></img>
-			<h3 id="main_username" className="name col-md-offset-6">{name}</h3>
-			<p className="headline col-md-offset-4 " id="headline">{headline}</p>
-			<input ref={(node)=>{input=node;}} id="newHeadline" placeholder="update your headline"></input>
-			<Button onClick={updateText} id="btn_updateHeadline">update</Button>
-			</div>
+		<Grid>
+		<Row>
+		<Col md={2}>
+		<Image className="Mypic" id='briefAvatar' src={img} rounded></Image>
+		</Col>
+		</Row>
+		<Row>
+		<Col xs={2} xsOffset={1}>
+		<h3 id="main_username" className="name">{name}</h3>
+		</Col>
+		</Row>
+		<Col>
+		<p className="headline" id="headline">{headline}</p>
+		</Col>
+		
+		<Row>
+		<Col md={2} >
+		<input ref={(node)=>{input=node;}} id="newHeadline" placeholder="update your headline"></input>
+
+		</Col>
+		<Col md={1}>
+		<Button onClick={updateText} bsSize="xsmall" id="btn_updateHeadline">update</Button>
+		</Col>
+		
+		</Row>
+		</Grid>
 		</div>
-			)
+		</div>
+		)
 }
 
 Brief.PropTypes={

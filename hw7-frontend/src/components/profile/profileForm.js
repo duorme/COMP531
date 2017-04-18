@@ -6,7 +6,7 @@ import Message from '../message'
 import FieldGroup from '../FieldGroup'
 //Component to show the profile and change the data
 let ProfileForm = ({Error,success,userInfo,updateProfile}) => {
-
+	let birth =new Date(userInfo.dob).toLocaleDateString()
 	let passWord;
 	let zipcode;
 	let email;
@@ -35,10 +35,10 @@ const onUpdateClick = function() {
     <h1>Update Profile</h1>
     <FieldGroup sm_title = {2} label="Your name" sm_input={5} type="text"
 	value={userInfo.username} disabled></FieldGroup>	
-	<FieldGroup id= "profileEmail" sm_title = {2} label="Email" sm_input={5}  type="email"
+	<FieldGroup id= "profileEmail" sm_title = {2} label="Email" sm_input={5}  
 	 inputRef={(ref)=>{email=ref;}} placeholder={userInfo.email}></FieldGroup>
 	<FieldGroup  sm_title = {2} label="Birthday" sm_input={5} type="text" disabled
-	name="date"   value={userInfo.dob}></FieldGroup>
+	name="date"   value={birth}></FieldGroup>
 	<FieldGroup id= "profileZipcode" sm_title = {2} label="Zipcode" sm_input={5} type="text" 
 	 inputRef={(ref)=>{zipcode=ref;}} placeholder={userInfo.zipcode}></FieldGroup>
     <FieldGroup id="profilePassword" sm_title = {2} label="Password" inputRef={(ref)=>{passWord=ref;}}  sm_input={5} type="password" placeholder="Password" 

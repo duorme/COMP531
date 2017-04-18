@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {Media,ButtonGroup,Button,Col,ListGroup} from 'react-bootstrap'
+import {Media,ButtonGroup,Button,Col,ListGroup,Image} from 'react-bootstrap'
 import {showComment,editArticle,updateArticle,addnewComment} from './ArticleActions'
 import Comment from './Comment'
 import NewComment from './NewComment'
 import ContentEditable from 'react-contenteditable'
 const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommAction,isEdited,loginUser,editArticleAction,updateArticleAction,addComment,addCommentAction})=>{
   let post
+  const time = new Date(date)
   const show=()=>{
     showCommAction(id)
   }
@@ -29,18 +30,23 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
   <div>
     <Media className="card">
       <Media.Left align="top" >
-        <img className="postImg" src={avatar}/>
+        <Image className="postImg" src={avatar} rounded/>
       </Media.Left>
       <Media.Body className="content">
         <Media.Heading className="articleTitle">
-         {author} {" "}said{" "} on{" "} {date}
+         {author}
+
         </Media.Heading>
+         <h6 className="float_left"><span className="glyphicon glyphicon glyphicon-time">
+         </span>{
+          (time.getMonth() + 1) + '-' + time.getDate() + '-' +  time.getFullYear()+' '+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()}</h6>
           <ContentEditable className="userfeed" html={`${text}`} // innerHTML of the editable div
                 disabled={!isEdited}       // use true to disable edition
                 onChange={(e)=>{saveArticle(e)}}>
         </ContentEditable> 
         <img src={img}></img>
       </Media.Body>
+      <Col xsOffset={4}>
       <ButtonGroup>
       <Button onClick={show}>{showcomm?"Hide Comments":"Show Comments"}</Button>
       <Button onClick={()=>addCommentAction(id)}>Add a Comment</Button>
@@ -51,6 +57,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         {isEdited? "Save" : "Edit"}</Button>   
       }
         </ButtonGroup>
+          </Col>
       {addComment?<NewComment articleId={id}></NewComment>:""}
       <ListGroup>
         {

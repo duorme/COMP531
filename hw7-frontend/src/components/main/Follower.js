@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import {Media} from 'react-bootstrap'
+import {Media,Image} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import {unfollow} from './FollowerActions'
 // Item of follower, can remove any follower.
@@ -8,7 +8,7 @@ const Follower = ({avatar,author,headline,unfollow})=>{
 			<div>
 			<Media className="follower" id="follower">
       <Media.Left align="top" >
-        <img className="followerImg" src={avatar}/>
+        <Image className="followerImg" rounded src={avatar}/>
       </Media.Left>
       <Media.Body>
         <Media.Heading id="FollowerAuthor">{author}</Media.Heading>

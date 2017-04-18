@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {Button} from 'react-bootstrap'
+import {Button,Col,Row} from 'react-bootstrap'
 import Follower from './Follower'
 import {follow} from './FollowerActions'
 import {error} from '../../actions'
@@ -28,9 +28,14 @@ const FollowerList=({follower,follow,error})=>{
 			<Follower key={author} id={author} avatar={avatar} author={author} headline={headline}></Follower>
 		))}
 		</ul>
+		<Row>
+		<Col md={2} mdOffset={1}>
 		<input ref={(node)=>{input=node}} placeholder="add a follower" id="newFollower"></input>
-		
-		  <Button onClick={_addFollower} id="btn_addfollower">Add</Button>
+		</Col>
+		<Col md={1} mdOffset={4}>
+		  <Button onClick={_addFollower} bsSize="xsmall" id="btn_addfollower">Add</Button>
+		</Col>
+		</Row>
 	
 		</div>
 		</div>

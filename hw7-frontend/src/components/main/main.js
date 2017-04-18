@@ -1,39 +1,47 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {Media,ButtonGroup,button} from 'react-bootstrap'
+import {Media,ButtonGroup,button,Nav,Navbar,NavItem,Row,Col} from 'react-bootstrap'
 import {logout} from '../auth/LandingAction'
 import {go_to_profile} from '../profile/profileActions'
 import ArticleList from '../article/articleList'
 import Brief from './brief'
 import FollowerList from './followerList'
 import Message from '../message'
+import {go_To_Main} from '../../actions'
 // main page with user brif,follower list and article list
-const Main=({logout,profile,message})=>{
-  console.log('logout',logout)
+const Main=({logout,profile,message,main})=>{
 	return(
 		<div  className="container-fluid">
 
-		<header>
-		<div className="container">
-		<h1>Dear Diary</h1>
- 	<ButtonGroup>
- <button className="btn" id="Main"  onClick={()=>{logout()}} >Log Out</button>
-     <button className="btn" id="Profile" onClick={profile}>Profile</button>
-     </ButtonGroup>
-    </div>
-		</header>
-  <div className="row">
-  <div className="col-md-4">
-  <div className="col-md-12">
+		  <Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="#">Rice Book</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+      
+        <NavItem eventKey={1} onClick={()=>main()}>Main</NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1} onClick={()=>profile()}>Edit Profile</NavItem>
+          <NavItem eventKey={2} onClick = {()=>logout()}>Log Out</NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+    
+  <Row className="row">
+  <Col xs={3} md={3}>
   <Brief></Brief>
   <Message text={message}></Message>
   <FollowerList></FollowerList>
-  </div>
-  </div>
-  <div className="col-md-8">
+  </Col>
+  <Col xs={7} md={7}>
 	<ArticleList></ArticleList>
-   </div>
-		</div>
+  </Col>
+		</Row>
 		</div>
 		)
 }
@@ -51,6 +59,7 @@ export default connect((state)=>{
     return{
       logout:()=>dispatch(logout()),
       profile:()=>dispatch(go_to_profile()),
+      main:()=>dispatch(go_To_Main())
     }
   }
 
