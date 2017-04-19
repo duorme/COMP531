@@ -87,7 +87,7 @@ export const editCommentAction=(articleId,commentId)=>{
 		commentId,
 	}
 }
-
+// put data to server
 export const putArticle=(message,id,commentId)=>(dispatch)=>{
 	const payload={}
 	payload["text"]=message

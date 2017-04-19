@@ -1,6 +1,7 @@
 import Action,{resource} from '../../actions'
 import Promise from 'bluebird'
 // fetch follower from server
+// because we use fetch to do AJAX call, we need to use promise.
 export const fetchFollowers=(method, name)=>{
     return (dispatch) => {
        resource(method?method:'GET','following'+(name?'/'+name:''))
