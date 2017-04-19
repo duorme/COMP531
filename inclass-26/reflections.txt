@@ -1,0 +1,16 @@
+what did you hope to learn but did not?
+	I hope to learn more about Javascript .
+what did you really enjoy learning about?
+	Both those basic techniques like html, javascript, and css, and 
+	the currting-edge techniques like react and redux. 
+What worked well in the course? and how?
+ homework is too much  but it really enhance my skills
+	
+What did not work well in the course and how might it be improved?
+	I think if we can get the slides earlier, we can have more time to read them 
+	in advance to keep pace with course.
+
+What could I have done to help you more, presentation of material, design of in class
+exercises, goals of projects – and be specific please!
+	I think there are more materials about these concepts because there are too many concepts and techniques in this area.
+

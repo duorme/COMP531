@@ -1,8 +1,11 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateUser,_Login} from './LandingAction'
+import {updateUser,_Login,loginFacebook,responseFacebook} from './LandingAction'
 import {go_To_Main} from '../../actions'
 import FieldGroup from '../FieldGroup'
+import FacebookLogin from 'react-facebook-login';
+
+
 
 import {Button,Form} from 'react-bootstrap'
 // component for login
@@ -19,15 +22,15 @@ _Login(name.value,pass.value)
 	<div>
 	<Form horizontal id="login" >
     <h1>Please Log In</h1>
-	<FieldGroup id= "loginusername" sm_title = {2} label="Your name" sm_input={5} required  inputRef={(ref)=>{name=ref;}} type="text"
+	<FieldGroup id= "loginusername" sm_title = {2} label="Your name" sm_input={5} inputRef={(ref)=>{name=ref;}} type="text"
 	placeholder="Your name"></FieldGroup>
-	<FieldGroup id= "loginpassword" sm_title = {2} label="password"  sm_input={5} type="password"  required
+	<FieldGroup id= "loginpassword" sm_title = {2} label="password"  sm_input={5} type="password"
 	placeholder="Your Password" inputRef={(ref)=>{pass=ref;}}></FieldGroup>
-   
+  
     </Form>
-    <Button type="submit" id="Login" onClick={onLogin} className="col-md-offset-4">
+    <Button size="large" type="submit" id="Login" onClick={onLogin} className="col-md-offset-4">
           Login
-        </Button>   
+        </Button>  
     </div>
     )
 }

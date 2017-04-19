@@ -97,6 +97,9 @@
   "dependencies": {
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
-    "mockery": "^2.0.0"
+    "mockery": "^2.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-facebook-login": "^3.5.0"
   }
 }

@@ -64,10 +64,9 @@ export const error=(message)=>{
 	}
 }
 
-export const url = 'https://webdev-dummy.herokuapp.com'
-// export const url="https://nameless-peak-71326.herokuapp.com"
-// export const url='http://localhost:3000'
+// export const url='https://nameless-peak-71326.herokuapp.com'
  // export const url='aaa'
+ export const url='https://sheltered-beyond-95630.herokuapp.com'
 
 export const resource = (method, endpoint, payload,submitJson=true) => {
   const options =  {

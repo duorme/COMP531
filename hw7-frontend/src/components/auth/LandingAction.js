@@ -24,6 +24,7 @@ export const logout=()=>(dispatch)=>{
 
 // login and initialize login to fetch data from server
 export const _Login =(username,password)=> (dispatch) => {
+	console.log('url',url)
 	if(!username){
 	dispatch(error("Error! username can't be empty"))
 	return 
