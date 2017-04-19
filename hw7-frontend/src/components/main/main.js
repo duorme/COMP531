@@ -15,7 +15,7 @@ const Main=({logout,profile,message,main})=>{
 
 		  <Navbar inverse collapseOnSelect>
     <Navbar.Header>
-      <Navbar.Brand>
+      <Navbar.Brand >
         <a href="#">Rice Book</a>
       </Navbar.Brand>
       <Navbar.Toggle />

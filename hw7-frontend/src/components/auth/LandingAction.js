@@ -21,10 +21,21 @@ export const logout=()=>(dispatch)=>{
 	})
 }
 
-
+export const initVisit=()=>(dispatch)=>{
+	resource('GET','articles')
+	.then((r)=>{
+	dispatch(fetchProfile())
+	dispatch(go_To_Main())
+	dispatch(fetchArticle())
+	dispatch(fetchFollowers())
+	})
+	.catch((err)=>{
+		console.log(err)
+	})
+	
+}
 // login and initialize login to fetch data from server
 export const _Login =(username,password)=> (dispatch) => {
-	console.log('url',url)
 	if(!username){
 	dispatch(error("Error! username can't be empty"))
 	return 
@@ -38,10 +49,8 @@ export const _Login =(username,password)=> (dispatch) => {
 	resource('POST','login',payload)
 	.then((response)=>{
 	dispatch(updateUser(response.username))
-	dispatch(go_To_Main())
-	dispatch(fetchArticle())
-	dispatch(fetchFollowers())
-	dispatch(fetchProfile())
+	dispatch(initVisit())
+
 	}).catch((Error)=>{
 		dispatch(error(`Error! There was an error logging in as ${username}`))
 	})

@@ -5,15 +5,15 @@ import Main from './main/main'
 import Profile from './profile/profile'
 let APP = ({location}) => {
 
-	if (location == 'MAIN_PAGE') {
+	if (location == 'LANDING') {
+	return (<Landing/>)
 	
-	return (<Main />)
 }
   else if (location == 'PROFILE_PAGE') {
 	return(<Profile />)
 }
   else {
-	return (<Landing/>)
+	return (<Main />)
 }
 }
 export default connect(

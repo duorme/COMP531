@@ -11,11 +11,13 @@ import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducers'
 import APP from './components/app'
+import {initVisit} from './components/auth/LandingAction'
 require('./styles.css')
 
 
 const logger = createLogger()
 const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
+store.dispatch(initVisit())
 // const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
 
 render(
