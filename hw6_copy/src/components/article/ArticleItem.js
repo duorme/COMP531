@@ -21,6 +21,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         <p contentEditable={isEdited}>{text}</p>
         <img src={img}></img>   
       </Media.Body>
+      <Col xsOffset={4}/>
       <ButtonGroup>
       <Button onClick={show}>Show Comments</Button>
       <Button>Add a Comment</Button>

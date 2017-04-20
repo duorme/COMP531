@@ -21,6 +21,7 @@ const Main=({logout,profile,message})=>{
      </ButtonGroup>
     </div>
 		</header>
+    
   <div className="row">
   <div className="col-md-4">
   <div className="col-md-12">
