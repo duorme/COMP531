@@ -15,10 +15,11 @@ import {initVisit} from './components/auth/LandingAction'
 require('./styles.css')
 
 
-const logger = createLogger()
-const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
+// const logger = createLogger()
+// const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
+const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
 store.dispatch(initVisit())
-// const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
+
 
 render(
     <Provider store={store}>
