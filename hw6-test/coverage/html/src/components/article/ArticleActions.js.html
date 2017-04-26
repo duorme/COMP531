@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/article/ArticleActions.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/article/</a> ArticleActions.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">30.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>25/81</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.38% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.29% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">32.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>18/56</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 statement</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >/</span></span></span></span></span></span>/Add new Article
+import Action,{url,resource,sucess,error} from '../../actions'
+import Promise from 'bluebird'
+&nbsp;
+const addAttribute=<span class="fstat-no" title="function not covered" >(article,<span class="cstat-no" title="statement not covered" >showcomm=false,<span class="cstat-no" title="statement not covered" >isEdited=false,<span class="cstat-no" title="statement not covered" >editComment=false,<span class="cstat-no" title="statement not covered" >addComment=false)=&gt;{</span></span></span></span></span>
+		article[<span class="cstat-no" title="statement not covered" >"showcomm"]= showcomm</span>
+		article[<span class="cstat-no" title="statement not covered" >"isEdited"]= isEdited</span>
+		article[<span class="cstat-no" title="statement not covered" >"addComment"]=addComment</span>
+		article.<span class="cstat-no" title="statement not covered" >comments.forEach(<span class="fstat-no" title="function not covered" >(v)=&gt;{</span>v[<span class="cstat-no" title="statement not covered" >"editComment"]=false})</span></span>
+	return <span class="cstat-no" title="statement not covered" >article</span>
+&nbsp;
+}
+export const addNewArticle=<span class="fstat-no" title="function not covered" >(text,file)=&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(dispatch)=&gt;{</span></span></span>
+	//use resource to post article
+	const <span class="cstat-no" title="statement not covered" >fd = new FormData()</span>
+	fd.<span class="cstat-no" title="statement not covered" >append('image',file)</span>
+	fd.<span class="cstat-no" title="statement not covered" >append('text',text)</span>
+	resource(<span class="cstat-no" title="statement not covered" >'POST','article',fd,false)</span>
+	.then(<span class="fstat-no" title="function not covered" >(r)=&gt;{</span>
+		const <span class="cstat-no" title="statement not covered" >newArticle=addAttribute(r.articles[0])</span>
+		dispatch(<span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Add_New_Article,
+		newArticle
+	})
+	})
+	
+}
+// get article action
+export const loadArticle=<span class="fstat-no" title="function not covered" >(articles)=&gt;{</span>
+	return<span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Load_Articles,
+		articles
+	}
+}
+//fetch article from server
+export const fetchArticle=()=&gt;(dispatch)=&gt;{
+	resource('GET','articles')
+	.then(<span class="fstat-no" title="function not covered" >(r)=&gt;{</span>
+		const <span class="cstat-no" title="statement not covered" >avatars={}</span>
+		const <span class="cstat-no" title="statement not covered" >articles=r.articles.reduce(<span class="fstat-no" title="function not covered" >(o,v)=&gt;{</span></span>
+			o[<span class="cstat-no" title="statement not covered" >v._id]=addAttribute(v);</span>
+			return <span class="cstat-no" title="statement not covered" >o},{})		</span>
+		const <span class="cstat-no" title="statement not covered" >authors = new Set(r.articles.reduce(<span class="fstat-no" title="function not covered" >(o, article) =&gt; {</span></span>
+                o.<span class="cstat-no" title="statement not covered" >push(article.author)</span>
+                return <span class="cstat-no" title="statement not covered" >o</span>
+            }, []))
+		const <span class="cstat-no" title="statement not covered" >avatarPromise=resource('GET',`avatars/${[...authors].join(',')}`)</span>
+		.then(<span class="fstat-no" title="function not covered" >r=&gt;{</span>
+			const <span class="cstat-no" title="statement not covered" >avatars=r.avatars.reduce(<span class="fstat-no" title="function not covered" >(o,v)=&gt;{</span>o[<span class="cstat-no" title="statement not covered" >v.username]=v.avatar; <span class="cstat-no" title="statement not covered" >r</span>eturn o},{})</span></span>
+			Object.<span class="cstat-no" title="statement not covered" >keys(articles).forEach(<span class="fstat-no" title="function not covered" >(key)=&gt;<span class="cstat-no" title="statement not covered" >articles[key].avatar=avatars[articles[key].author])</span></span></span>
+		})
+		Promise.<span class="cstat-no" title="statement not covered" >all([avatarPromise]).then(dispatch(loadArticle(articles)))</span>
+	})
+}
+// use search bar to search article
+export const searchArticles=(text)=&gt;{
+	return{
+		type:Action.Search_Articles,
+		text
+	}
+}
+// action to show comment
+export const showComment=<span class="fstat-no" title="function not covered" >(id)=&gt;{</span>
+	return <span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Show_Comment,
+		id
+	}
+}
+export const editArticle=<span class="fstat-no" title="function not covered" >(id)=&gt;{</span>
+	return <span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Edit_Article,
+		id
+	}
+}
+export const addnewComment=<span class="fstat-no" title="function not covered" >(id)=&gt;{</span>
+	return<span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Add_Comment,
+		id
+	}
+}
+export const editCommentAction=<span class="fstat-no" title="function not covered" >(articleId,commentId)=&gt;{</span>
+	return<span class="cstat-no" title="statement not covered" >{</span>
+		type:Action.Edit_Comment,
+		articleId,
+		commentId,
+	}
+}
+export const putArticle=<span class="fstat-no" title="function not covered" >(message,id,commentId)=&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(dispatch)=&gt;{</span></span></span>
+	const <span class="cstat-no" title="statement not covered" >payload={}</span>
+	payload[<span class="cstat-no" title="statement not covered" >"text"]=message</span>
+	if(<span class="cstat-no" title="statement not covered" >commentId) <span class="cstat-no" title="statement not covered" >payload["commentId"]=commentId</span></span>
+	resource(<span class="cstat-no" title="statement not covered" >'PUT',`articles/${id}`,payload)</span>
+	.then(<span class="fstat-no" title="function not covered" >(r)=&gt;{</span>
+		if(<span class="cstat-no" title="statement not covered" >commentId){</span>
+			dispatch(<span class="cstat-no" title="statement not covered" >{</span>
+			type:Action.Update_Article,
+			newArticle:addAttribute(r.articles[0],true,false)
+			})
+			return
+		}
+		
+		dispatch(<span class="cstat-no" title="statement not covered" >{</span>
+			type:Action.Update_Article,
+			newArticle:addAttribute(r.articles[0],false,false)
+		})
+	})
+}
+export const updateComment=<span class="fstat-no" title="function not covered" >(message,id,commentId)=&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(dispatch)=&gt;{</span></span></span>
+ dispatch(<span class="cstat-no" title="statement not covered" >editCommentAction(id,commentId))</span>
+ dispatch(<span class="cstat-no" title="statement not covered" >putArticle(message,id,commentId))</span>
+}
+export const updateArticle=<span class="fstat-no" title="function not covered" >(message,id)=&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(dispatch)=&gt;{</span></span></span>
+	dispatch(<span class="cstat-no" title="statement not covered" >editArticle(id))</span>
+ dispatch(<span class="cstat-no" title="statement not covered" >putArticle(message,id))</span>
+}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Apr 05 2017 16:54:52 GMT-0500 (CDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

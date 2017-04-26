@@ -33,19 +33,19 @@ const User = (state = {
 	switch (action.type) {
 		case Action.Update_Profile:
 				if(action.dob){
-					return {...state,dob:action.dob,username:action.username}
+					return {...state,dob:action.dob}
 				}
 				if(action.zipcode){
-					return {...state,zipcode:action.zipcode,username:action.username}
+					return {...state,zipcode:action.zipcode}
 				}
 				if(action.email){
-					return{...state,email:action.email,username:action.username}
+					return{...state,email:action.email}
 				}
 				if(action.headline){
-					return{...state,headline:action.headline,username:action.username}
+					return{...state,headline:action.headline}
 				}
 				if(action.avatar){
-					return{...state,avatar:action.avatar,username:action.username}
+					return{...state,avatar:action.avatar}
 				}
 		case Action.Login:
 			return {
@@ -53,9 +53,6 @@ const User = (state = {
 				username: action.username
 			}
 		case Action.Load_Profile:
-			if(action.username){
-				return{...state,username:action.username}
-			}
 			if(action.avatar){
 				return {...state,avatar:action.avatar}
 			}

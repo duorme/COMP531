@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {updateUser,_Login,loginFacebook,responseFacebook} from './LandingAction'
 import {go_To_Main} from '../../actions'
 import FieldGroup from '../FieldGroup'
-
+import FacebookLogin from 'react-facebook-login';
 
 
 
