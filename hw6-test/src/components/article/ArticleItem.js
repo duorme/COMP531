@@ -30,7 +30,7 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
   <div>
     <Media className="card">
       <Media.Left align="top" >
-        <Image className="postImg" src={avatar} rounded/>
+        <Image className="ArticleAvatarImg" src={avatar} rounded/>
       </Media.Left>
       <Media.Body className="content">
         <Media.Heading className="articleTitle">
@@ -44,10 +44,12 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
                 disabled={!isEdited}       // use true to disable edition
                 onChange={(e)=>{saveArticle(e)}}>
         </ContentEditable> 
-        <img src={img}></img>
-      </Media.Body>
-      <Col xsOffset={4}>
-      <ButtonGroup>
+        <div className="text-center">
+        {img ?
+        <img className="ArticleImg" src={img}></img>:''
+
+      }
+      <ButtonGroup className="ArticleButtonGroup">
       <Button onClick={show}>{showcomm?"Hide Comments":"Show Comments"}</Button>
       <Button onClick={()=>addCommentAction(id)}>Add a Comment</Button>
 
@@ -57,7 +59,9 @@ const ArticleItem = ({id,text,date,avatar,img,author,comments,showcomm,showCommA
         {isEdited? "Save" : "Edit"}</Button>   
       }
         </ButtonGroup>
-          </Col>
+      </div>
+      </Media.Body>
+
       {addComment?<NewComment articleId={id}></NewComment>:""}
       <ListGroup>
         {

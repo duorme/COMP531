@@ -16,35 +16,16 @@ const Brief=({img,name,headline,updateHeadline,error})=>{
 	}
 	}
 	return(
-		<div>
-		<div className="card">
-		<Grid>
-		<Row>
-		<Col md={2}>
-		<Image className="Mypic" id='briefAvatar' src={img} rounded></Image>
-		</Col>
-		</Row>
-		<Row>
-		<Col xs={2} xsOffset={1}>
-		<h3 id="main_username" className="name">{name}</h3>
-		</Col>
-		</Row>
-		<Col>
-		<p className="headline" id="headline">{headline}</p>
-		</Col>
-		
-		<Row>
-		<Col md={2} >
-		<input ref={(node)=>{input=node;}} id="newHeadline" placeholder="update your headline"></input>
 
-		</Col>
-		<Col md={1}>
-		<Button onClick={updateText} bsSize="xsmall" id="btn_updateHeadline">update</Button>
-		</Col>
-		
-		</Row>
-		</Grid>
-		</div>
+		<div className="card">
+
+		<Image className="briefPic center-block"  src={img} rounded></Image>
+
+		<h3 id="main_username" className="name text-center">{name}</h3>
+		<p className="headline text-center " id="headline">{headline}</p>
+		<input className="center-block" ref={(node)=>{input=node;}} id="newHeadline" placeholder="update your headline"></input>
+
+		<Button className="center-block" onClick={updateText} bsSize="xsmall" id="btn_updateHeadline">update</Button>
 		</div>
 		)
 }

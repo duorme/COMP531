@@ -42,10 +42,10 @@ const User = (state = {
 					return{...state,email:action.email,username:action.username}
 				}
 				if(action.headline){
-					return{...state,headline:action.headline,username:action.username}
+					return{...state,headline:action.headline}
 				}
 				if(action.avatar){
-					return{...state,avatar:action.avatar,username:action.username}
+					return{...state,avatar:action.avatar}
 				}
 		case Action.Login:
 			return {
@@ -53,23 +53,20 @@ const User = (state = {
 				username: action.username
 			}
 		case Action.Load_Profile:
-			if(action.username){
-				return{...state,username:action.username}
-			}
 			if(action.avatar){
 				return {...state,avatar:action.avatar}
 			}
 			if(action.dob){
-				return{...state,dob:action.dob}
+				return{...state,dob:action.dob,username:action.username}
 			}
 			if(action.zipcode){
-				return{...state,zipcode:action.zipcode}
+				return{...state,zipcode:action.zipcode,username:action.username}
 			}
 			if(action.headline){
 				return{...state,headline:action.headline}
 			}
 			if(action.email){
-				return{...state,email:action.email}
+				return{...state,email:action.email,username:action.username}
 			}
 		default:
 			return state;

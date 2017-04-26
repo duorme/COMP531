@@ -12,7 +12,7 @@ const Avatar=({img,upLoadImg})=>{
 
 	return(
 		<div>
-		<img src={img} id="profileAvatar"></img><br/>
+		<img className="profileImage" src={img} id="profileAvatar"></img><br/>
 		<span>upload your profile</span>
 		<input type="file" accept="image/*"  onChange={(e) => handleImageChange(e)}></input>
 			</div>

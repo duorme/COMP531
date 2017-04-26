@@ -20,15 +20,25 @@ resource('GET',field)
 .then((r)=>{
 	switch(field){
 		case 'email':
-		action.email=r.email;break;
+		action.email=r.email;
+		action.username=r.username;
+		break;
 		case 'zipcode':
-		action.zipcode=r.zipcode;break;
+		action.zipcode=r.zipcode;
+		action.username=r.username;
+		break;
 		case 'dob':
-		action.dob=new Date(r.dob);break;
+		action.dob=new Date(r.dob);
+		action.username=r.username;
+		break;
 		case 'headlines':
-		action.headline=r.headlines[0].headline;break;
+		action.headline=r.headlines[0].headline;
+		action.username=r.username;
+		break;
 		case 'avatars':
-		action.avatar=r.avatars[0].avatar;break;
+		action.avatar=r.avatars[0].avatar;
+		action.username=r.username;
+		break;
 	}
 	dispatch(action)
 })
@@ -63,6 +73,7 @@ const updateItem=(field,value)=>(dispatch)=>{
 }
 export const updateAvatar=(avatar)=>(dispatch)=>{
 	const src=URL.createObjectURL(avatar)
+
     dispatch({type:Action.Update_Profile,avatar:src})
 }
 

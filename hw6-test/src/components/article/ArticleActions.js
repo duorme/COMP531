@@ -10,7 +10,7 @@ const addAttribute=(article,showcomm=false,isEdited=false,editComment=false,addC
 	return article
 
 }
-export const addNewArticlewithImage=(text,file)=>(dispatch)=>{
+export const addNewArticle=(text,file)=>(dispatch)=>{
 	//use resource to post article
 	const fd = new FormData()
 	fd.append('image',file)
@@ -21,19 +21,6 @@ export const addNewArticlewithImage=(text,file)=>(dispatch)=>{
 		dispatch({
 		type:Action.Add_New_Article,
 		newArticle
-	})
-	})
-	
-}
-export const addNewArticle=(text)=>(dispatch)=>{
-	//use resource to post article
-
-	const article={text}
-	resource('POST','article',article)
-	.then((r)=>{
-		dispatch({
-		type:Action.Add_New_Article,
-		newArticle:addAttribute(r.articles[0])
 	})
 	})
 	
