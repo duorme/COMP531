@@ -33,7 +33,6 @@ resource('GET',field)
 		break;
 		case 'headlines':
 		action.headline=r.headlines[0].headline;
-		action.username=r.username;
 		break;
 		case 'avatars':
 		action.avatar=r.avatars[0].avatar;

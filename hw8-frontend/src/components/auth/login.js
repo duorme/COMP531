@@ -1,6 +1,6 @@
 import React, {Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {updateUser,_Login,loginFacebook,responseFacebook} from './LandingAction'
+import {updateUser,_Login,loginWithFB} from './LandingAction'
 import {go_To_Main} from '../../actions'
 import FieldGroup from '../FieldGroup'
 
@@ -8,7 +8,7 @@ import FieldGroup from '../FieldGroup'
 
 import {Button,Form} from 'react-bootstrap'
 // component for login
-let Login = ({_Login}) => {
+let Login = ({_Login,_loginWithFB}) => {
 	let name;
   let pass;
 
@@ -25,12 +25,11 @@ _Login(name.value,pass.value)
 	placeholder="Your name"></FieldGroup>
 	<FieldGroup id= "loginpassword" sm_title = {2} label="password"  sm_input={5} type="password"
 	placeholder="Your Password" inputRef={(ref)=>{pass=ref;}}></FieldGroup>
-  
-    </Form>
-    <Button size="large" type="submit" id="Login" onClick={onLogin} className="col-md-offset-4">
-          Login
-        </Button>  
-    </div>
+
+  </Form>
+  <Button size="large" type="submit" id="Login" onClick={onLogin} className="col-md-offset-4">Login</Button> 
+  <Button  onClick={_loginWithFB}>Login With FaceBook</Button>
+</div>
     )
 }
 
@@ -41,6 +40,7 @@ Login.PropTypes ={
 
 export default connect(null,(dispatch)=>
  {return{
-  _Login:(name,pass)=>dispatch(_Login(name,pass))
+  _Login:(name,pass)=>dispatch(_Login(name,pass)),
+  _loginWithFB:()=>dispatch(loginWithFB())
 }
 })(Login)
