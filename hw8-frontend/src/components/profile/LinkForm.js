@@ -17,14 +17,14 @@ _linkAccountWithUser(name.value,pass.value)
 		//Log in Form
 	<div>
 	<Form horizontal id="login" >
-    <h2>Link Account</h2>
+    <h2>Facebook User: Link Account</h2>
 	<FieldGroup id= "loginusername" sm_title = {2} label="Your name" sm_input={5} inputRef={(ref)=>{name=ref;}} type="text"
 	placeholder="Your name"></FieldGroup>
 	<FieldGroup id= "loginpassword" sm_title = {2} label="password"  sm_input={5} type="password"
 	placeholder="Your Password" inputRef={(ref)=>{pass=ref;}}></FieldGroup>
 
   </Form>
-  <Button size="large" type="submit" id="Login" onClick={onLogin} className="col-md-offset-4">Link Account</Button> 
+  <Button size="large" type="submit" id="Login" onClick={onLogin} className="col-md-offset-4"> Link Account</Button> 
 </div>
     )
 }

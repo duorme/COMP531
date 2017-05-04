@@ -26,7 +26,7 @@ const Profile = ({main,logout,_unlinkFb})=>{
 
 		</div>
 		<LinkForm></LinkForm>
-
+		<h2>Regular User: Unlink With Facebook</h2>
 		<Button onClick={_unlinkFb}>Unlink With Facebook</Button>
 		</div>
 	)

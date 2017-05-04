@@ -1,4 +1,3 @@
-
 import Action,{error,success,addUser,url,resource,go_To_Profile} from '../../actions'
 // navigate to profile and fetch data from server
 export const go_to_profile=()=>(dispatch)=>{

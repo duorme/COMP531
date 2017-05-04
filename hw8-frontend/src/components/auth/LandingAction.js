@@ -23,8 +23,6 @@ export const logout=()=>(dispatch)=>{
 export const loginWithFB=()=>{
 	window.location=`${url}/auth/facebook`
 
-
-
 }
 
 export const initVisit=()=>(dispatch)=>{

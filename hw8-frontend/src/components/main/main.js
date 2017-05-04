@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Media,ButtonGroup,button,Nav,Navbar,NavItem,Row,Col} from 'react-bootstrap'
-import {logout} from '../auth/LandingAction'
-import {go_to_profile} from '../profile/profileActions'
+
 import ArticleList from '../article/articleList'
 import Brief from './brief'
 import FollowerList from './followerList'
 import Message from '../message'
-import {go_To_Main} from '../../actions'
 import NavHead from '../NavHead'
 // main page with user brif,follower list and article list
 const Main=({logout,profile,message,main})=>{
