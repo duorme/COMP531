@@ -40,7 +40,7 @@ export const fetchFollowers=(method, name,follower)=>{
             Promise.all([avatarPromise,headlinePromise]).then(()=>dispatch(loadFollower(following)))
             
         })
-        .catch((err) => {dispatch({type:Action.ERROR,message:'error happened when fetching followers'})})
+        .catch((err) => {dispatch({type:Action.ERROR,message:"follower doesn\'t exist"})})
     }
 }
 // unfollow and fetch new followers from server

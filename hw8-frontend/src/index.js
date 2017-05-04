@@ -15,9 +15,9 @@ import {initVisit} from './components/auth/LandingAction'
 require('./styles.css')
 
 
-const logger = createLogger()
-const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
-// const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
+// const logger = createLogger()
+// const store = createStore(Reducer, applyMiddleware(logger, thunkMiddleware))
+const store = createStore(Reducer, applyMiddleware(thunkMiddleware))
 store.dispatch(initVisit())
 
 

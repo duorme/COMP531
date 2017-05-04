@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import {connect} from 'react-redux'
 import {Button} from 'react-bootstrap'
-import {postAvatar,updateAvatar} from './profileActions'
+import {postAvatar,updateAvatar,linkAccount} from './profileActions'
 //Avatar of User
 const Avatar=({img,upLoadImg})=>{
 	let file
@@ -16,6 +16,7 @@ const Avatar=({img,upLoadImg})=>{
 		<span>upload your profile</span>
 		<input type="file" accept="image/*"  onChange={(e) => handleImageChange(e)}></input>
 			</div>
+
 
 		)
 }

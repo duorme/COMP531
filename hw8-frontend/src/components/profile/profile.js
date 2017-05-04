@@ -2,47 +2,38 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Avatar from './avatar'
 import ProfileForm from './profileForm'
-import {logout} from '../auth/LandingAction'
-import {Col,button,Navbar,Nav,NavItem} from 'react-bootstrap'
-import {go_To_Main} from '../../actions'
+import {Col,Button,Navbar,Nav,NavItem} from 'react-bootstrap'
+import LinkForm from './LinkForm'
+import {unlinkFb} from './profileActions'
+import NavHead from '../NavHead'
 //Edit Profile, validate it and then save to state
-const Profile = ({main,logout})=>{
+const Profile = ({main,logout,_unlinkFb})=>{
 	return(
 	
 		<div className="container-fluid">
 
-		<Navbar inverse collapseOnSelect>
-		<Navbar.Header>
-		<Navbar.Brand>
-		<a href="#">Rice Book</a>
-		</Navbar.Brand>
-		<Navbar.Toggle />
-		</Navbar.Header>
-		<Navbar.Collapse>
-		<Nav>
-
-		<NavItem eventKey={1} onClick={()=>main()}>Main</NavItem>
-		</Nav>
-		<Nav pullRight>
-		<NavItem eventKey={1} onClick={()=>profile()}>Edit Profile</NavItem>
-		<NavItem eventKey={2} onClick = {()=>logout()}>Log Out</NavItem>
-		</Nav>
-		</Navbar.Collapse>
-		</Navbar>
+		<NavHead></NavHead>
 		<div className="row">
 		  <div className="col-md-3 col-md-offset-1">
 		  <br/>
 			<Avatar className="col-md-12"></Avatar>
 			</div>
 			<div  className="col-md-6 col-md-offset-1">
+			
 			<ProfileForm className="col-md-12"></ProfileForm>
 			</div>
+			
+
 		</div>
+		<LinkForm></LinkForm>
+
+		<Button onClick={_unlinkFb}>Unlink With Facebook</Button>
 		</div>
 	)
 }
 export default connect(null,
 	(dispatch) => {return {
 	logout:()=>dispatch(logout()), 
-	main:()=>dispatch(go_To_Main())
+	main:()=>dispatch(go_To_Main()),
+	_unlinkFb:()=>dispatch(unlinkFb())
 }})(Profile)

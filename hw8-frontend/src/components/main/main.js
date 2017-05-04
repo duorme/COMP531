@@ -8,29 +8,13 @@ import Brief from './brief'
 import FollowerList from './followerList'
 import Message from '../message'
 import {go_To_Main} from '../../actions'
+import NavHead from '../NavHead'
 // main page with user brif,follower list and article list
 const Main=({logout,profile,message,main})=>{
 	return(
 		<div  className="container-fluid">
 
-		  <Navbar inverse collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand >
-        <a href="#">Rice Book</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-      
-        <NavItem eventKey={1} onClick={()=>main()}>Main</NavItem>
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} onClick={()=>profile()}>Edit Profile</NavItem>
-          <NavItem eventKey={2} onClick = {()=>logout()}>Log Out</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+		 <NavHead></NavHead>
     
   <Row className="row">
   <Col xs={3} md={3}>

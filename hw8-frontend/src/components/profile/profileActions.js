@@ -70,6 +70,7 @@ const updateItem=(field,value)=>(dispatch)=>{
 		
 	}
 }
+
 export const updateAvatar=(avatar)=>(dispatch)=>{
 	const src=URL.createObjectURL(avatar)
 
@@ -121,6 +122,36 @@ export const validation=(information,userInfo)=> (dispatch) => {
 	dispatch(updateItem('zipcode',information.zipcode))
 	dispatch(updateItem('password',information.password))
 }
+
+
+
+export const linkAccountWithUser=(username,password)=>(dispatch)=>{
+	if(!username){
+	dispatch(error("Error! username can't be empty"))
+	return 
+	}
+	if(!password){
+		dispatch(error("Error! password can't be empty"))
+	}
+	const payload={}
+	payload['username']=username
+	payload['password']=password
+	resource('POST','linkAccount',payload)
+	.then((response)=>{
+		dispatch(error("Link Successfully"))
+	})
+
+}
+export const unlinkFb=()=>(dispatch)=>{
+	resource('POST','unlinkFB')
+	.then((r)=>{
+		dispatch(error("Unlink Successfully"))
+	})
+	.catch((err)=>{
+		dispatch(error("there's error when unlink"))
+	})
+}
+
 export const postAvatar=(file)=>(dispatch)=>{
 	const fd = new FormData()
 	fd.append('image',file)

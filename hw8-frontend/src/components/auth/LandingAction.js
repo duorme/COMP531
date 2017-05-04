@@ -20,8 +20,8 @@ export const logout=()=>(dispatch)=>{
 		dispatch(error("There was an error logging out"+Error))
 	})
 }
-export const loginWithFB=(dispatch)=>{
-	window.location="http://localhost:3000/auth/facebook"
+export const loginWithFB=()=>{
+	window.location=`${url}/auth/facebook`
 
 
 
